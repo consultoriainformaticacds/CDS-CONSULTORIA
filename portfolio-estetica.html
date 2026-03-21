@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumière — Studio de Estética</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blush: #F5EDE8;
+      --rose: #E8C4B8;
+      --dusty: #C9957A;
+      --deep: #8B5E52;
+      --dark: #2C1810;
+      --white: #FDFAF8;
+      --muted: #A08070;
+      --border: rgba(139,94,82,0.12);
+      --gold: #C9A96E;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 2rem; background: rgba(253,250,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; color: var(--dark); text-decoration: none; letter-spacing: 0.05em; }
+    .nav-logo span { color: var(--dusty); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.78rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--deep); }
+    .nav-cta { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); background: var(--deep); padding: 0.7rem 1.8rem; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--dusty); }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 72px; }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 5rem; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 1rem; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dusty); margin-bottom: 2rem; }
+    .hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--dusty); }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 400; line-height: 1.1; color: var(--dark); margin-bottom: 1rem; }
+    .hero-title em { font-style: italic; color: var(--dusty); }
+    .hero-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 400; font-style: italic; color: var(--muted); margin-bottom: 2.5rem; }
+    .hero-desc { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: var(--muted); max-width: 380px; margin-bottom: 3rem; }
+    .hero-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+    .btn-primary { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); background: var(--deep); padding: 1rem 2.5rem; text-decoration: none; transition: background 0.2s; display: inline-block; }
+    .btn-primary:hover { background: var(--dusty); }
+    .btn-ghost { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--deep); border-bottom: 1px solid var(--deep); padding-bottom: 2px; text-decoration: none; transition: color 0.2s; }
+    .btn-ghost:hover { color: var(--dusty); border-color: var(--dusty); }
+    .hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 400; color: var(--deep); }
+    .stat-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.2rem; }
+
+    .hero-right { position: relative; overflow: hidden; background: var(--blush); }
+    .hero-img-bg { position: absolute; inset: 0; background: linear-gradient(145deg, #F5EDE8 0%, #E8C4B8 40%, #C9957A 100%); }
+    .hero-img-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .hero-img-text { font-family: 'Playfair Display', serif; font-size: 12rem; font-weight: 400; color: rgba(255,255,255,0.2); font-style: italic; user-select: none; }
+    .hero-badge { position: absolute; bottom: 3rem; left: -1.5rem; background: var(--white); padding: 1.5rem 2rem; border-left: 3px solid var(--gold); box-shadow: 0 8px 40px rgba(44,24,16,0.1); }
+    .hero-badge p { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; color: var(--dark); }
+    .hero-badge span { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.4rem; display: block; }
+
+    /* SERVICIOS */
+    #servicios { padding: 6rem 2rem; background: var(--white); }
+    .section-eyebrow { display: flex; align-items: center; gap: 1rem; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dusty); margin-bottom: 1.2rem; }
+    .section-eyebrow::before { content: ''; width: 30px; height: 1px; background: var(--dusty); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 400; color: var(--dark); line-height: 1.15; margin-bottom: 4rem; }
+    .section-title em { font-style: italic; color: var(--dusty); }
+    .servicios-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); }
+    .servicio-card { background: var(--white); padding: 3rem 2.5rem; display: flex; flex-direction: column; gap: 1rem; transition: background 0.3s; position: relative; overflow: hidden; }
+    .servicio-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--dusty); transition: width 0.4s; }
+    .servicio-card:hover { background: var(--blush); }
+    .servicio-card:hover::before { width: 100%; }
+    .servicio-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; color: rgba(201,149,122,0.15); line-height: 1; font-style: italic; }
+    .servicio-icon { font-size: 1.8rem; }
+    .servicio-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 500; color: var(--dark); }
+    .servicio-desc { font-size: 0.85rem; line-height: 1.8; color: var(--muted); font-weight: 300; }
+    .servicio-price { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; color: var(--deep); margin-top: 0.5rem; }
+    .servicio-price span { font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 300; color: var(--muted); margin-left: 0.3rem; }
+    .servicio-duracion { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dusty); }
+
+    /* NOSOTROS */
+    #nosotros { padding: 6rem 2rem; background: var(--blush); }
+    .nosotros-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; margin-top: 3rem; }
+    .nosotros-img { height: 420px; background: linear-gradient(135deg, #E8C4B8, #C9957A); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .nosotros-img-text { font-family: 'Playfair Display', serif; font-size: 8rem; color: rgba(255,255,255,0.2); font-style: italic; }
+    .nosotros-text p { font-size: 0.95rem; line-height: 1.9; color: var(--muted); font-weight: 300; margin-bottom: 1.2rem; }
+    .valores-list { list-style: none; margin-top: 2rem; }
+    .valor-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; color: var(--dark); }
+    .valor-item::before { content: '✦'; color: var(--gold); font-size: 0.7rem; }
+
+    /* TURNOS */
+    #turnos { padding: 6rem 2rem; background: var(--dark); color: var(--white); }
+    #turnos .section-eyebrow { color: var(--rose); }
+    #turnos .section-eyebrow::before { background: var(--rose); }
+    #turnos .section-title { color: var(--white); margin-bottom: 3rem; }
+    #turnos .section-title em { color: var(--rose); }
+    .turnos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); margin-bottom: 3rem; }
+    .turno-card { background: rgba(255,255,255,0.03); padding: 2rem; transition: background 0.2s; }
+    .turno-card:hover { background: rgba(201,149,122,0.1); }
+    .turno-dia { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.6rem; }
+    .turno-hora { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 400; }
+    .turno-nota { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 0.3rem; }
+
+    /* CONTACTO */
+    #contacto { padding: 6rem 2rem; background: var(--white); }
+    .contacto-info-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 400; margin-bottom: 1rem; }
+    .contacto-info p { font-size: 0.88rem; color: var(--muted); line-height: 1.85; margin-bottom: 2rem; font-weight: 300; }
+    .contacto-datos { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .contacto-dato { display: flex; gap: 1rem; font-size: 0.85rem; color: var(--muted); }
+    .contacto-dato strong { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--deep); min-width: 80px; font-weight: 500; }
+    .contacto-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-field label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+    .form-field input, .form-field textarea, .form-field select { font-family: 'Jost', sans-serif; font-size: 0.88rem; font-weight: 300; background: var(--blush); border: 1px solid var(--border); padding: 0.85rem 1rem; color: var(--dark); outline: none; transition: border-color 0.2s; resize: none; appearance: none; border-radius: 0; }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--dusty); }
+    .form-field textarea { min-height: 100px; }
+    .form-field select option { background: var(--white); }
+    .form-submit { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); background: var(--deep); border: none; cursor: pointer; padding: 1rem 2.5rem; transition: background 0.2s; align-self: flex-start; margin-top: 0.5rem; }
+    .form-submit:hover { background: var(--dusty); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    #form-status { font-size: 0.82rem; margin-top: 0.5rem; }
+
+    /* FOOTER */
+    footer { background: var(--dark); padding: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 400; color: var(--white); }
+    .footer-logo span { color: var(--rose); font-style: italic; }
+    footer p { font-size: 0.72rem; color: rgba(255,255,255,0.35); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; letter-spacing: 0.08em; }
+    .footer-links a:hover { color: var(--rose); }
+
+    /* WHATSAPP */
+    #wa-float { position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 999; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: transform 0.2s; text-decoration: none; }
+    #wa-float:hover { transform: scale(1.1); }
+    #wa-float::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(37,211,102,0.3); animation: wa-pulse 2s ease-out infinite; }
+    @keyframes wa-pulse { 0%{transform:scale(1);opacity:0.8} 100%{transform:scale(1.5);opacity:0} }
+
+    @media (min-width: 768px) {
+      nav { padding: 1.4rem 4rem; }
+      #hero { grid-template-columns: 1fr 1fr; }
+      .hero-left { padding: 5rem 4rem 5rem 5rem; }
+      #servicios, #nosotros, #turnos, #contacto, footer { padding-left: 4rem; padding-right: 4rem; }
+      .servicios-grid { grid-template-columns: repeat(3, 1fr); }
+      .nosotros-grid { grid-template-columns: 1fr 1fr; align-items: center; }
+      .contacto-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; }
+      .contacto-info { margin-bottom: 0; }
+    }
+    @media (max-width: 767px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-right { height: 300px; }
+      .hero-left { padding: 3rem 1.5rem; }
+      #servicios, #nosotros, #turnos, #contacto, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">Lumière<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#turnos">Turnos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Reservar turno</a>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Studio de Estética · Palermo, CABA</p>
+      <h1 class="hero-title">Realzá tu<br/><em>belleza</em><br/>natural</h1>
+      <p class="hero-subtitle">Con cuidado, técnica y amor</p>
+      <p class="hero-desc">En Lumière creemos que cada persona tiene una belleza única que merece ser cuidada. Tratamientos personalizados en un espacio pensado para que te sientas especial.</p>
+      <div class="hero-actions">
+        <a href="#servicios" class="btn-primary">Ver servicios</a>
+        <a href="#contacto" class="btn-ghost">Reservar turno</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">8+</div><div class="stat-label">Años de experiencia</div></div>
+        <div><div class="stat-num">500+</div><div class="stat-label">Clientas felices</div></div>
+        <div><div class="stat-num">4.9★</div><div class="stat-label">Valoración</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-bg"></div>
+      <div class="hero-img-overlay">
+        <div class="hero-img-text">L</div>
+      </div>
+      <div class="hero-badge">
+        <p>"Tu bienestar, nuestra pasión."</p>
+        <span>Valeria Méndez — Fundadora</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <p class="section-eyebrow">Lo que ofrecemos</p>
+    <h2 class="section-title">Nuestros <em>tratamientos</em></h2>
+    <div class="servicios-grid">
+      <div class="servicio-card">
+        <div class="servicio-num">01</div>
+        <div class="servicio-icon">✨</div>
+        <h3 class="servicio-name">Limpieza facial profunda</h3>
+        <p class="servicio-desc">Limpieza con extracción, vaporización y mascarilla hidratante personalizada según tu tipo de piel.</p>
+        <p class="servicio-duracion">60 minutos</p>
+        <p class="servicio-price">$18.000 <span>por sesión</span></p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-num">02</div>
+        <div class="servicio-icon">💆</div>
+        <h3 class="servicio-name">Tratamiento hidratante</h3>
+        <p class="servicio-desc">Hidratación profunda con ácido hialurónico, vitamina C y masaje facial relajante.</p>
+        <p class="servicio-duracion">45 minutos</p>
+        <p class="servicio-price">$15.000 <span>por sesión</span></p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-num">03</div>
+        <div class="servicio-icon">🌸</div>
+        <h3 class="servicio-name">Diseño de cejas</h3>
+        <p class="servicio-desc">Perfilado, depilación y pigmentación para cejas perfectas que enmarquen tu mirada.</p>
+        <p class="servicio-duracion">30 minutos</p>
+        <p class="servicio-price">$8.000 <span>por sesión</span></p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-num">04</div>
+        <div class="servicio-icon">💅</div>
+        <h3 class="servicio-name">Manicura y pedicura</h3>
+        <p class="servicio-desc">Tratamiento completo de manos y pies con esmaltado semipermanente de larga duración.</p>
+        <p class="servicio-duracion">75 minutos</p>
+        <p class="servicio-price">$12.000 <span>por sesión</span></p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-num">05</div>
+        <div class="servicio-icon">🕯</div>
+        <h3 class="servicio-name">Ritual de relajación</h3>
+        <p class="servicio-desc">Experiencia completa: masaje facial, corporal y aromaterapia para reconectar con tu bienestar.</p>
+        <p class="servicio-duracion">90 minutos</p>
+        <p class="servicio-price">$25.000 <span>por sesión</span></p>
+      </div>
+      <div class="servicio-card">
+        <div class="servicio-num">06</div>
+        <div class="servicio-icon">⚡</div>
+        <h3 class="servicio-name">Depilación láser</h3>
+        <p class="servicio-desc">Tecnología de última generación para una depilación definitiva, segura y sin dolor.</p>
+        <p class="servicio-duracion">Según zona</p>
+        <p class="servicio-price">Desde $10.000 <span>por zona</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <p class="section-eyebrow">Nuestra historia</p>
+    <h2 class="section-title">Un espacio hecho<br/>con <em>amor</em></h2>
+    <div class="nosotros-grid">
+      <div class="nosotros-img">
+        <div class="nosotros-img-text">L</div>
+      </div>
+      <div class="nosotros-text">
+        <p>Lumière nació en 2016 con una idea simple: crear un espacio donde cada persona se sienta valorada, escuchada y cuidada. Más que una estética, somos un refugio.</p>
+        <p>Nuestro equipo se capacita continuamente para ofrecerte las técnicas más modernas con los productos de mayor calidad del mercado.</p>
+        <ul class="valores-list">
+          <li class="valor-item">Productos cosméticos de primera línea</li>
+          <li class="valor-item">Técnicas actualizadas y certificadas</li>
+          <li class="valor-item">Atención personalizada en cada turno</li>
+          <li class="valor-item">Espacio limpio, cálido y confortable</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="turnos">
+    <p class="section-eyebrow">Estamos para vos</p>
+    <h2 class="section-title">Horarios de <em>atención</em></h2>
+    <div class="turnos-grid">
+      <div class="turno-card">
+        <p class="turno-dia">Lunes a Viernes</p>
+        <p class="turno-hora">9:00 — 20:00</p>
+        <p class="turno-nota">Con turno previo</p>
+      </div>
+      <div class="turno-card">
+        <p class="turno-dia">Sábados</p>
+        <p class="turno-hora">9:00 — 17:00</p>
+        <p class="turno-nota">Consultar disponibilidad</p>
+      </div>
+      <div class="turno-card">
+        <p class="turno-dia">Domingos</p>
+        <p class="turno-hora">Cerrado</p>
+        <p class="turno-nota">Descansamos para volverte a atender</p>
+      </div>
+      <div class="turno-card">
+        <p class="turno-dia">Feriados</p>
+        <p class="turno-hora">Consultar</p>
+        <p class="turno-nota">Según disponibilidad</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <p class="section-eyebrow">Reservá tu turno</p>
+    <h2 class="section-title">Escribinos y<br/><em>coordinamos</em></h2>
+    <div class="contacto-grid">
+      <div class="contacto-info">
+        <h3 class="contacto-info-title">Tu bienestar nos importa</h3>
+        <p>Escribinos para reservar tu turno o consultarnos sobre cualquier tratamiento. Te respondemos en menos de 24 horas.</p>
+        <ul class="contacto-datos">
+          <li class="contacto-dato"><strong>Respuesta</strong>En menos de 24 horas</li>
+          <li class="contacto-dato"><strong>WhatsApp</strong>+54 9 11 0000-0000</li>
+          <li class="contacto-dato"><strong>Dirección</strong>Thames 1234, Palermo, CABA</li>
+          <li class="contacto-dato"><strong>Horario</strong>Lun–Vie 9:00 a 20:00</li>
+        </ul>
+      </div>
+      <div>
+        <form id="lumForm" onsubmit="return false;" class="contacto-form">
+          <div class="form-row">
+            <div class="form-field"><label>Nombre</label><input type="text" id="lum-nombre" placeholder="Tu nombre" /></div>
+            <div class="form-field"><label>Email o WhatsApp</label><input type="text" id="lum-contacto" placeholder="Cómo te contactamos" /></div>
+          </div>
+          <div class="form-field">
+            <label>Servicio de interés</label>
+            <select id="lum-servicio">
+              <option value="">Seleccioná un servicio</option>
+              <option value="Limpieza facial">Limpieza facial profunda</option>
+              <option value="Hidratante">Tratamiento hidratante</option>
+              <option value="Cejas">Diseño de cejas</option>
+              <option value="Manicura">Manicura y pedicura</option>
+              <option value="Ritual">Ritual de relajación</option>
+              <option value="Laser">Depilación láser</option>
+              <option value="Consulta">Consulta general</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Mensaje</label><textarea id="lum-mensaje" placeholder="¿Cuándo te viene bien? ¿Alguna consulta especial?"></textarea></div>
+          <button type="button" class="form-submit" id="lum-btn" onclick="enviarLum()">Reservar turno →</button>
+          <p id="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Lumière<span>.</span></div>
+    <p>© 2025 Lumière Studio. Todos los derechos reservados.</p>
+    <div class="footer-links">
+      <a href="#">Instagram</a>
+      <a href="#">WhatsApp</a>
+      <a href="#">Facebook</a>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5491100000000" target="_blank" id="wa-float" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    async function enviarLum() {
+      var btn = document.getElementById('lum-btn');
+      var status = document.getElementById('form-status');
+      var nombre = document.getElementById('lum-nombre').value.trim();
+      var contacto = document.getElementById('lum-contacto').value.trim();
+      var servicio = document.getElementById('lum-servicio').value;
+      var mensaje = document.getElementById('lum-mensaje').value.trim();
+      if (!nombre || !contacto || !servicio) {
+        status.style.color = '#C9957A';
+        status.textContent = 'Por favor completá los campos obligatorios.';
+        return;
+      }
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+      status.textContent = '';
+      try {
+        var response = await fetch('https://formspree.io/f/xpqynaqq', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ nombre, contacto, servicio, mensaje })
+        });
+        if (response.ok) {
+          status.style.color = '#8B5E52';
+          status.textContent = 'Turno solicitado. Te contactamos en menos de 24 horas.';
+          document.getElementById('lum-nombre').value = '';
+          document.getElementById('lum-contacto').value = '';
+          document.getElementById('lum-servicio').value = '';
+          document.getElementById('lum-mensaje').value = '';
+        } else { throw new Error('Error'); }
+      } catch(err) {
+        status.style.color = '#C9957A';
+        status.textContent = 'Error al enviar. Contactanos por WhatsApp.';
+      }
+      btn.textContent = 'Reservar turno';
+      btn.disabled = false;
+    }
+  </script>
+</body>
+</html>
