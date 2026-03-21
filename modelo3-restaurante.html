@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Raíces — Restaurante & Bar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--earth:#2C1A0E;--earth2:#3D2410;--terracotta:#C4622D;--terra-light:#E8956A;--cream:#FAF4EC;--warm:#F5EBD8;--gold:#C9A55A;--muted:#8A7060;--border:rgba(196,98,45,0.15);--white:#FDFAF6}
+    html{scroll-behavior:smooth}
+    body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--earth);overflow-x:hidden}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;background:rgba(250,244,236,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--earth);text-decoration:none;letter-spacing:0.08em}
+    .nav-logo span{color:var(--terracotta);font-style:italic}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .nav-links a:hover{color:var(--earth)}
+    .nav-right{display:flex;align-items:center;gap:1rem}
+    .nav-reserve{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);background:var(--earth);padding:0.65rem 1.5rem;text-decoration:none;transition:background 0.2s}
+    .nav-reserve:hover{background:var(--terracotta)}
+
+    #hero{min-height:100vh;display:grid;grid-template-columns:1fr;padding-top:68px;position:relative;overflow:hidden;background:var(--earth)}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(196,98,45,0.15) 0%,transparent 60%)}
+    .hero-content{display:flex;flex-direction:column;justify-content:center;padding:4rem 2rem;position:relative;z-index:1;min-height:calc(100vh - 68px)}
+    .hero-eyebrow{display:flex;align-items:center;gap:1rem;font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--terra-light);margin-bottom:2rem}
+    .hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--terra-light)}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,10vw,9rem);font-weight:300;line-height:0.9;letter-spacing:-0.02em;color:var(--white);margin-bottom:2rem}
+    .hero-title em{font-style:italic;color:var(--terra-light)}
+    .hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:rgba(255,255,255,0.5);margin-bottom:3rem}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem}
+    .btn-terra{font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);background:var(--terracotta);padding:1rem 2.5rem;text-decoration:none;transition:background 0.2s;display:inline-block}
+    .btn-terra:hover{background:var(--terra-light)}
+    .btn-border-w{font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.2);padding:1rem 2rem;text-decoration:none;transition:all 0.2s;display:inline-block}
+    .btn-border-w:hover{border-color:var(--terra-light);color:var(--terra-light)}
+    .hero-badges{display:flex;gap:2rem;flex-wrap:wrap}
+    .hero-badge-item{display:flex;align-items:center;gap:0.8rem;font-size:0.78rem;color:rgba(255,255,255,0.5)}
+    .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--terracotta)}
+
+    #menu{padding:6rem 2rem;background:var(--white)}
+    .section-eyebrow{display:flex;align-items:center;gap:1rem;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:1rem}
+    .section-eyebrow::before{content:'✦';font-size:0.6rem}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.15;margin-bottom:3rem}
+    .section-title em{font-style:italic;color:var(--terracotta)}
+    .menu-tabs{display:flex;gap:0;margin-bottom:2rem;flex-wrap:wrap}
+    .tab{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.65rem 1.5rem;border:1px solid var(--border);background:transparent;cursor:pointer;color:var(--muted);transition:all 0.2s;margin-right:-1px}
+    .tab.active,.tab:hover{background:var(--earth);color:var(--white);border-color:var(--earth);z-index:1;position:relative}
+    .menu-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border)}
+    .menu-item{background:var(--white);padding:2rem;transition:background 0.2s;display:flex;justify-content:space-between;align-items:flex-start;gap:2rem}
+    .menu-item:hover{background:var(--warm)}
+    .menu-item-left{}
+    .menu-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;margin-bottom:0.5rem}
+    .menu-desc{font-size:0.82rem;color:var(--muted);font-weight:300;line-height:1.6;max-width:400px}
+    .menu-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--terracotta);white-space:nowrap}
+
+    #galeria{padding:6rem 2rem;background:var(--warm)}
+    .galeria-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:2rem}
+    .gal-item{border-radius:2px;overflow:hidden;position:relative}
+    .gal-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:3.5rem;transition:transform 0.4s}
+    .gal-item:hover .gal-img{transform:scale(1.04)}
+    .gal-item:nth-child(1) .gal-img{background:linear-gradient(135deg,#C4622D,#E8956A)}
+    .gal-item:nth-child(2) .gal-img{background:linear-gradient(135deg,#3D2410,#C4622D)}
+    .gal-item:nth-child(3) .gal-img{background:linear-gradient(135deg,#C9A55A,#E8C97A)}
+    .gal-item:nth-child(4) .gal-img{background:linear-gradient(135deg,#2C1A0E,#3D2410)}
+
+    #testimonios{padding:6rem 2rem;background:var(--white)}
+    .testi-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:3rem}
+    .testi-card{background:var(--warm);padding:2.5rem;position:relative}
+    .testi-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:5rem;color:rgba(196,98,45,0.15);position:absolute;top:-1rem;left:1.5rem;line-height:1}
+    .testi-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;line-height:1.75;color:var(--earth);margin-bottom:1.5rem;padding-top:1rem}
+    .testi-autor{display:flex;align-items:center;gap:1rem}
+    .testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--terracotta),var(--terra-light));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--white);flex-shrink:0}
+    .testi-name{font-size:0.85rem;font-weight:500;color:var(--earth)}
+    .testi-stars{font-size:0.72rem;color:var(--gold);margin-top:0.15rem}
+
+    #faq{padding:6rem 2rem;background:var(--warm)}
+    .faq-list{max-width:680px;margin:3rem auto 0}
+    .faq-item{border-bottom:1px solid var(--border)}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;cursor:pointer;font-size:0.92rem;font-weight:400;color:var(--earth);gap:1rem}
+    .faq-icon{font-size:1.2rem;color:var(--terracotta);flex-shrink:0;transition:transform 0.3s}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-a{font-size:0.85rem;line-height:1.8;color:var(--muted);font-weight:300;padding-bottom:1.5rem;display:none}
+    .faq-item.open .faq-a{display:block}
+
+    #reservas{padding:6rem 2rem;background:var(--earth)}
+    #reservas .section-eyebrow{color:var(--terra-light)}
+    #reservas .section-eyebrow::before{color:var(--terra-light)}
+    #reservas .section-title{color:var(--white)}
+    #reservas .section-title em{color:var(--terra-light)}
+    .reservas-grid{display:grid;grid-template-columns:1fr;gap:4rem;margin-top:3rem}
+    .reservas-info p{font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:2rem;font-weight:300}
+    .contacto-datos{list-style:none;display:flex;flex-direction:column;gap:1rem}
+    .contacto-dato{display:flex;gap:1rem;font-size:0.85rem;color:rgba(255,255,255,0.5)}
+    .contacto-dato strong{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--terra-light);min-width:80px}
+    .form-terra{display:flex;flex-direction:column;gap:1rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .form-field{display:flex;flex-direction:column;gap:0.4rem}
+    .form-field label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+    .form-field input,.form-field textarea,.form-field select{font-family:'Jost',sans-serif;font-size:0.88rem;font-weight:300;background:rgba(255,255,255,0.06);border:1px solid rgba(196,98,45,0.25);padding:0.85rem 1rem;color:var(--white);outline:none;transition:border-color 0.2s;resize:none;appearance:none;border-radius:0}
+    .form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--terracotta)}
+    .form-field textarea{min-height:90px}
+    .form-field select option{background:var(--earth2)}
+    .form-submit{font-family:'Jost',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);background:var(--terracotta);border:none;cursor:pointer;padding:1rem 2.2rem;transition:background 0.2s;align-self:flex-start;margin-top:0.5rem}
+    .form-submit:hover{background:var(--terra-light)}
+    #form-status{font-size:0.82rem;margin-top:0.5rem;min-height:1.2rem}
+
+    footer{background:var(--earth2);padding:3rem 2rem 1.5rem}
+    .footer-top{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-bottom:2.5rem}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--white);margin-bottom:0.6rem}
+    .footer-logo span{color:var(--terracotta);font-style:italic}
+    .footer-tagline{font-size:0.78rem;color:rgba(255,255,255,0.3);line-height:1.7;max-width:220px}
+    .footer-col-title{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra-light);margin-bottom:1rem}
+    .footer-col-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+    .footer-col-links a{font-size:0.78rem;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
+    .footer-col-links a:hover{color:var(--terra-light)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-copy{font-size:0.7rem;color:rgba(255,255,255,0.25)}
+    .footer-made{font-size:0.7rem;color:rgba(255,255,255,0.25)}
+    .footer-made a{color:rgba(196,98,45,0.6);text-decoration:none}
+
+    #wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;text-decoration:none}
+    #wa-float:hover{transform:scale(1.1)}
+    #wa-float::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.3);animation:wa-pulse 2s ease-out infinite}
+    @keyframes wa-pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(1.5);opacity:0}}
+
+    @media(min-width:768px){
+      nav{padding:1.2rem 4rem}
+      #hero,#menu,#galeria,#testimonios,#faq,#reservas,footer{padding-left:4rem;padding-right:4rem}
+      .hero-content{padding:4rem}
+      .menu-grid{grid-template-columns:1fr 1fr}
+      .galeria-grid{grid-template-columns:repeat(4,1fr)}
+      .testi-grid{grid-template-columns:repeat(3,1fr)}
+      .reservas-grid{grid-template-columns:1fr 1.2fr}
+      .footer-top{grid-template-columns:2fr 1fr 1fr}
+    }
+    @media(max-width:767px){.nav-links{display:none}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="#">Raíces<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#menu">Menú</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#testimonios">Reseñas</a></li>
+      <li><a href="#faq">Info</a></li>
+      <li><a href="#reservas">Reservas</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#reservas" class="nav-reserve">Reservar mesa</a>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Cocina de autor · Palermo, CABA</p>
+      <h1 class="hero-title">
+        Sabores<br/>que <em>cuentan</em><br/>historias
+      </h1>
+      <p class="hero-subtitle">Ingredientes de estación, técnica honesta</p>
+      <div class="hero-actions">
+        <a href="#reservas" class="btn-terra">Reservar mesa</a>
+        <a href="#menu" class="btn-border-w">Ver menú</a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge-item"><div class="badge-dot"></div>Ingredientes locales</div>
+        <div class="hero-badge-item"><div class="badge-dot"></div>Carta de vinos</div>
+        <div class="hero-badge-item"><div class="badge-dot"></div>Desde 2018</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <p class="section-eyebrow">Nuestra propuesta</p>
+    <h2 class="section-title">La <em>carta</em></h2>
+    <div class="menu-tabs">
+      <button class="tab active" onclick="setTab(this)">Entradas</button>
+      <button class="tab" onclick="setTab(this)">Principales</button>
+      <button class="tab" onclick="setTab(this)">Postres</button>
+      <button class="tab" onclick="setTab(this)">Bebidas</button>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-name">Provoleta con chimichurri</div><p class="menu-desc">Queso fundido, hierbas frescas y pan artesanal</p></div><div class="menu-price">$8.500</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-name">Ceviche de mar</div><p class="menu-desc">Pescado fresco, leche de tigre, choclo y batata</p></div><div class="menu-price">$12.000</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-name">Tabla de embutidos</div><p class="menu-desc">Selección de fiambres artesanales y encurtidos</p></div><div class="menu-price">$14.000</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-name">Carpaccio de remolacha</div><p class="menu-desc">Con queso de cabra, nueces y vinagreta de miel</p></div><div class="menu-price">$9.500</div></div>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <p class="section-eyebrow">Nuestro espacio</p>
+    <h2 class="section-title">Un lugar para <em>disfrutar</em></h2>
+    <div class="galeria-grid">
+      <div class="gal-item"><div class="gal-img">🍽</div></div>
+      <div class="gal-item"><div class="gal-img">🥩</div></div>
+      <div class="gal-item"><div class="gal-img">🍷</div></div>
+      <div class="gal-item"><div class="gal-img">🌿</div></div>
+    </div>
+  </section>
+
+  <section id="testimonios">
+    <p class="section-eyebrow">Lo que dicen</p>
+    <h2 class="section-title">Nuestros <em>comensales</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card"><p class="testi-text">Raíces tiene esa magia de hacerte sentir en casa pero con una cocina de altísimo nivel. El cordero fue una revelación.</p><div class="testi-autor"><div class="testi-avatar">M</div><div><div class="testi-name">Martín G.</div><div class="testi-stars">★★★★★</div></div></div></div>
+      <div class="testi-card"><p class="testi-text">Vinimos a celebrar nuestro aniversario y fue perfecto. El sommelier nos recomendó un vino increíble que maridó ideal.</p><div class="testi-autor"><div class="testi-avatar">C</div><div><div class="testi-name">Carolina y Pablo</div><div class="testi-stars">★★★★★</div></div></div></div>
+      <div class="testi-card"><p class="testi-text">El ambiente, el servicio y la comida son los mejores que encontré en Palermo. Ya reservé para la próxima semana.</p><div class="testi-autor"><div class="testi-avatar">L</div><div><div class="testi-name">Lucía F.</div><div class="testi-stars">★★★★★</div></div></div></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <p class="section-eyebrow" style="justify-content:center;display:flex">Información</p>
+    <h2 class="section-title" style="text-align:center">Preguntas <em>frecuentes</em></h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Necesito reserva previa? <span class="faq-icon">+</span></div><div class="faq-a">Recomendamos reserva especialmente los fines de semana. Entre semana podés venir sin reserva, pero no garantizamos mesa disponible.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Tienen opciones vegetarianas? <span class="faq-icon">+</span></div><div class="faq-a">Sí, contamos con opciones vegetarianas y veganas en toda la carta. También podemos adaptar platos ante cualquier alergia o restricción.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Aceptan eventos privados? <span class="faq-icon">+</span></div><div class="faq-a">Sí, disponemos de un salón privado para hasta 30 personas. Consultanos por menú cerrado y disponibilidad.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Dónde están ubicados? <span class="faq-icon">+</span></div><div class="faq-a">Estamos en Av. Santa Fe 3456, Palermo, CABA. A 2 cuadras del subte D, estación Scalabrini Ortiz.</div></div>
+    </div>
+  </section>
+
+  <section id="reservas">
+    <p class="section-eyebrow">Reservá tu lugar</p>
+    <h2 class="section-title">Hacé tu <em>reserva</em></h2>
+    <div class="reservas-grid">
+      <div class="reservas-info">
+        <p>Reservá tu mesa online o escribinos por WhatsApp. Confirmamos en menos de 2 horas.</p>
+        <ul class="contacto-datos">
+          <li class="contacto-dato"><strong>Respuesta</strong>Menos de 2 horas</li>
+          <li class="contacto-dato"><strong>WhatsApp</strong>+54 9 11 0000-0000</li>
+          <li class="contacto-dato"><strong>Dirección</strong>Av. Santa Fe 3456, Palermo</li>
+          <li class="contacto-dato"><strong>Martes–Domingo</strong>12:30–15:30 y 20:00–24:00</li>
+        </ul>
+      </div>
+      <div>
+        <form id="restForm" onsubmit="return false;" class="form-terra">
+          <div class="form-row">
+            <div class="form-field"><label>Nombre</label><input type="text" id="r-nombre" placeholder="Tu nombre"/></div>
+            <div class="form-field"><label>WhatsApp</label><input type="text" id="r-wa" placeholder="+54 9 11..."/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-field"><label>Fecha</label><input type="date" id="r-fecha"/></div>
+            <div class="form-field"><label>Personas</label><select id="r-personas"><option value="">Cuántos</option><option value="1-2">1 a 2 personas</option><option value="3-4">3 a 4 personas</option><option value="5-6">5 a 6 personas</option><option value="7+">7 o más</option></select></div>
+          </div>
+          <div class="form-field"><label>Horario preferido</label><select id="r-horario"><option value="">Seleccioná</option><option value="Almuerzo">Almuerzo (12:30–15:30)</option><option value="Cena">Cena (20:00–24:00)</option></select></div>
+          <div class="form-field"><label>Notas especiales</label><textarea id="r-notas" placeholder="Alergias, celebraciones, preferencias..."></textarea></div>
+          <button type="button" class="form-submit" id="r-btn" onclick="enviarRest()">Confirmar reserva →</button>
+          <p id="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-logo">Raíces<span>.</span></div><p class="footer-tagline">Cocina de autor con ingredientes de estación. Palermo, Buenos Aires.</p></div>
+      <div><p class="footer-col-title">Menú</p><ul class="footer-col-links"><li><a href="#">Entradas</a></li><li><a href="#">Principales</a></li><li><a href="#">Postres</a></li><li><a href="#">Carta de vinos</a></li></ul></div>
+      <div><p class="footer-col-title">Visita</p><ul class="footer-col-links"><li><a href="#">Reservar mesa</a></li><li><a href="#">Eventos privados</a></li><li><a href="#">Instagram</a></li><li><a href="#">WhatsApp</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Raíces Restaurante. Todos los derechos reservados.</span>
+      <span class="footer-made">Diseño web por <a href="https://nexoweb.pages.dev" target="_blank">Nexo Web</a></span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5491100000000?text=Hola%2C%20quiero%20hacer%20una%20reserva%20en%20Ra%C3%ADces" target="_blank" id="wa-float" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    function setTab(btn){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active')}
+    function toggleFaq(el){el.parentElement.classList.toggle('open')}
+    async function enviarRest(){
+      var btn=document.getElementById('r-btn'),status=document.getElementById('form-status');
+      var nombre=document.getElementById('r-nombre').value.trim(),wa=document.getElementById('r-wa').value.trim(),fecha=document.getElementById('r-fecha').value,personas=document.getElementById('r-personas').value,horario=document.getElementById('r-horario').value,notas=document.getElementById('r-notas').value.trim();
+      if(!nombre||!wa||!fecha||!personas||!horario){status.style.color='#E8956A';status.textContent='Completá los campos obligatorios.';return}
+      btn.textContent='Enviando...';btn.disabled=true;status.textContent='';
+      try{
+        var r=await fetch('https://formspree.io/f/xpqynaqq',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({nombre,whatsapp:wa,fecha,personas,horario,notas})});
+        if(r.ok){status.style.color='#E8956A';status.textContent='Reserva recibida. Te confirmamos pronto.';document.getElementById('r-nombre').value='';document.getElementById('r-wa').value='';document.getElementById('r-fecha').value='';document.getElementById('r-personas').value='';document.getElementById('r-horario').value='';document.getElementById('r-notas').value=''}
+        else throw new Error();
+      }catch(e){status.style.color='#C0392B';status.textContent='Error. Escribinos por WhatsApp.'}
+      btn.textContent='Confirmar reserva';btn.disabled=false;
+    }
+  </script>
+</body>
+</html>

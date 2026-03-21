@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lic. Ana Morales — Psicóloga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--sage:#8A9E8C;--sage-light:#C8D8C9;--sage-pale:#EEF3EE;--cream:#FAF8F4;--dark:#1C2B1E;--muted:#6B7B6D;--border:rgba(138,158,140,0.2);--white:#FFFFFF}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+
+    nav{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 2rem;border-bottom:1px solid var(--border);background:rgba(250,248,244,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:100}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--dark);text-decoration:none}
+    .nav-logo span{color:var(--sage);font-style:italic}
+    .nav-cta{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);background:var(--sage);padding:0.65rem 1.6rem;text-decoration:none;transition:background 0.2s}
+    .nav-cta:hover{background:var(--dark)}
+
+    #hero{background:var(--sage-pale);padding:5rem 2rem;text-align:center;position:relative;overflow:hidden}
+    .hero-deco{position:absolute;top:-4rem;right:-4rem;width:280px;height:280px;border-radius:50%;background:rgba(138,158,140,0.08)}
+    .hero-deco2{position:absolute;bottom:-3rem;left:-3rem;width:200px;height:200px;border-radius:50%;background:rgba(138,158,140,0.06)}
+    .hero-tag{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage);margin-bottom:1.5rem}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:300;line-height:1.15;margin-bottom:1.2rem;position:relative;z-index:1}
+    .hero-title em{font-style:italic;color:var(--sage)}
+    .hero-desc{font-size:0.95rem;font-weight:300;color:var(--muted);max-width:480px;margin:0 auto 2.5rem;line-height:1.85;position:relative;z-index:1}
+    .hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+    .btn-primary{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);background:var(--sage);padding:1rem 2.5rem;text-decoration:none;transition:background 0.2s;display:inline-block}
+    .btn-primary:hover{background:var(--dark)}
+    .btn-ghost{font-size:0.78rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--dark);border:1px solid var(--border);padding:1rem 2rem;text-decoration:none;transition:all 0.2s;display:inline-block}
+    .btn-ghost:hover{background:var(--sage);color:var(--white);border-color:var(--sage)}
+
+    #servicios{padding:5rem 2rem;background:var(--white)}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;text-align:center;margin-bottom:3rem}
+    .section-title em{font-style:italic;color:var(--sage)}
+    .servicios-list{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:1px;background:var(--border)}
+    .servicio-item{background:var(--white);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:background 0.2s}
+    .servicio-item:hover{background:var(--sage-pale)}
+    .servicio-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400}
+    .servicio-price{font-size:0.88rem;color:var(--sage);font-weight:500;white-space:nowrap}
+
+    #sobre{padding:5rem 2rem;background:var(--sage-pale);text-align:center}
+    #sobre p{font-size:0.95rem;font-weight:300;color:var(--muted);max-width:520px;margin:0 auto 2rem;line-height:1.9}
+
+    #cta{background:var(--dark);padding:4rem 2rem;text-align:center}
+    #cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--white);margin-bottom:1rem}
+    #cta h2 em{font-style:italic;color:var(--sage-light)}
+    #cta p{font-size:0.88rem;color:rgba(255,255,255,0.5);margin-bottom:2rem;font-weight:300}
+    .btn-light{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--dark);background:var(--sage-light);padding:1rem 2.5rem;text-decoration:none;transition:background 0.2s;display:inline-block}
+    .btn-light:hover{background:var(--white)}
+
+    #contacto{padding:5rem 2rem;background:var(--cream)}
+    .form-simple{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+    .form-simple input,.form-simple select,.form-simple textarea{font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:300;background:var(--white);border:1px solid var(--border);padding:0.9rem 1rem;color:var(--dark);outline:none;transition:border-color 0.2s;resize:none;appearance:none;border-radius:0;width:100%}
+    .form-simple input:focus,.form-simple select:focus,.form-simple textarea:focus{border-color:var(--sage)}
+    .form-simple textarea{min-height:80px}
+    .form-simple select option{background:var(--white)}
+    .btn-submit{font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);background:var(--sage);border:none;cursor:pointer;padding:1rem;width:100%;transition:background 0.2s;margin-top:0.5rem}
+    .btn-submit:hover{background:var(--dark)}
+    #form-status{font-size:0.82rem;text-align:center;min-height:1.2rem;margin-top:0.3rem}
+
+    footer{background:var(--dark);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--white)}
+    .footer-logo span{color:var(--sage-light);font-style:italic}
+    footer p{font-size:0.7rem;color:rgba(255,255,255,0.3)}
+    .footer-links{display:flex;gap:1.5rem}
+    .footer-links a{font-size:0.7rem;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+    .footer-links a:hover{color:var(--sage-light)}
+
+    #wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;text-decoration:none}
+    #wa-float:hover{transform:scale(1.1)}
+    #wa-float::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.3);animation:wa-pulse 2s ease-out infinite}
+    @keyframes wa-pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(1.5);opacity:0}}
+
+    @media(min-width:768px){nav,#hero,#servicios,#sobre,#cta,#contacto,footer{padding-left:4rem;padding-right:4rem}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="#">Lic. Ana <span>Morales</span></a>
+    <a href="#contacto" class="nav-cta">Reservar consulta</a>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-deco"></div>
+    <div class="hero-deco2"></div>
+    <p class="hero-tag">Psicóloga · Palermo, CABA</p>
+    <h1 class="hero-title">Un espacio seguro<br/>para <em>vos</em></h1>
+    <p class="hero-desc">Psicoterapia individual, de pareja y familiar. Un proceso de autoconocimiento para vivir con más bienestar y claridad.</p>
+    <div class="hero-ctas">
+      <a href="#contacto" class="btn-primary">Reservar consulta</a>
+      <a href="#servicios" class="btn-ghost">Ver servicios</a>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <h2 class="section-title">Mis <em>servicios</em></h2>
+    <div class="servicios-list">
+      <div class="servicio-item"><span class="servicio-name">Psicoterapia individual</span><span class="servicio-price">$15.000 / sesión</span></div>
+      <div class="servicio-item"><span class="servicio-name">Terapia de pareja</span><span class="servicio-price">$20.000 / sesión</span></div>
+      <div class="servicio-item"><span class="servicio-name">Terapia familiar</span><span class="servicio-price">$22.000 / sesión</span></div>
+      <div class="servicio-item"><span class="servicio-name">Primera consulta</span><span class="servicio-price">$10.000 · 45 min</span></div>
+      <div class="servicio-item"><span class="servicio-name">Consulta online</span><span class="servicio-price">$12.000 / sesión</span></div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2 class="section-title">Sobre <em>mí</em></h2>
+    <p>Soy psicóloga clínica con más de 10 años de experiencia. Me especializo en ansiedad, depresión, vínculos y autoestima. Trabajo desde un enfoque cognitivo-conductual con perspectiva de género.</p>
+    <a href="#contacto" class="btn-primary">Quiero empezar</a>
+  </section>
+
+  <section id="cta">
+    <h2>El primer paso<br/>es el más <em>importante</em></h2>
+    <p>Primera consulta sin compromiso. Hablamos y evaluamos juntos cómo puedo ayudarte.</p>
+    <a href="#contacto" class="btn-light">Reservar ahora →</a>
+  </section>
+
+  <section id="contacto">
+    <h2 class="section-title" style="margin-bottom:2rem">Escribime</h2>
+    <form id="psiForm" onsubmit="return false;" class="form-simple">
+      <input type="text" id="psi-nombre" placeholder="Tu nombre"/>
+      <input type="text" id="psi-contacto" placeholder="WhatsApp o email"/>
+      <select id="psi-servicio">
+        <option value="">¿Qué servicio te interesa?</option>
+        <option value="Individual">Psicoterapia individual</option>
+        <option value="Pareja">Terapia de pareja</option>
+        <option value="Familiar">Terapia familiar</option>
+        <option value="Online">Consulta online</option>
+        <option value="Primera">Primera consulta</option>
+      </select>
+      <textarea id="psi-mensaje" placeholder="¿Qué te trae por aquí? (opcional)"></textarea>
+      <button type="button" class="btn-submit" id="psi-btn" onclick="enviarPsi()">Reservar consulta →</button>
+      <p id="form-status"></p>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Lic. Ana <span>Morales</span></div>
+    <p>© 2025 · Psicóloga · Mat. 12345</p>
+    <div class="footer-links"><a href="#">Instagram</a><a href="#">WhatsApp</a></div>
+  </footer>
+
+  <a href="https://wa.me/5491100000000?text=Hola%2C%20quiero%20consultar%20por%20una%20sesi%C3%B3n" target="_blank" id="wa-float" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    async function enviarPsi(){
+      var btn=document.getElementById('psi-btn'),status=document.getElementById('form-status');
+      var nombre=document.getElementById('psi-nombre').value.trim(),contacto=document.getElementById('psi-contacto').value.trim(),servicio=document.getElementById('psi-servicio').value,mensaje=document.getElementById('psi-mensaje').value.trim();
+      if(!nombre||!contacto||!servicio){status.style.color='#8A9E8C';status.textContent='Completá los campos obligatorios.';return}
+      btn.textContent='Enviando...';btn.disabled=true;status.textContent='';
+      try{
+        var r=await fetch('https://formspree.io/f/xpqynaqq',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({nombre,contacto,servicio,mensaje})});
+        if(r.ok){status.style.color='#8A9E8C';status.textContent='Consulta recibida. Te respondo pronto.';document.getElementById('psi-nombre').value='';document.getElementById('psi-contacto').value='';document.getElementById('psi-servicio').value='';document.getElementById('psi-mensaje').value=''}
+        else throw new Error();
+      }catch(e){status.style.color='#c0392b';status.textContent='Error. Contactame por WhatsApp.'}
+      btn.textContent='Reservar consulta';btn.disabled=false;
+    }
+  </script>
+</body>
+</html>

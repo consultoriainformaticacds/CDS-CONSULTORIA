@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Black Steel Barbershop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--black:#0A0A0A;--off-black:#111;--dark:#1A1A1A;--gold:#C9A55A;--gold-light:#E8C97A;--white:#F5F5F0;--muted:#888;--border:rgba(201,165,90,0.2);--red:#C0392B}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;background:rgba(10,10,10,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.1em;color:var(--white);text-decoration:none}
+    .nav-logo span{color:var(--gold)}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .nav-links a:hover{color:var(--gold)}
+    .nav-cta{font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.65rem 1.5rem;text-decoration:none;transition:background 0.2s}
+    .nav-cta:hover{background:var(--gold-light)}
+
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:7rem 2rem 4rem;position:relative;overflow:hidden;background:var(--black)}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(201,165,90,0.08) 0%,transparent 60%)}
+    .hero-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(201,165,90,0.03) 60px);background-size:100% 60px}
+    .hero-tag{font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;position:relative;z-index:1}
+    .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,10rem);line-height:0.9;letter-spacing:0.02em;margin-bottom:2rem;position:relative;z-index:1}
+    .hero-title .line2{color:var(--gold)}
+    .hero-title .line3{-webkit-text-stroke:1px rgba(255,255,255,0.2);color:transparent}
+    .hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:2rem;position:relative;z-index:1}
+    .hero-desc{font-size:0.92rem;font-weight:300;color:var(--muted);max-width:360px;line-height:1.8}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-gold{font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:1rem 2.2rem;text-decoration:none;transition:background 0.2s;display:inline-block}
+    .btn-gold:hover{background:var(--gold-light)}
+    .btn-border{font-size:0.78rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);padding:1rem 2rem;text-decoration:none;transition:all 0.2s;display:inline-block}
+    .btn-border:hover{border-color:var(--gold);background:rgba(201,165,90,0.08)}
+    .hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap}
+    .stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:0.05em;color:var(--gold)}
+    .stat-label{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:0.2rem}
+
+    #servicios{padding:5rem 2rem;background:var(--off-black)}
+    .section-label{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem}
+    .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.5rem);letter-spacing:0.02em;margin-bottom:3rem}
+    .servicios-grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--border)}
+    .servicio-card{background:var(--off-black);padding:2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;transition:background 0.2s;border-left:3px solid transparent}
+    .servicio-card:hover{background:var(--dark);border-left-color:var(--gold)}
+    .servicio-left{display:flex;align-items:center;gap:1.2rem}
+    .servicio-icon{font-size:1.8rem;flex-shrink:0}
+    .servicio-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.05em}
+    .servicio-desc{font-size:0.78rem;color:var(--muted);margin-top:0.2rem}
+    .servicio-right{text-align:right;flex-shrink:0}
+    .servicio-price{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold)}
+    .servicio-dur{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+
+    #nosotros{padding:5rem 2rem;background:var(--black)}
+    .nosotros-grid{display:grid;grid-template-columns:1fr;gap:3rem;margin-top:3rem}
+    .nosotros-img{height:360px;background:linear-gradient(135deg,#1A1A1A,#2A2A2A);display:flex;align-items:center;justify-content:center;font-size:8rem;border-left:4px solid var(--gold)}
+    .nosotros-text p{font-size:0.92rem;font-weight:300;color:var(--muted);line-height:1.85;margin-bottom:1.2rem}
+    .valores-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+    .valor-item{background:var(--off-black);padding:1.2rem;border-top:2px solid var(--gold)}
+    .valor-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.05em;margin-bottom:0.3rem}
+    .valor-desc{font-size:0.75rem;color:var(--muted)}
+
+    #horarios{padding:5rem 2rem;background:var(--gold)}
+    #horarios .section-label{color:var(--black)}
+    #horarios .section-title{color:var(--black)}
+    .horarios-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,0.1);margin-top:2rem}
+    .horario-card{background:var(--gold);padding:2rem}
+    .horario-dia{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(0,0,0,0.5);margin-bottom:0.5rem}
+    .horario-hora{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:0.05em;color:var(--black)}
+    .horario-nota{font-size:0.75rem;color:rgba(0,0,0,0.5);margin-top:0.2rem}
+
+    #contacto{padding:5rem 2rem;background:var(--off-black)}
+    .contacto-grid{display:grid;grid-template-columns:1fr;gap:3rem}
+    .contacto-info-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.05em;margin-bottom:1rem}
+    .contacto-info p{font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;font-weight:300}
+    .contacto-datos{list-style:none;display:flex;flex-direction:column;gap:0.8rem}
+    .contacto-dato{display:flex;gap:1rem;font-size:0.85rem;color:var(--muted)}
+    .contacto-dato strong{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);min-width:80px;font-weight:500}
+    .form-dark{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .form-field{display:flex;flex-direction:column;gap:0.4rem}
+    .form-field label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted)}
+    .form-field input,.form-field textarea,.form-field select{font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:300;background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:0.85rem 1rem;color:var(--white);outline:none;transition:border-color 0.2s;resize:none;appearance:none;border-radius:0}
+    .form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:var(--gold)}
+    .form-field textarea{min-height:90px}
+    .form-field select option{background:var(--dark)}
+    .form-submit{font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--black);background:var(--gold);border:none;cursor:pointer;padding:1rem 2rem;transition:background 0.2s;align-self:flex-start;margin-top:0.5rem}
+    .form-submit:hover{background:var(--gold-light)}
+    #form-status{font-size:0.82rem;margin-top:0.5rem;min-height:1.2rem}
+
+    footer{background:var(--black);border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.1em;color:var(--white)}
+    .footer-logo span{color:var(--gold)}
+    footer p{font-size:0.7rem;color:var(--muted)}
+    .footer-links{display:flex;gap:1.5rem}
+    .footer-links a{font-size:0.7rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .footer-links a:hover{color:var(--gold)}
+
+    #wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;text-decoration:none}
+    #wa-float:hover{transform:scale(1.1)}
+    #wa-float::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(37,211,102,0.3);animation:wa-pulse 2s ease-out infinite}
+    @keyframes wa-pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(1.5);opacity:0}}
+
+    @media(min-width:768px){
+      nav{padding:1.2rem 4rem}
+      #hero,#servicios,#nosotros,#horarios,#contacto,footer{padding-left:4rem;padding-right:4rem}
+      .servicios-grid{grid-template-columns:1fr}
+      .nosotros-grid{grid-template-columns:1fr 1fr;align-items:center}
+      .contacto-grid{grid-template-columns:1fr 1.2fr}
+    }
+    @media(max-width:767px){.nav-links{display:none}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="#">Black <span>Steel</span></a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Reservar turno</a>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <p class="hero-tag">Barbershop · Villa Crespo, CABA</p>
+    <h1 class="hero-title">
+      <div>BLACK</div>
+      <div class="line2">STEEL</div>
+      <div class="line3">BARBERSHOP</div>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-desc">Cortes clásicos y modernos, perfilado de barba y tratamientos para caballeros que se cuidan. Experiencia premium en cada visita.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-gold">Reservar turno</a>
+        <a href="#servicios" class="btn-border">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">8+</div><div class="stat-label">Años de experiencia</div></div>
+      <div><div class="stat-num">1200+</div><div class="stat-label">Clientes satisfechos</div></div>
+      <div><div class="stat-num">4.9★</div><div class="stat-label">Valoración</div></div>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <p class="section-label">Lo que hacemos</p>
+    <h2 class="section-title">Nuestros servicios</h2>
+    <div class="servicios-grid">
+      <div class="servicio-card"><div class="servicio-left"><span class="servicio-icon">✂️</span><div><div class="servicio-name">Corte clásico</div><p class="servicio-desc">Tijera y máquina, acabado prolijo</p></div></div><div class="servicio-right"><div class="servicio-price">$12.000</div><div class="servicio-dur">30 min</div></div></div>
+      <div class="servicio-card"><div class="servicio-left"><span class="servicio-icon">🪒</span><div><div class="servicio-name">Corte + barba</div><p class="servicio-desc">El combo más popular del local</p></div></div><div class="servicio-right"><div class="servicio-price">$18.000</div><div class="servicio-dur">50 min</div></div></div>
+      <div class="servicio-card"><div class="servicio-left"><span class="servicio-icon">💈</span><div><div class="servicio-name">Afeitado con navaja</div><p class="servicio-desc">Toalla caliente, aceite y navaja</p></div></div><div class="servicio-right"><div class="servicio-price">$10.000</div><div class="servicio-dur">25 min</div></div></div>
+      <div class="servicio-card"><div class="servicio-left"><span class="servicio-icon">🎨</span><div><div class="servicio-name">Coloración</div><p class="servicio-desc">Mechas, teñido completo o barba</p></div></div><div class="servicio-right"><div class="servicio-price">Desde $20.000</div><div class="servicio-dur">60+ min</div></div></div>
+      <div class="servicio-card"><div class="servicio-left"><span class="servicio-icon">💆</span><div><div class="servicio-name">Tratamiento capilar</div><p class="servicio-desc">Hidratación y nutrición profunda</p></div></div><div class="servicio-right"><div class="servicio-price">$15.000</div><div class="servicio-dur">40 min</div></div></div>
+    </div>
+  </section>
+
+  <section id="nosotros">
+    <p class="section-label">Nuestra historia</p>
+    <h2 class="section-title">Más que una barbería</h2>
+    <div class="nosotros-grid">
+      <div class="nosotros-img">💈</div>
+      <div class="nosotros-text">
+        <p>Black Steel nació en 2016 con una misión clara: traer la barbería clásica de vuelta. Un lugar donde el corte es un ritual, no una carrera.</p>
+        <p>Nuestros barberos tienen más de 5 años de experiencia y se capacitan continuamente en las últimas tendencias y técnicas.</p>
+        <div class="valores-grid">
+          <div class="valor-item"><div class="valor-title">Experiencia</div><p class="valor-desc">+8 años en el rubro</p></div>
+          <div class="valor-item"><div class="valor-title">Calidad</div><p class="valor-desc">Productos premium</p></div>
+          <div class="valor-item"><div class="valor-title">Precisión</div><p class="valor-desc">Sin apuros</p></div>
+          <div class="valor-item"><div class="valor-title">Ambiente</div><p class="valor-desc">Clásico y relajado</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="horarios">
+    <p class="section-label">Estamos abiertos</p>
+    <h2 class="section-title">Horarios de atención</h2>
+    <div class="horarios-grid">
+      <div class="horario-card"><div class="horario-dia">Lunes a Viernes</div><div class="horario-hora">10:00 — 20:00</div><div class="horario-nota">Con y sin turno</div></div>
+      <div class="horario-card"><div class="horario-dia">Sábados</div><div class="horario-hora">9:00 — 18:00</div><div class="horario-nota">Recomendamos turno</div></div>
+      <div class="horario-card"><div class="horario-dia">Domingos</div><div class="horario-hora">Cerrado</div><div class="horario-nota">Descansamos</div></div>
+      <div class="horario-card"><div class="horario-dia">Feriados</div><div class="horario-hora">Consultar</div><div class="horario-nota">Según disponibilidad</div></div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <p class="section-label">Reservá tu lugar</p>
+    <h2 class="section-title">Contacto</h2>
+    <div class="contacto-grid">
+      <div>
+        <h3 class="contacto-info-title">Reservá tu turno</h3>
+        <p>Completá el formulario o escribinos por WhatsApp. Te confirmamos en menos de 2 horas.</p>
+        <ul class="contacto-datos">
+          <li class="contacto-dato"><strong>WhatsApp</strong>+54 9 11 0000-0000</li>
+          <li class="contacto-dato"><strong>Dirección</strong>Thames 1234, Villa Crespo, CABA</li>
+          <li class="contacto-dato"><strong>Horario</strong>Lun–Vie 10–20 · Sáb 9–18</li>
+          <li class="contacto-dato"><strong>Instagram</strong>@blacksteel.barber</li>
+        </ul>
+      </div>
+      <div>
+        <form id="barberForm" onsubmit="return false;" class="form-dark">
+          <div class="form-row">
+            <div class="form-field"><label>Nombre</label><input type="text" id="b-nombre" placeholder="Tu nombre"/></div>
+            <div class="form-field"><label>WhatsApp</label><input type="text" id="b-wa" placeholder="+54 9 11..."/></div>
+          </div>
+          <div class="form-field">
+            <label>Servicio</label>
+            <select id="b-servicio">
+              <option value="">Seleccioná</option>
+              <option value="Corte">Corte clásico</option>
+              <option value="Combo">Corte + barba</option>
+              <option value="Afeitado">Afeitado con navaja</option>
+              <option value="Color">Coloración</option>
+              <option value="Tratamiento">Tratamiento capilar</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Mensaje</label><textarea id="b-mensaje" placeholder="Día y horario preferido..."></textarea></div>
+          <button type="button" class="form-submit" id="b-btn" onclick="enviarBarber()">Reservar turno →</button>
+          <p id="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Black <span>Steel</span></div>
+    <p>© 2025 Black Steel Barbershop · Villa Crespo, CABA</p>
+    <div class="footer-links"><a href="#">Instagram</a><a href="#">WhatsApp</a></div>
+  </footer>
+
+  <a href="https://wa.me/5491100000000?text=Hola%2C%20quiero%20reservar%20un%20turno%20en%20Black%20Steel" target="_blank" id="wa-float" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    async function enviarBarber(){
+      var btn=document.getElementById('b-btn'),status=document.getElementById('form-status');
+      var nombre=document.getElementById('b-nombre').value.trim(),wa=document.getElementById('b-wa').value.trim(),servicio=document.getElementById('b-servicio').value,mensaje=document.getElementById('b-mensaje').value.trim();
+      if(!nombre||!wa||!servicio){status.style.color='#C9A55A';status.textContent='Completá los campos obligatorios.';return}
+      btn.textContent='Enviando...';btn.disabled=true;status.textContent='';
+      try{
+        var r=await fetch('https://formspree.io/f/xpqynaqq',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({nombre,whatsapp:wa,servicio,mensaje})});
+        if(r.ok){status.style.color='#C9A55A';status.textContent='Turno reservado. Te confirmamos pronto.';document.getElementById('b-nombre').value='';document.getElementById('b-wa').value='';document.getElementById('b-servicio').value='';document.getElementById('b-mensaje').value=''}
+        else throw new Error();
+      }catch(e){status.style.color='#C0392B';status.textContent='Error. Escribinos por WhatsApp.'}
+      btn.textContent='Reservar turno';btn.disabled=false;
+    }
+  </script>
+</body>
+</html>
