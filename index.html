@@ -123,9 +123,30 @@
     #wa-float::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid rgba(37,211,102,0.3); animation: wa-pulse 2s ease-out infinite; }
     @keyframes wa-pulse { 0%{transform:scale(1);opacity:0.8} 100%{transform:scale(1.5);opacity:0} }
 
+    /* SECCIÓN NEXO */
+    #nexo { padding: 5rem 2rem; background: var(--navy2); border-top: 1px solid var(--border); }
+    .nexo-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+    .nexo-header-left p { font-size: 0.88rem; color: var(--muted); font-weight: 300; max-width: 420px; margin-top: 0.5rem; line-height: 1.7; }
+    .nexo-section-title { font-family: 'Rajdhani', sans-serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; letter-spacing: 0.02em; }
+    .nexo-section-title span { color: #C8F135; }
+    .nexo-demos-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 2rem; }
+    .nexo-demo-card { background: var(--navy3); border: 1px solid var(--border2); padding: 18px 20px; display: flex; align-items: center; gap: 16px; transition: border-color 0.2s; text-decoration: none; }
+    .nexo-demo-card:hover { border-color: #C8F135; }
+    .nexo-demo-rubro { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); min-width: 120px; }
+    .nexo-demo-name { font-family: 'Rajdhani', sans-serif; font-size: 1rem; font-weight: 600; color: var(--white); flex: 1; }
+    .nexo-demo-nivel { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--border); color: var(--muted); white-space: nowrap; }
+    .nexo-demo-arrow { font-size: 0.8rem; color: #C8F135; opacity: 0; transition: opacity 0.2s; }
+    .nexo-demo-card:hover .nexo-demo-arrow { opacity: 1; }
+    .nexo-cta-bar { background: var(--navy3); border: 1px solid #C8F135; padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .nexo-cta-bar p { font-size: 0.88rem; color: var(--muted); font-weight: 300; }
+    .nexo-cta-bar strong { color: var(--white); }
+    .btn-nexo { font-family: 'Rajdhani', sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; color: var(--navy); background: #C8F135; padding: 0.8rem 2rem; text-decoration: none; transition: opacity 0.2s; display: inline-block; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); }
+    .btn-nexo:hover { opacity: 0.85; }
+
     @media (min-width: 768px) {
       nav { padding: 1.4rem 4rem; }
-      #hero, #servicios, #porque, #cta, #contacto, footer { padding-left: 4rem; padding-right: 4rem; }
+      #hero, #servicios, #porque, #nexo, #cta, #contacto, footer { padding-left: 4rem; padding-right: 4rem; }
+      .nexo-demos-grid { grid-template-columns: repeat(2, 1fr); }
       .servicios-grid { grid-template-columns: repeat(2, 1fr); }
       .contacto-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; }
       .footer-top { padding: 0; }
@@ -227,6 +248,58 @@
       <li class="porque-item"><div class="porque-icon">💬</div><div><p class="porque-item-title">Asesoramiento sin tecnicismos</p><p class="porque-item-desc">Te explicamos todo en palabras simples. Tomás decisiones informadas, no a ciegas.</p></div></li>
       <li class="porque-item"><div class="porque-icon">📍</div><div><p class="porque-item-title">Presencia local en CABA</p><p class="porque-item-desc">Podemos ir a tu negocio cuando sea necesario. Soporte presencial disponible.</p></div></li>
     </ul>
+  </section>
+
+  <section id="nexo">
+    <div class="nexo-header">
+      <div class="nexo-header-left">
+        <p class="section-tag">Diseño web</p>
+        <h2 class="nexo-section-title">¿Tu negocio necesita una web?<br/><span>Nexo.</span> lo hace.</h2>
+        <p>Nuestro equipo de diseño web crea sitios que generan clientes reales. Rápido, profesional y con precios claros desde el primer día.</p>
+      </div>
+    </div>
+    <div class="nexo-demos-grid">
+      <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
+        <span class="nexo-demo-rubro">Estética</span>
+        <span class="nexo-demo-name">Lumière Studio</span>
+        <span class="nexo-demo-nivel">Premium</span>
+        <span class="nexo-demo-arrow">→</span>
+      </a>
+      <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
+        <span class="nexo-demo-rubro">Gastronomía</span>
+        <span class="nexo-demo-name">Raíces Restaurante</span>
+        <span class="nexo-demo-nivel">Premium</span>
+        <span class="nexo-demo-arrow">→</span>
+      </a>
+      <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
+        <span class="nexo-demo-rubro">Estudio Jurídico</span>
+        <span class="nexo-demo-name">Fernández & Asociados</span>
+        <span class="nexo-demo-nivel">Standard</span>
+        <span class="nexo-demo-arrow">→</span>
+      </a>
+      <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-contable" target="_blank">
+        <span class="nexo-demo-rubro">Estudio Contable</span>
+        <span class="nexo-demo-name">Estudio Contable</span>
+        <span class="nexo-demo-nivel">Standard</span>
+        <span class="nexo-demo-arrow">→</span>
+      </a>
+      <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-barberia" target="_blank">
+        <span class="nexo-demo-rubro">Barbería</span>
+        <span class="nexo-demo-name">Barbería</span>
+        <span class="nexo-demo-nivel">Standard</span>
+        <span class="nexo-demo-arrow">→</span>
+      </a>
+      <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-tienda-premium" target="_blank">
+        <span class="nexo-demo-rubro">Tienda</span>
+        <span class="nexo-demo-name">RegaloUnico</span>
+        <span class="nexo-demo-nivel">Premium</span>
+        <span class="nexo-demo-arrow">→</span>
+      </a>
+    </div>
+    <div class="nexo-cta-bar">
+      <p><strong>Entrega en 5 a 10 días.</strong> Desde U$S 100. Hosting incluido.</p>
+      <a href="https://nexo-landing.pages.dev/" target="_blank" class="btn-nexo">Ver todos los trabajos →</a>
+    </div>
   </section>
 
   <section id="cta">
