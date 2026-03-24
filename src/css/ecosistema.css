@@ -1,0 +1,78 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #0f1117;
+  color: #e2e8f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.card {
+  background: #1a1f2e;
+  border: 1px solid #2d3448;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 760px;
+  width: 100%;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+
+svg text { font-family: 'Segoe UI', system-ui, sans-serif; }
+
+.th { font-size: 14px; font-weight: 500; fill: #e2e8f0; }
+.ts { font-size: 12px; font-weight: 400; fill: #94a3b8; }
+
+/* Color ramps */
+.c-purple rect { fill: #2d2060; stroke: #534AB7; }
+.c-purple text.th { fill: #CECBF6; }
+.c-purple text.ts { fill: #AFA9EC; }
+
+.c-coral rect { fill: #3d1a10; stroke: #993C1D; }
+.c-coral text.th { fill: #F5C4B3; }
+.c-coral text.ts { fill: #F0997B; }
+
+.c-teal rect { fill: #083528; stroke: #0F6E56; }
+.c-teal text.th { fill: #9FE1CB; }
+.c-teal text.ts { fill: #5DCAA5; }
+
+.c-gray rect { fill: #1e2230; stroke: #3d4258; }
+.c-gray text.th { fill: #c8cad0; }
+.c-gray text.ts { fill: #888780; }
+
+.arr {
+  stroke: #3d4258;
+  stroke-width: 1;
+  fill: none;
+}
+
+.node { cursor: pointer; }
+.node:hover rect { opacity: 0.85; }
+
+.opp-rect {
+  fill: none;
+  stroke: #3d4258;
+  stroke-width: 0.5;
+  stroke-dasharray: 6 3;
+}
+
+footer {
+  margin-top: 1.5rem;
+  font-size: 0.7rem;
+  color: #3d4258;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
