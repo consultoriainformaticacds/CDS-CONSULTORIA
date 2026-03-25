@@ -52,10 +52,10 @@
     .hero-title .t3 { display: block; font-size: 1.1rem; color: var(--text-dim); margin-top: 15px; letter-spacing: 3px; font-weight: 400; }
     .hero-desc { max-width: 750px; margin: 0 auto 40px; font-size: 1.15rem; color: var(--text-dim); }
 
-    .hero-stats { display: flex; justify-content: center; gap: 50px; margin-top: 40px; }
-    .stat-item { display: flex; flex-direction: column; }
-    .stat-num { font-size: 2.2rem; font-weight: 700; color: #fff; font-family: 'Rajdhani'; }
-    .stat-label { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+    /* TECH LOGOS */
+    .tech-bar { background: rgba(255,255,255,0.02); padding: 30px 0; border-y: 1px solid var(--glass-border); overflow: hidden; }
+    .tech-container { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; opacity: 0.5; filter: grayscale(1); }
+    .tech-item { font-family: 'Rajdhani'; font-weight: 700; font-size: 1.2rem; letter-spacing: 2px; }
 
     /* SECCIONES REUSABLES */
     section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
@@ -63,7 +63,7 @@
     .section-title { font-size: 3rem; text-align: center; margin-bottom: 60px; font-weight: 700; }
     .section-title span { color: var(--accent-2); }
 
-    /* SERVICIOS CON LUZ */
+    /* SERVICIOS */
     .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
     .servicio-card { 
       background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border);
@@ -76,53 +76,46 @@
     }
     .servicio-card:hover::before { opacity: 1; }
     .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); }
-    
-    .servicio-num { position: absolute; top: 20px; right: 20px; color: rgba(255,255,255,0.03); font-size: 4rem; font-weight: 800; }
     .servicio-icon { font-size: 3rem; margin-bottom: 30px; display: block; }
-    .servicio-tags { display: flex; gap: 10px; margin-top: 20px; }
-    .tag { font-size: 0.65rem; color: var(--accent); border: 1px solid rgba(0, 242, 255, 0.2); padding: 3px 10px; border-radius: 2px; text-transform: uppercase; }
+
+    /* FAQ ACCORDION */
+    .faq-container { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 8px; margin-bottom: 15px; overflow: hidden; transition: var(--transition); }
+    .faq-question { padding: 20px 30px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: #fff; }
+    .faq-question:hover { background: rgba(0, 242, 255, 0.05); }
+    .faq-answer { padding: 0 30px; max-height: 0; overflow: hidden; transition: all 0.4s ease-out; color: var(--text-dim); font-size: 0.95rem; }
+    .faq-item.active .faq-answer { padding: 0 30px 20px; max-height: 200px; }
+    .faq-item.active { border-color: var(--accent); }
 
     /* POR QUÉ ELEGIRNOS */
     .porque-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; margin-top: 50px; }
     .porque-item { display: flex; gap: 20px; }
     .porque-icon { font-size: 2rem; background: rgba(255,255,255,0.03); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; color: var(--accent); border: 1px solid var(--glass-border); }
     .porque-item h4 { color: #fff; margin-bottom: 8px; font-size: 1.2rem; }
-    .porque-item p { font-size: 0.9rem; color: var(--text-dim); }
 
-    /* PROCESO */
-    .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 80px; }
-    .proceso-step { text-align: center; padding: 30px; background: rgba(255,255,255,0.01); border-radius: 8px; }
-    .step-num { font-size: 3rem; font-weight: 800; color: rgba(0, 242, 255, 0.1); margin-bottom: 10px; font-family: 'Rajdhani'; }
-
-    /* NEXO SHOWCASE COMPLETO (6 DEMOS) */
+    /* NEXO SHOWCASE */
     .nexo-demos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .nexo-demo-card { 
       background: #0a1124; padding: 40px 30px; border-radius: 8px; border: 1px solid var(--glass-border);
       text-decoration: none; transition: var(--transition); position: relative; overflow: hidden;
     }
     .nexo-demo-card:hover { border-color: var(--accent-2); transform: translateY(-5px); background: rgba(112, 0, 255, 0.05); }
-    .nexo-demo-rubro { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
     .nexo-demo-name { display: block; font-size: 1.4rem; color: #fff; margin: 10px 0; font-weight: 700; }
-    .nexo-demo-nivel { font-size: 0.65rem; color: var(--text-dim); border: 1px solid var(--glass-border); padding: 2px 8px; border-radius: 4px; }
 
     /* CONTACTO */
     .contacto-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
-    .contacto-datos { list-style: none; margin-top: 40px; }
-    .contacto-datos li { margin-bottom: 30px; }
-    .contacto-datos li strong { color: var(--accent); display: block; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 5px; }
-    .contacto-datos li span { font-size: 1.3rem; font-weight: 600; color: #fff; }
-
     .contacto-form { background: var(--bg-card); padding: 50px; border-radius: 12px; border: 1px solid var(--glass-border); display: grid; gap: 20px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
     .form-group label { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
     .form-group input, .form-group select, .form-group textarea { 
-      background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 6px; color: #fff; font-family: inherit; outline: none; transition: var(--transition);
+      background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 6px; color: #fff; font-family: inherit; outline: none;
     }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
-    .form-group select option { background: var(--bg); color: #fff; }
-    
-    .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 20px; border-radius: 6px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); margin-top: 10px; }
+    .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 20px; border-radius: 6px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); }
     .form-submit:hover { box-shadow: 0 0 30px var(--accent); transform: scale(1.02); }
+
+    /* FOOTER */
+    footer { padding: 60px 5% 40px; border-top: 1px solid var(--glass-border); text-align: center; }
+    footer p { color: var(--text-dim); font-size: 0.85rem; margin: 15px 0; }
 
     /* WHATSAPP */
     #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: var(--transition); }
@@ -142,13 +135,11 @@
 <body>
 
   <nav id="navbar">
-    <a class="nav-logo" href="#">
-      CDS<span>.</span><small>Consultoría Informática</small>
-    </a>
+    <a class="nav-logo" href="#">CDS<span>.</span><small>Consultoría Informática</small></a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#porque">Nosotros</a></li>
-      <li><a href="#nexo">Nexo Web</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="#contacto" class="nav-cta">Consultar ahora</a>
@@ -162,18 +153,27 @@
       <div class="hero-scan"></div>
       <div class="hero-content">
         <div class="hero-badge">Tecnología · Seguridad · Desarrollo</div>
-        <h1 class="hero-title">
-          Soluciones <span class="t2">Digitales</span><br/>
-          <span class="t3">Seguras · Escalables · Profesionales</span>
-        </h1>
-        <p class="hero-desc">En <strong>CDS</strong> protegemos y potenciamos tu negocio con tecnología de punta. Desde ciberseguridad y soporte IT hasta diseño web y vigilancia electrónica.</p>
+        <h1 class="hero-title">Soluciones <span class="t2">Digitales</span><br/><span class="t3">Seguras · Escalables · Profesionales</span></h1>
+        <p class="hero-desc">Protegemos y potenciamos tu infraestructura con tecnología de punta. Especialistas en Ciberseguridad y Soporte IT corporativo.</p>
         <div class="hero-stats">
-          <div class="stat-item"><span class="stat-num">+50</span><span class="stat-label">Clientes</span></div>
           <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Soporte</span></div>
+          <div class="stat-item"><span class="stat-num">+50</span><span class="stat-label">Clientes</span></div>
           <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Efectividad</span></div>
         </div>
       </div>
     </section>
+
+    <!-- TECH BAR -->
+    <div class="tech-bar">
+      <div class="tech-container">
+        <div class="tech-item">MICROSOFT</div>
+        <div class="tech-item">LINUX</div>
+        <div class="tech-item">CISCO</div>
+        <div class="tech-item">WORDPRESS</div>
+        <div class="tech-item">CLOUDFLARE</div>
+        <div class="tech-item">MIKROTIK</div>
+      </div>
+    </div>
 
     <!-- SERVICIOS -->
     <section id="servicios">
@@ -181,95 +181,84 @@
       <h2 class="section-title">Nuestros servicios</h2>
       <div class="servicios-grid">
         <article class="servicio-card">
-          <span class="servicio-num">01</span>
           <span class="servicio-icon">🔐</span>
           <h3>Ciberseguridad</h3>
-          <p>Auditorías preventivas, hardening de servidores y protocolos de defensa activa.</p>
-          <div class="servicio-tags"><span class="tag">Auditoría</span><span class="tag">Defensa</span></div>
+          <p>Auditorías, hardening de servidores y defensa activa contra amenazas digitales.</p>
+          <div class="servicio-tags"><span class="tag">Seguridad</span><span class="tag">Auditoría</span></div>
         </article>
         <article class="servicio-card">
-          <span class="servicio-num">02</span>
           <span class="servicio-icon">💻</span>
           <h3>Soporte IT</h3>
-          <p>Gestión de redes corporativas, administración de servidores y mantenimiento correctivo.</p>
-          <div class="servicio-tags"><span class="tag">Redes</span><span class="tag">Cloud</span></div>
+          <p>Gestión de redes, administración Cloud y mantenimiento preventivo integral.</p>
+          <div class="servicio-tags"><span class="tag">Redes</span><span class="tag">Soporte</span></div>
         </article>
         <article class="servicio-card">
-          <span class="servicio-num">03</span>
           <span class="servicio-icon">📹</span>
-          <h3>Seguridad Electrónica</h3>
-          <p>Cámaras IP de alta definición, alarmas y sistemas de control de acceso profesional.</p>
-          <div class="servicio-tags"><span class="tag">IP Cam</span><span class="tag">Alarmas</span></div>
-        </article>
-        <article class="servicio-card">
-          <span class="servicio-num">04</span>
-          <span class="servicio-icon">🌐</span>
-          <h3>Diseño Web</h3>
-          <p>Sitios modernos y efectivos realizados por Nexo. Presencia digital de alto impacto.</p>
-          <div class="servicio-tags"><span class="tag">Nexo Web</span><span class="tag">Landing</span></div>
+          <h3>Vigilancia IP</h3>
+          <p>Instalación de cámaras HD y control de acceso monitoreado profesionalmente.</p>
+          <div class="servicio-tags"><span class="tag">IP Cam</span><span class="tag">Acceso</span></div>
         </article>
       </div>
     </section>
 
-    <!-- NOSOTROS / POR QUÉ -->
+    <!-- POR QUÉ -->
     <section id="porque">
       <span class="section-tag">Diferencial CDS</span>
-      <h2 class="section-title">Tecnología con respaldo real</h2>
+      <h2 class="section-title">Respaldo Tecnológico Real</h2>
       <div class="porque-grid">
         <div class="porque-item">
           <div class="porque-icon">⚡</div>
-          <div><h4>Respuesta rápida</h4><p>Atendemos urgencias en menos de 24 horas. Tu negocio no se detiene.</p></div>
+          <div><h4>Respuesta rápida</h4><p>Atención de urgencias en menos de 24 horas.</p></div>
         </div>
         <div class="porque-item">
           <div class="porque-icon">🛡</div>
-          <div><h4>Soluciones integrales</h4><p>Cubrimos todo tu entorno digital en un solo lugar. Sin complicaciones.</p></div>
+          <div><h4>Integral</h4><p>Toda tu infraestructura en un solo lugar.</p></div>
         </div>
         <div class="porque-item">
           <div class="porque-icon">💬</div>
-          <div><h4>Claridad absoluta</h4><p>Te explicamos todo sin tecnicismos complejos para decisiones informadas.</p></div>
+          <div><h4>Sin tecnicismos</h4><p>Explicamos todo de forma simple y clara.</p></div>
         </div>
         <div class="porque-item">
           <div class="porque-icon">📍</div>
-          <div><h4>Presencia local</h4><p>Soporte presencial disponible en CABA. Estamos donde nos necesites.</p></div>
+          <div><h4>Presencial</h4><p>Soporte técnico en sitio disponible en CABA.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- PROCESO -->
-    <section id="proceso">
-      <span class="section-tag">Metodología</span>
-      <h2 class="section-title">Cómo trabajamos</h2>
-      <div class="proceso-grid">
-        <div class="proceso-step"><div class="step-num">01</div><h4>Auditoría</h4><p>Análisis de vulnerabilidades.</p></div>
-        <div class="proceso-step"><div class="step-num">02</div><h4>Estrategia</h4><p>Plan a medida del negocio.</p></div>
-        <div class="proceso-step"><div class="step-num">03</div><h4>Ejecución</h4><p>Implementación técnica.</p></div>
-        <div class="proceso-step"><div class="step-num">04</div><h4>Soporte</h4><p>Monitoreo constante.</p></div>
-      </div>
-    </section>
-
-    <!-- NEXO COMPLETO -->
+    <!-- NEXO -->
     <section id="nexo">
-      <span class="section-tag">Portfolio Web</span>
-      <h2 class="section-title">¿Necesitás una web? <span>Nexo.</span> lo hace.</h2>
+      <span class="section-tag">Área Web</span>
+      <h2 class="section-title">Diseño Web por <span>Nexo.</span></h2>
       <div class="nexo-demos-grid">
         <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
           <span class="nexo-demo-rubro">Estética</span><span class="nexo-demo-name">Lumière Studio</span><span class="nexo-demo-nivel">Premium</span>
         </a>
+        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
+          <span class="nexo-demo-rubro">Legal</span><span class="nexo-demo-name">Fernández & Asoc.</span><span class="nexo-demo-nivel">Standard</span>
+        </a>
         <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
           <span class="nexo-demo-rubro">Gastronomía</span><span class="nexo-demo-name">Raíces Resto</span><span class="nexo-demo-nivel">Premium</span>
         </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
-          <span class="nexo-demo-rubro">Legales</span><span class="nexo-demo-name">Fernández & Asoc.</span><span class="nexo-demo-nivel">Standard</span>
-        </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-tienda-premium" target="_blank">
-          <span class="nexo-demo-rubro">Tienda</span><span class="nexo-demo-name">RegaloUnico</span><span class="nexo-demo-nivel">Premium</span>
-        </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-contable" target="_blank">
-          <span class="nexo-demo-rubro">Contable</span><span class="nexo-demo-name">Estudio Contable</span><span class="nexo-demo-nivel">Standard</span>
-        </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-barberia" target="_blank">
-          <span class="nexo-demo-rubro">Estética</span><span class="nexo-demo-name">Barbería Elite</span><span class="nexo-demo-nivel">Standard</span>
-        </a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <span class="section-tag">Dudas comunes</span>
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">¿Brindan soporte presencial? <span>+</span></div>
+          <div class="faq-answer">Sí, contamos con técnicos especializados para soporte presencial en CABA y alrededores para urgencias o instalaciones.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Cómo es la modalidad de pago? <span>+</span></div>
+          <div class="faq-answer">Trabajamos tanto por abonos mensuales de mantenimiento (ideal para empresas) como por proyectos o intervenciones puntuales.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Qué garantía tienen los desarrollos web? <span>+</span></div>
+          <div class="faq-answer">Todos los sitios realizados por Nexo incluyen soporte técnico y garantía de funcionamiento durante los primeros meses tras el lanzamiento.</div>
+        </div>
       </div>
     </section>
 
@@ -278,14 +267,12 @@
       <div class="contacto-grid">
         <div class="contacto-info">
           <span class="section-tag" style="text-align: left;">Hablemos</span>
-          <h2 class="section-title" style="text-align: left;">¿Listo para asegurar tu negocio?</h2>
+          <h2 class="section-title" style="text-align: left;">Seguridad para tu negocio.</h2>
           <ul class="contacto-datos">
             <li><strong>WhatsApp</strong><span>+54 9 11 2463-2544</span></li>
             <li><strong>Ubicación</strong><span>CABA, Buenos Aires</span></li>
-            <li><strong>Atención</strong><span>Lun a Vie, 9h a 19h</span></li>
           </ul>
         </div>
-        
         <form class="contacto-form" id="cdsForm" action="https://formspree.io/f/maqpkdog" method="POST">
           <div class="form-group"><label>Nombre</label><input type="text" name="name" required placeholder="Tu nombre" /></div>
           <div class="form-group"><label>Email</label><input type="email" name="email" required placeholder="tu@email.com" /></div>
@@ -295,7 +282,6 @@
               <option value="" disabled selected>Seleccioná una opción</option>
               <option value="Ciberseguridad">Ciberseguridad</option>
               <option value="Soporte IT">Soporte IT</option>
-              <option value="Seguridad Electronica">Seguridad Electrónica</option>
               <option value="Web">Diseño Web (Nexo)</option>
             </select>
           </div>
@@ -309,19 +295,15 @@
 
   <footer>
     <div style="margin-bottom: 20px;">
-      <a href="#servicios" style="color: var(--text-dim); text-decoration: none; margin: 0 10px; font-size: 0.75rem; transition: var(--transition);">Servicios</a>
-      <a href="#porque" style="color: var(--text-dim); text-decoration: none; margin: 0 10px; font-size: 0.75rem; transition: var(--transition);">Nosotros</a>
-      <a href="https://nexo-landing.pages.dev/" target="_blank" style="color: var(--text-dim); text-decoration: none; margin: 0 10px; font-size: 0.75rem; transition: var(--transition);">Nexo Web</a>
+      <a href="#servicios" style="color: var(--text-dim); text-decoration: none; margin: 0 10px; font-size: 0.75rem;">Servicios</a>
+      <a href="#porque" style="color: var(--text-dim); text-decoration: none; margin: 0 10px; font-size: 0.75rem;">Nosotros</a>
+      <a href="https://nexo-landing.pages.dev/" target="_blank" style="color: var(--text-dim); text-decoration: none; margin: 0 10px; font-size: 0.75rem;">Nexo Web</a>
     </div>
-    <p>© 2026 CDS Consultoría Informática. Todos los derechos reservados. CABA, Argentina.</p>
-    <p style="margin-top: 10px; font-size: 0.7rem; opacity: 0.6;">
-      Diseño y Desarrollo por <a href="https://nexo-landing.pages.dev/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 700;">Nexo.</a>
-    </p>
+    <p>© 2026 CDS Consultoría Informática. CABA, Argentina.</p>
+    <p style="font-size: 0.7rem; opacity: 0.5;">Diseño por <a href="https://nexo-landing.pages.dev/" style="color: var(--accent); text-decoration: none;">Nexo.</a></p>
   </footer>
 
-  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank">
-    <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank"><svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -338,8 +320,7 @@
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
-
-        document.querySelectorAll('section, .servicio-card, .proceso-step, .nexo-demo-card, .porque-item').forEach(el => {
+        document.querySelectorAll('section, .servicio-card, .porque-item, .nexo-demo-card').forEach(el => {
             el.classList.add('reveal');
             observer.observe(el);
         });
@@ -353,11 +334,18 @@
             });
         });
 
+        // FAQ ACCORDION
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
         // FORMSPREE
         const form = document.getElementById('cdsForm');
         const status = document.getElementById('form-status');
         const btn = document.getElementById('cds-btn');
-
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const data = new FormData(form);
@@ -370,7 +358,7 @@
                     headers: { 'Accept': 'application/json' }
                 });
                 if (response.ok) {
-                    status.innerText = "EXITO: Consulta recibida correctamente.";
+                    status.innerText = "SISTEMA: Consulta recibida con éxito.";
                     status.style.color = "var(--accent)";
                     form.reset();
                 } else {
