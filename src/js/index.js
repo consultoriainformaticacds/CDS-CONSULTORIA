@@ -1,40 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Animación Reveal al hacer Scroll
-  const observerOptions = { threshold: 0.1 };
-  const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-          if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
+  // ... (Mantén tus animaciones Reveal aquí arriba) ...
+
+  const form = document.getElementById('cdsForm');
+  const status = document.getElementById('form-status');
+  const btn = document.getElementById('cds-btn');
+
+  if (form) {
+      form.addEventListener('submit', async (e) => {
+          e.preventDefault(); // Evita que la página se recargue
+          
+          const data = new FormData(form);
+          btn.innerText = "Enviando...";
+          btn.disabled = true;
+
+          try {
+              const response = await fetch(form.action, {
+                  method: 'POST',
+                  body: data,
+                  headers: { 'Accept': 'application/json' }
+              });
+
+              if (response.ok) {
+                  status.innerHTML = "¡Consulta enviada con éxito! Te contactaremos pronto.";
+                  status.style.color = "#00f2ff"; // Color cian
+                  form.reset(); // Limpia los campos
+              } else {
+                  const result = await response.json();
+                  status.innerHTML = "Hubo un error: " + (result.errors ? result.errors[0].message : "Intenta nuevamente");
+                  status.style.color = "#ff4444";
+              }
+          } catch (error) {
+              status.innerHTML = "Error de conexión. Por favor, intenta por WhatsApp.";
+              status.style.color = "#ff4444";
+          } finally {
+              btn.innerText = "Enviar consulta →";
+              btn.disabled = false;
           }
       });
-  }, observerOptions);
-
-  document.querySelectorAll('section, .servicio-card, .nexo-demo-card').forEach(el => {
-      el.classList.add('reveal');
-      observer.observe(el);
-  });
-
-  // 2. Efecto de luz siguiendo al mouse en tarjetas
-  document.querySelectorAll('.servicio-card').forEach(card => {
-      card.addEventListener('mousemove', e => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
-      });
-  });
-
-  // 3. Manejo del Formulario
-  const form = document.getElementById('cdsForm');
-  form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn = form.querySelector('.form-submit');
-      btn.innerText = "Enviando...";
-      setTimeout(() => {
-          alert("¡Consulta enviada! Nos pondremos en contacto pronto.");
-          form.reset();
-          btn.innerText = "Enviar consulta →";
-      }, 1500);
-  });
+  }
 });

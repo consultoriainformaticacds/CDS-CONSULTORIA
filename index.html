@@ -1,152 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CDS — Consultoría Informática | Ciberseguridad y Soporte IT</title>
-  <meta name="description" content="CDS — Consultoría Informática. Ciberseguridad, soporte IT y desarrollo web profesional para empresas de CABA." />
-  <meta name="theme-color" content="#060D1F" />
-  <link rel="icon" href="logo-cds.png" type="image/png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Mulish:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/css/styles.css" />
-</head>
-<body>
+<!-- SECCIÓN NEXO: Corrección del link Legales -->
+<section id="nexo">
+  <!-- ... (encabezado igual) ... -->
+  <div class="nexo-demos-grid">
+    <!-- ... otras demos ... -->
+    <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
+      <span class="nexo-demo-rubro">Legal</span>
+      <span class="nexo-demo-name">Fernández & Asoc.</span>
+      <span class="nexo-demo-nivel">Standard</span>
+    </a>
+    <!-- ... otras demos ... -->
+  </div>
+</section>
 
-  <nav>
-    <a class="nav-logo" href="#">CDS<span>.</span><small>Consultoría Informática</small></a>
-    <ul class="nav-links">
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#porque">Nosotros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-    <a href="#contacto" class="nav-cta">Consultar ahora</a>
-  </nav>
-
-  <main>
-    <section id="hero">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-scan" aria-hidden="true"></div>
-      <div class="hero-content">
-        <div class="hero-badge">Tecnología · Seguridad · Desarrollo</div>
-        <h1 class="hero-title">
-          Soluciones <span class="t2">Digitales</span><br/>
-          <span class="t3">Seguras · Escalables · Profesionales</span>
-        </h1>
-        <p class="hero-desc">En <strong>CDS</strong> protegemos y potenciamos tu negocio con tecnología de punta. Desde ciberseguridad y soporte IT hasta diseño web y vigilancia electrónica.</p>
-        <div class="hero-actions">
-          <a href="#servicios" class="btn-primary">Ver servicios</a>
-          <a href="#contacto" class="btn-outline">Hablar con un experto</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-item"><span class="stat-num">+50</span><span class="stat-label">Clientes atendidos</span></div>
-          <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Soporte disponible</span></div>
-          <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Áreas de servicio</span></div>
-        </div>
+<!-- SECCIÓN CONTACTO: Con tu ID de Formspree y nombres de campos -->
+<section id="contacto">
+  <div class="contacto-grid">
+    <div class="contacto-info">
+      <h2 class="section-title">Contacto</h2>
+      <p>Contanos tu situación y en menos de 24 horas te respondemos.</p>
+      <ul class="contacto-datos">
+        <li><strong>WhatsApp:</strong> +54 9 11 2463-2544</li>
+        <li><strong>Ubicación:</strong> CABA, Argentina</li>
+      </ul>
+    </div>
+    
+    <!-- Acción configurada con tu ID maqpkdog -->
+    <form class="contacto-form" id="cdsForm" action="https://formspree.io/f/maqpkdog" method="POST">
+      <div class="form-field">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="name" id="nombre" required placeholder="Tu nombre" />
       </div>
-    </section>
-
-    <section id="servicios">
-      <p class="section-tag">Lo que hacemos</p>
-      <h2 class="section-title">Nuestros servicios</h2>
-      <div class="servicios-grid">
-        <article class="servicio-card">
-          <p class="servicio-num">01</p>
-          <span class="servicio-icon">🔐</span>
-          <h3>Ciberseguridad</h3>
-          <p>Protegemos tu infraestructura digital. Auditorías, hardening y defensa activa.</p>
-          <div class="servicio-tags"><span class="tag">Auditoría</span><span class="tag">Defensa</span></div>
-        </article>
-        <article class="servicio-card">
-          <p class="servicio-num">02</p>
-          <span class="servicio-icon">💻</span>
-          <h3>Soporte IT</h3>
-          <p>Mantenimiento de redes y servidores. Respuesta rápida para que no te detengas.</p>
-          <div class="servicio-tags"><span class="tag">Redes</span><span class="tag">Servidores</span></div>
-        </article>
-        <article class="servicio-card">
-          <p class="servicio-num">03</p>
-          <span class="servicio-icon">📹</span>
-          <h3>Seguridad Electrónica</h3>
-          <p>Instalación de cámaras IP y alarmas. Vigilancia profesional para tu negocio.</p>
-          <div class="servicio-tags"><span class="tag">Cámaras</span><span class="tag">Monitoreo</span></div>
-        </article>
-        <article class="servicio-card">
-          <p class="servicio-num">04</p>
-          <span class="servicio-icon">🌐</span>
-          <h3>Diseño Web</h3>
-          <p>Sitios modernos y efectivos de alto impacto realizados por Nexo.</p>
-          <div class="servicio-nexo">
-            <span class="nexo-badge">Nexo.</span>
-            <a href="https://nexo-landing.pages.dev/" target="_blank" class="nexo-link">Ver sitio →</a>
-          </div>
-        </article>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required placeholder="tu@email.com" />
       </div>
-    </section>
-
-    <section id="porque">
-      <p class="section-tag">Por qué elegirnos</p>
-      <h2 class="section-title">Tecnología con respaldo real</h2>
-      <div class="porque-grid">
-        <div class="porque-item"><span>⚡</span><h4>Respuesta rápida</h4><p>Atendemos urgencias en menos de 24 horas.</p></div>
-        <div class="porque-item"><span>🛡</span><h4>Soluciones integrales</h4><p>Cubrimos todo tu entorno digital en un solo lugar.</p></div>
-        <div class="porque-item"><span>💬</span><h4>Sin tecnicismos</h4><p>Te explicamos todo de forma simple y clara.</p></div>
-        <div class="porque-item"><span>📍</span><h4>Presencia local</h4><p>Soporte presencial disponible en CABA.</p></div>
+      <div class="form-field">
+        <label for="servicio">Servicio</label>
+        <select name="service" id="servicio" required>
+          <option value="" disabled selected>Seleccioná una opción</option>
+          <option value="Ciberseguridad">Ciberseguridad</option>
+          <option value="Soporte IT">Soporte IT</option>
+          <option value="Seguridad Electronica">Seguridad Electrónica</option>
+          <option value="Diseno Web">Diseño Web (Nexo)</option>
+        </select>
       </div>
-    </section>
-
-    <section id="nexo">
-      <div class="nexo-header">
-        <p class="section-tag">Diseño web</p>
-        <h2 class="section-title">¿Necesitás una web? <span>Nexo.</span> lo hace.</h2>
+      <div class="form-field">
+        <label for="mensaje">Mensaje</label>
+        <textarea name="message" id="mensaje" required placeholder="¿Cómo podemos ayudarte?"></textarea>
       </div>
-      <div class="nexo-demos-grid">
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
-          <span class="nexo-demo-rubro">Estética</span><span class="nexo-demo-name">Lumière Studio</span><span class="nexo-demo-nivel">Premium</span>
-        </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
-          <span class="nexo-demo-rubro">Gastronomía</span><span class="nexo-demo-name">Raíces Restaurante</span><span class="nexo-demo-nivel">Premium</span>
-        </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
-          <span class="nexo-demo-rubro">Legal</span><span class="nexo-demo-name">Fernández & Asoc.</span><span class="nexo-demo-nivel">Standard</span>
-        </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-tienda-premium" target="_blank">
-          <span class="nexo-demo-rubro">Tienda</span><span class="nexo-demo-name">RegaloUnico</span><span class="nexo-demo-nivel">Premium</span>
-        </a>
-      </div>
-    </section>
-
-    <section id="contacto">
-      <div class="contacto-grid">
-        <div class="contacto-info">
-          <h2 class="section-title">Contacto</h2>
-          <ul class="contacto-datos">
-            <li><strong>WhatsApp:</strong> +54 9 11 2463-2544</li>
-            <li><strong>Email:</strong> info@cds.com</li>
-            <li><strong>Ubicación:</strong> CABA, Argentina</li>
-          </ul>
-        </div>
-        <form class="contacto-form" id="cdsForm">
-          <input type="text" placeholder="Nombre" required />
-          <input type="email" placeholder="Email" required />
-          <select required>
-            <option value="">Seleccioná un servicio</option>
-            <option value="Ciberseguridad">Ciberseguridad</option>
-            <option value="Soporte IT">Soporte IT</option>
-            <option value="Web">Diseño Web</option>
-          </select>
-          <textarea placeholder="¿Cuál es tu problema tecnológico?" required></textarea>
-          <button type="submit" class="form-submit">Enviar consulta →</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <a href="https://wa.me/5491124632544" id="wa-float" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
-
-  <script src="src/js/index.js" defer></script>
-</body>
-</html>
+      <button type="submit" class="form-submit" id="cds-btn">Enviar consulta →</button>
+      <p id="form-status" style="margin-top: 15px; font-weight: 600; text-align: center;"></p>
+    </form>
+  </div>
+</section>
