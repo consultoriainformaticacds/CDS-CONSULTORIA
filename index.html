@@ -1,39 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
-    <meta name="description" content="A brief description of your page for SEO purposes.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.yourwebsite.com/your-page-url">
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Your Page Name",
-            "description": "A brief description of your page for structured data.",
-            "url": "https://www.yourwebsite.com/your-page-url"
+    <meta name="description" content="Consultoría Informática - Servicios IT, Ciberseguridad, Diseño Web y más.">
+    <meta name="keywords" content="Ciberseguridad, Soporte IT, Seguridad Electrónica, Diseño Web">
+    <link rel="canonical" href="https://www.consultoriainformaticacds.com/">
+    <meta property="og:title" content="Consultoría Informática">
+    <meta property="og:description" content="Ofrecemos soluciones en IT, seguridad y diseño web.">
+    <meta property="og:image" content="https://www.consultoriainformaticacds.com/image.jpg">
+    <meta property="og:url" content="https://www.consultoriainformaticacds.com/">
+    <script type='application/ld+json'>
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Consultoría Informática",
+        "url": "https://www.consultoriainformaticacds.com/",
+        "logo": "https://www.consultoriainformaticacds.com/logo.png",
+        "description": "Consultoría en IT, Ciberseguridad, y Diseño Web",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Calle Ejemplo 123",
+            "addressLocality": "Ciudad",
+            "addressRegion": "Región",
+            "postalCode": "12345",
+            "addressCountry": "País"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1234567890",
+            "contactType": "Customer Service"
         }
+    }
     </script>
-    <meta property="og:title" content="Your Open Graph Title" />
-    <meta property="og:description" content="Your Open Graph description" />
-    <meta property="og:url" content="https://www.yourwebsite.com/your-page-url" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://www.yourwebsite.com/path/to/image.jpg" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Consultoría Informática</title>
 </head>
 <body>
     <header>
-        <h1>Welcome to Our Page</h1>
+        <div class="hero">
+            <h1>Bienvenido a Consultoría Informática</h1>
+            <p>Tu solución integral en tecnología y seguridad.</p>
+        </div>
     </header>
-    <main>
-        <article>
-            <h2>Main Content</h2>
-            <p>Your page content goes here.</p>
-        </article>
-    </main>
+    <section class="servicios">
+        <div class="card">Ciberseguridad</div>
+        <div class="card">Soporte IT</div>
+        <div class="card">Seguridad Electrónica</div>
+        <div class="card">Diseño Web</div>
+    </section>
+    <section class="porque">
+        <h2>¿Por qué elegirnos?</h2>
+        <p>Estadísticas y características relevantes sobre nuestros servicios, incluyendo opciones de personalización y atención al cliente.</p>
+    </section>
+    <section class="nexo">
+        <h2>Conoce nuestras demos</h2>
+        <div class="demo-card">Demo 1</div>
+        <div class="demo-card">Demo 2</div>
+    </section>
+    <section class="cta">
+        <h2>Contáctanos</h2>
+        <p>Solicita una consulta gratuita.</p>
+    </section>
+    <section class="contacto">
+        <h2>Formulario de Contacto</h2>
+        <form>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
     <footer>
-        <p>© 2026 Your Website. All Rights Reserved.</p>
+        <p>&copy; 2026 Consultoría Informática</p>
     </footer>
 </body>
 </html>
