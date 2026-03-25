@@ -19,7 +19,6 @@
       --accent-2: #7000ff;
       --text: #e2e8f0;
       --text-dim: #94a3b8;
-      --white: #ffffff;
       --glass-border: rgba(255, 255, 255, 0.08);
       --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
@@ -29,109 +28,113 @@
     body { background-color: var(--bg); color: var(--text); font-family: 'Mulish', sans-serif; overflow-x: hidden; line-height: 1.6; }
     h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* NAVEGACIÓN MEJORADA */
-    nav { position: fixed; top: 0; width: 100%; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(20px); background: rgba(6, 13, 31, 0.8); border-bottom: 1px solid var(--glass-border); transition: var(--transition); }
-    nav.scrolled { padding: 10px 5%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .nav-logo { font-size: 1.6rem; text-decoration: none; color: #fff; font-weight: 700; display: flex; flex-direction: column; line-height: 1; }
+    /* NAVEGACIÓN */
+    nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(20px); background: rgba(6, 13, 31, 0.8); border-bottom: 1px solid var(--glass-border); transition: var(--transition); }
+    nav.scrolled { padding: 12px 5%; background: rgba(6, 13, 31, 0.95); }
+    .nav-logo { font-size: 1.6rem; text-decoration: none; color: #fff; font-weight: 700; line-height: 1; }
     .nav-logo span { color: var(--accent); }
-    .nav-logo small { font-size: 0.65rem; color: var(--text-dim); font-weight: 400; letter-spacing: 1px; margin-top: 2px; }
-    .nav-links { display: flex; list-style: none; gap: 30px; }
-    .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; }
-    .nav-links a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
-    .nav-cta { background: var(--accent); color: var(--bg); padding: 10px 22px; border-radius: 4px; text-decoration: none; font-weight: 800; font-size: 0.8rem; transition: var(--transition); border: 1px solid var(--accent); }
-    .nav-cta:hover { background: transparent; color: var(--accent); box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
+    .nav-logo small { font-size: 0.65rem; color: var(--text-dim); font-weight: 400; display: block; }
+    .nav-links { display: flex; list-style: none; gap: 25px; }
+    .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); font-weight: 600; font-size: 0.85rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: var(--bg); padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 800; font-size: 0.8rem; }
 
-    /* HERO ULTRA PREMIUM */
-    #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 5%; text-align: center; overflow: hidden; }
+    /* HERO */
+    #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 150px 5% 80px; text-align: center; overflow: hidden; }
     .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(0,242,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,242,255,0.03) 1px, transparent 1px); background-size: 50px 50px; z-index: -1; }
-    .hero-glow { position: absolute; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(0,242,255,0.15), transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; filter: blur(80px); }
-    .hero-scan { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, transparent, rgba(0, 242, 255, 0.05), transparent); animation: scan-v2 6s ease-in-out infinite; z-index: 0; pointer-events: none; }
-    @keyframes scan-v2 { 0% { top: -100px; } 100% { top: 100%; } }
+    .hero-glow { position: absolute; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(0,242,255,0.1), transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; filter: blur(80px); }
+    .hero-scan { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, transparent, rgba(0, 242, 255, 0.05), transparent); animation: scan 5s linear infinite; z-index: 0; }
+    @keyframes scan { 0% { top: -100px; } 100% { top: 100vh; } }
 
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 100px; font-size: 0.75rem; color: var(--accent); margin-bottom: 25px; font-weight: 700; text-transform: uppercase; }
-    .hero-title { font-size: clamp(2.8rem, 9vw, 5.5rem); line-height: 1; margin-bottom: 25px; font-weight: 700; }
-    .hero-title .t2 { background: linear-gradient(90deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-title .t3 { display: block; font-size: 1.1rem; color: var(--text-dim); margin-top: 15px; font-weight: 500; letter-spacing: 4px; }
-    .hero-desc { max-width: 650px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-dim); font-weight: 300; }
+    .hero-badge { display: inline-block; padding: 6px 18px; background: rgba(0,242,255,0.05); border: 1px solid var(--accent); border-radius: 100px; font-size: 0.75rem; color: var(--accent); margin-bottom: 25px; font-weight: 700; }
+    .hero-title { font-size: clamp(2.8rem, 9vw, 5rem); line-height: 1; margin-bottom: 25px; }
+    .hero-title .t2 { color: var(--accent); text-shadow: 0 0 30px rgba(0, 242, 255, 0.3); }
+    .hero-title .t3 { display: block; font-size: 1.1rem; color: var(--text-dim); margin-top: 15px; letter-spacing: 3px; font-weight: 400; }
+    .hero-desc { max-width: 750px; margin: 0 auto 40px; font-size: 1.15rem; color: var(--text-dim); }
 
-    /* STATS CON DISEÑO */
-    .hero-stats { display: flex; justify-content: center; gap: 60px; margin-top: 30px; }
-    .stat-item { display: flex; flex-direction: column; align-items: center; }
-    .stat-num { font-size: 2.5rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 5px; font-family: 'Rajdhani'; }
-    .stat-label { font-size: 0.65rem; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+    .hero-stats { display: flex; justify-content: center; gap: 50px; margin-top: 40px; }
+    .stat-item { display: flex; flex-direction: column; }
+    .stat-num { font-size: 2.2rem; font-weight: 700; color: #fff; font-family: 'Rajdhani'; }
+    .stat-label { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
 
-    /* SECCIONES */
-    section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
-    .section-header { text-align: center; margin-bottom: 80px; }
-    .section-tag { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px; display: block; }
-    .section-title { font-size: 3rem; font-weight: 700; }
+    /* SECCIONES REUSABLES */
+    section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
+    .section-tag { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 700; text-align: center; margin-bottom: 15px; display: block; }
+    .section-title { font-size: 3rem; text-align: center; margin-bottom: 60px; font-weight: 700; }
+    .section-title span { color: var(--accent-2); }
 
-    /* SERVICIOS EVOLUTION */
-    .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    /* SERVICIOS CON LUZ */
+    .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
     .servicio-card { 
       background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border);
       position: relative; transition: var(--transition); backdrop-filter: blur(10px); overflow: hidden;
     }
     .servicio-card::before {
       content: ""; position: absolute; inset: 0;
-      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(0, 242, 255, 0.08), transparent 40%);
+      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(0, 242, 255, 0.1), transparent 40%);
       opacity: 0; transition: opacity 0.3s;
     }
     .servicio-card:hover::before { opacity: 1; }
-    .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); }
     
-    .servicio-icon { font-size: 3rem; margin-bottom: 30px; display: block; color: var(--accent); }
-    .servicio-card h3 { font-size: 1.6rem; margin-bottom: 15px; color: #fff; }
-    .servicio-card p { color: var(--text-dim); font-size: 0.95rem; }
-    .servicio-tags { display: flex; gap: 10px; margin-top: 25px; }
-    .tag { font-size: 0.65rem; color: var(--accent); border: 1px solid rgba(0, 242, 255, 0.2); padding: 4px 12px; border-radius: 2px; font-weight: 700; text-transform: uppercase; }
+    .servicio-num { position: absolute; top: 20px; right: 20px; color: rgba(255,255,255,0.03); font-size: 4rem; font-weight: 800; }
+    .servicio-icon { font-size: 3rem; margin-bottom: 30px; display: block; }
+    .servicio-tags { display: flex; gap: 10px; margin-top: 20px; }
+    .tag { font-size: 0.65rem; color: var(--accent); border: 1px solid rgba(0, 242, 255, 0.2); padding: 3px 10px; border-radius: 2px; text-transform: uppercase; }
 
-    /* PROCESO (Nueva sección clave) */
-    .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 50px; }
-    .proceso-step { text-align: center; padding: 20px; position: relative; }
-    .step-num { font-size: 4rem; font-weight: 800; color: rgba(255,255,255,0.03); position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: -1; }
-    .proceso-step h4 { color: var(--accent); margin-bottom: 10px; font-size: 1.2rem; }
-    .proceso-step p { font-size: 0.85rem; color: var(--text-dim); }
+    /* POR QUÉ ELEGIRNOS */
+    .porque-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; margin-top: 50px; }
+    .porque-item { display: flex; gap: 20px; }
+    .porque-icon { font-size: 2rem; background: rgba(255,255,255,0.03); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; color: var(--accent); border: 1px solid var(--glass-border); }
+    .porque-item h4 { color: #fff; margin-bottom: 8px; font-size: 1.2rem; }
+    .porque-item p { font-size: 0.9rem; color: var(--text-dim); }
 
-    /* NEXO SHOWCASE */
+    /* PROCESO */
+    .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 80px; }
+    .proceso-step { text-align: center; padding: 30px; background: rgba(255,255,255,0.01); border-radius: 8px; }
+    .step-num { font-size: 3rem; font-weight: 800; color: rgba(0, 242, 255, 0.1); margin-bottom: 10px; font-family: 'Rajdhani'; }
+
+    /* NEXO SHOWCASE COMPLETO (6 DEMOS) */
     .nexo-demos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .nexo-demo-card { 
-      background: #0a1124; padding: 0; border-radius: 8px; border: 1px solid var(--glass-border);
+      background: #0a1124; padding: 40px 30px; border-radius: 8px; border: 1px solid var(--glass-border);
       text-decoration: none; transition: var(--transition); position: relative; overflow: hidden;
-      display: flex; flex-direction: column; height: 200px; justify-content: flex-end; padding: 30px;
     }
-    .nexo-demo-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, #060d1f, transparent); z-index: 1; }
-    .nexo-demo-card:hover { border-color: var(--accent-2); transform: scale(1.03); }
-    .nexo-demo-content { position: relative; z-index: 2; }
-    .nexo-demo-rubro { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
-    .nexo-demo-name { font-size: 1.4rem; color: #fff; font-weight: 700; margin: 5px 0; }
+    .nexo-demo-card:hover { border-color: var(--accent-2); transform: translateY(-5px); background: rgba(112, 0, 255, 0.05); }
+    .nexo-demo-rubro { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .nexo-demo-name { display: block; font-size: 1.4rem; color: #fff; margin: 10px 0; font-weight: 700; }
+    .nexo-demo-nivel { font-size: 0.65rem; color: var(--text-dim); border: 1px solid var(--glass-border); padding: 2px 8px; border-radius: 4px; }
 
-    /* CONTACTO CENTER */
-    .contacto-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
-    .contacto-form { background: rgba(255,255,255,0.02); padding: 50px; border-radius: 8px; border: 1px solid var(--glass-border); display: grid; gap: 20px; }
+    /* CONTACTO */
+    .contacto-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+    .contacto-datos { list-style: none; margin-top: 40px; }
+    .contacto-datos li { margin-bottom: 30px; }
+    .contacto-datos li strong { color: var(--accent); display: block; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 5px; }
+    .contacto-datos li span { font-size: 1.3rem; font-weight: 600; color: #fff; }
+
+    .contacto-form { background: var(--bg-card); padding: 50px; border-radius: 12px; border: 1px solid var(--glass-border); display: grid; gap: 20px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-group label { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .form-group label { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
     .form-group input, .form-group select, .form-group textarea { 
-      background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px; border-radius: 4px; color: #fff; font-family: inherit; outline: none; transition: var(--transition);
+      background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 6px; color: #fff; font-family: inherit; outline: none; transition: var(--transition);
     }
-    .form-group input:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(0,242,255,0.1); }
-    .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 18px; border-radius: 4px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
-    .form-submit:hover { letter-spacing: 2px; box-shadow: 0 0 30px var(--accent); }
-
-    /* FOOTER */
-    footer { padding: 50px 5%; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-dim); font-size: 0.8rem; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .form-group select option { background: var(--bg); color: #fff; }
+    
+    .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 20px; border-radius: 6px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); margin-top: 10px; }
+    .form-submit:hover { box-shadow: 0 0 30px var(--accent); transform: scale(1.02); }
 
     /* WHATSAPP */
-    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: var(--transition); }
-    #wa-float:hover { transform: scale(1.1) rotate(10deg); }
+    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: var(--transition); }
+    #wa-float:hover { transform: scale(1.1); }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       .contacto-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .hero-stats { gap: 30px; }
+      .hero-stats { gap: 20px; flex-wrap: wrap; }
       .section-title { font-size: 2.2rem; }
     }
   </style>
@@ -140,16 +143,15 @@
 
   <nav id="navbar">
     <a class="nav-logo" href="#">
-      <div>CDS<span>.</span></div>
-      <small>Consultoría Informática</small>
+      CDS<span>.</span><small>Consultoría Informática</small>
     </a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#porque">Nosotros</a></li>
       <li><a href="#nexo">Nexo Web</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="#contacto" class="nav-cta">Comenzar proyecto</a>
+    <a href="#contacto" class="nav-cta">Consultar ahora</a>
   </nav>
 
   <main>
@@ -159,123 +161,114 @@
       <div class="hero-glow"></div>
       <div class="hero-scan"></div>
       <div class="hero-content">
-        <div class="hero-badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z"/></svg>
-          Tecnología de Vanguardia
-        </div>
+        <div class="hero-badge">Tecnología · Seguridad · Desarrollo</div>
         <h1 class="hero-title">
-          Seguridad que <br/><span class="t2">Impulsa tu Negocio</span>
-          <span class="t3">Ciberseguridad · Soporte · Desarrollo</span>
+          Soluciones <span class="t2">Digitales</span><br/>
+          <span class="t3">Seguras · Escalables · Profesionales</span>
         </h1>
-        <p class="hero-desc">Expertos en proteger activos digitales y optimizar infraestructuras IT para empresas que no pueden permitirse detenerse.</p>
-        <div class="hero-actions">
-          <a href="#servicios" class="btn-primary">Nuestras Soluciones</a>
-          <a href="https://wa.me/5491124632544" target="_blank" class="btn-outline">Soporte Urgente</a>
-        </div>
+        <p class="hero-desc">En <strong>CDS</strong> protegemos y potenciamos tu negocio con tecnología de punta. Desde ciberseguridad y soporte IT hasta diseño web y vigilancia electrónica.</p>
         <div class="hero-stats">
-          <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Monitoreo</span></div>
-          <div class="stat-item"><span class="stat-num">+50</span><span class="stat-label">Empresas</span></div>
-          <div class="stat-item"><span class="stat-num">&lt;24h</span><span class="stat-label">Respuesta</span></div>
+          <div class="stat-item"><span class="stat-num">+50</span><span class="stat-label">Clientes</span></div>
+          <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Soporte</span></div>
+          <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Efectividad</span></div>
         </div>
       </div>
     </section>
 
     <!-- SERVICIOS -->
     <section id="servicios">
-      <div class="section-header">
-        <span class="section-tag">Especialidades</span>
-        <h2 class="section-title">Infraestructura & Seguridad</h2>
-      </div>
+      <span class="section-tag">Lo que hacemos</span>
+      <h2 class="section-title">Nuestros servicios</h2>
       <div class="servicios-grid">
         <article class="servicio-card">
-          <div class="servicio-num">01</div>
-          <div class="servicio-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
+          <span class="servicio-num">01</span>
+          <span class="servicio-icon">🔐</span>
           <h3>Ciberseguridad</h3>
-          <p>Auditorías preventivas, Hardening de servidores y protocolos de defensa activa contra amenazas externas.</p>
+          <p>Auditorías preventivas, hardening de servidores y protocolos de defensa activa.</p>
           <div class="servicio-tags"><span class="tag">Auditoría</span><span class="tag">Defensa</span></div>
         </article>
-
         <article class="servicio-card">
-          <div class="servicio-num">02</div>
-          <div class="servicio-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-          </div>
+          <span class="servicio-num">02</span>
+          <span class="servicio-icon">💻</span>
           <h3>Soporte IT</h3>
-          <p>Gestión integral de redes corporativas, administración de servidores Cloud y mantenimiento correctivo presencial.</p>
-          <div class="servicio-tags"><span class="tag">Servidores</span><span class="tag">Redes</span></div>
+          <p>Gestión de redes corporativas, administración de servidores y mantenimiento correctivo.</p>
+          <div class="servicio-tags"><span class="tag">Redes</span><span class="tag">Cloud</span></div>
         </article>
-
         <article class="servicio-card">
-          <div class="servicio-num">03</div>
-          <div class="servicio-icon">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          </div>
-          <h3>Vigilancia IP</h3>
-          <p>Diseño e implementación de sistemas de seguridad electrónica, cámaras de alta definición y control de acceso.</p>
-          <div class="servicio-tags"><span class="tag">Seguridad</span><span class="tag">Cámaras</span></div>
+          <span class="servicio-num">03</span>
+          <span class="servicio-icon">📹</span>
+          <h3>Seguridad Electrónica</h3>
+          <p>Cámaras IP de alta definición, alarmas y sistemas de control de acceso profesional.</p>
+          <div class="servicio-tags"><span class="tag">IP Cam</span><span class="tag">Alarmas</span></div>
         </article>
+        <article class="servicio-card">
+          <span class="servicio-num">04</span>
+          <span class="servicio-icon">🌐</span>
+          <h3>Diseño Web</h3>
+          <p>Sitios modernos y efectivos realizados por Nexo. Presencia digital de alto impacto.</p>
+          <div class="servicio-tags"><span class="tag">Nexo Web</span><span class="tag">Landing</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- NOSOTROS / POR QUÉ -->
+    <section id="porque">
+      <span class="section-tag">Diferencial CDS</span>
+      <h2 class="section-title">Tecnología con respaldo real</h2>
+      <div class="porque-grid">
+        <div class="porque-item">
+          <div class="porque-icon">⚡</div>
+          <div><h4>Respuesta rápida</h4><p>Atendemos urgencias en menos de 24 horas. Tu negocio no se detiene.</p></div>
+        </div>
+        <div class="porque-item">
+          <div class="porque-icon">🛡</div>
+          <div><h4>Soluciones integrales</h4><p>Cubrimos todo tu entorno digital en un solo lugar. Sin complicaciones.</p></div>
+        </div>
+        <div class="porque-item">
+          <div class="porque-icon">💬</div>
+          <div><h4>Claridad absoluta</h4><p>Te explicamos todo sin tecnicismos complejos para decisiones informadas.</p></div>
+        </div>
+        <div class="porque-item">
+          <div class="porque-icon">📍</div>
+          <div><h4>Presencia local</h4><p>Soporte presencial disponible en CABA. Estamos donde nos necesites.</p></div>
+        </div>
       </div>
     </section>
 
     <!-- PROCESO -->
     <section id="proceso">
-      <div class="section-header">
-        <span class="section-tag">Metodología</span>
-        <h2 class="section-title">Cómo trabajamos</h2>
-      </div>
+      <span class="section-tag">Metodología</span>
+      <h2 class="section-title">Cómo trabajamos</h2>
       <div class="proceso-grid">
-        <div class="proceso-step">
-          <div class="step-num">1</div>
-          <h4>Auditoría</h4>
-          <p>Analizamos el estado actual de tu tecnología y detectamos vulnerabilidades.</p>
-        </div>
-        <div class="proceso-step">
-          <div class="step-num">2</div>
-          <h4>Estrategia</h4>
-          <p>Diseñamos un plan a medida basado en tus necesidades y presupuesto.</p>
-        </div>
-        <div class="proceso-step">
-          <div class="step-num">3</div>
-          <h4>Implementación</h4>
-          <p>Ejecutamos las mejoras con el mínimo impacto en tu operación diaria.</p>
-        </div>
-        <div class="proceso-step">
-          <div class="step-num">4</div>
-          <h4>Mantenimiento</h4>
-          <p>Monitoreo constante 24/7 para prevenir problemas antes que ocurran.</p>
-        </div>
+        <div class="proceso-step"><div class="step-num">01</div><h4>Auditoría</h4><p>Análisis de vulnerabilidades.</p></div>
+        <div class="proceso-step"><div class="step-num">02</div><h4>Estrategia</h4><p>Plan a medida del negocio.</p></div>
+        <div class="proceso-step"><div class="step-num">03</div><h4>Ejecución</h4><p>Implementación técnica.</p></div>
+        <div class="proceso-step"><div class="step-num">04</div><h4>Soporte</h4><p>Monitoreo constante.</p></div>
       </div>
     </section>
 
-    <!-- NEXO -->
+    <!-- NEXO COMPLETO -->
     <section id="nexo">
-      <div class="section-header">
-        <span class="section-tag">Presencia Digital</span>
-        <h2 class="section-title">Diseño Web por <span>Nexo.</span></h2>
-      </div>
+      <span class="section-tag">Portfolio Web</span>
+      <h2 class="section-title">¿Necesitás una web? <span>Nexo.</span> lo hace.</h2>
       <div class="nexo-demos-grid">
         <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
-          <div class="nexo-demo-content">
-            <span class="nexo-demo-rubro">Bienestar</span>
-            <span class="nexo-demo-name">Lumière Studio</span>
-            <span class="nexo-demo-nivel">Premium UI</span>
-          </div>
-        </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
-          <div class="nexo-demo-content">
-            <span class="nexo-demo-rubro">Legal</span>
-            <span class="nexo-demo-name">Fernández & Asoc.</span>
-            <span class="nexo-demo-nivel">Standard UI</span>
-          </div>
+          <span class="nexo-demo-rubro">Estética</span><span class="nexo-demo-name">Lumière Studio</span><span class="nexo-demo-nivel">Premium</span>
         </a>
         <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
-          <div class="nexo-demo-content">
-            <span class="nexo-demo-rubro">Gastronomía</span>
-            <span class="nexo-demo-name">Raíces Resto</span>
-            <span class="nexo-demo-nivel">Premium UI</span>
-          </div>
+          <span class="nexo-demo-rubro">Gastronomía</span><span class="nexo-demo-name">Raíces Resto</span><span class="nexo-demo-nivel">Premium</span>
+        </a>
+        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
+          <span class="nexo-demo-rubro">Legales</span><span class="nexo-demo-name">Fernández & Asoc.</span><span class="nexo-demo-nivel">Standard</span>
+        </a>
+        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-tienda-premium" target="_blank">
+          <span class="nexo-demo-rubro">Tienda</span><span class="nexo-demo-name">RegaloUnico</span><span class="nexo-demo-nivel">Premium</span>
+        </a>
+        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-contable" target="_blank">
+          <span class="nexo-demo-rubro">Contable</span><span class="nexo-demo-name">Estudio Contable</span><span class="nexo-demo-nivel">Standard</span>
+        </a>
+        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-barberia" target="_blank">
+          <span class="nexo-demo-rubro">Estética</span><span class="nexo-demo-name">Barbería Elite</span><span class="nexo-demo-nivel">Standard</span>
         </a>
       </div>
     </section>
@@ -286,39 +279,29 @@
         <div class="contacto-info">
           <span class="section-tag" style="text-align: left;">Hablemos</span>
           <h2 class="section-title" style="text-align: left;">¿Listo para asegurar tu negocio?</h2>
-          <p style="margin-top: 20px; color: var(--text-dim);">Un experto de CDS analizará tu consulta y te responderá en menos de 24 horas hábiles.</p>
           <ul class="contacto-datos">
-            <li><strong>Canal Directo</strong><span>+54 9 11 2463-2544</span></li>
-            <li><strong>Cobertura</strong><span>CABA & Buenos Aires</span></li>
-            <li><strong>Atención</strong><span>Lunes a Viernes, 09:00 - 19:00</span></li>
+            <li><strong>WhatsApp</strong><span>+54 9 11 2463-2544</span></li>
+            <li><strong>Ubicación</strong><span>CABA, Buenos Aires</span></li>
+            <li><strong>Atención</strong><span>Lun a Vie, 9h a 19h</span></li>
           </ul>
         </div>
         
         <form class="contacto-form" id="cdsForm" action="https://formspree.io/f/maqpkdog" method="POST">
+          <div class="form-group"><label>Nombre</label><input type="text" name="name" required placeholder="Tu nombre" /></div>
+          <div class="form-group"><label>Email</label><input type="email" name="email" required placeholder="tu@email.com" /></div>
           <div class="form-group">
-            <label>Nombre Completo</label>
-            <input type="text" name="name" required placeholder="Tu nombre" />
-          </div>
-          <div class="form-group">
-            <label>Email Corporativo</label>
-            <input type="email" name="email" required placeholder="tu@empresa.com" />
-          </div>
-          <div class="form-group">
-            <label>Área de Interés</label>
+            <label>Interés</label>
             <select name="service" required>
-              <option value="" disabled selected>Seleccioná una solución</option>
-              <option value="Ciberseguridad">Ciberseguridad & Auditoría</option>
-              <option value="Soporte IT">Soporte IT & Servidores</option>
-              <option value="Seguridad Electronica">Seguridad Electrónica / Cámaras</option>
-              <option value="Web">Diseño Web Profesional (Nexo)</option>
+              <option value="" disabled selected>Seleccioná una opción</option>
+              <option value="Ciberseguridad">Ciberseguridad</option>
+              <option value="Soporte IT">Soporte IT</option>
+              <option value="Seguridad Electronica">Seguridad Electrónica</option>
+              <option value="Web">Diseño Web (Nexo)</option>
             </select>
           </div>
-          <div class="form-group">
-            <label>Descripción del requerimiento</label>
-            <textarea name="message" rows="4" required placeholder="¿En qué podemos ayudarte?"></textarea>
-          </div>
-          <button type="submit" class="form-submit" id="cds-btn">Enviar Requerimiento →</button>
-          <p id="form-status" style="margin-top: 15px; text-align: center; font-weight: 700; font-size: 0.9rem;"></p>
+          <div class="form-group"><label>Mensaje</label><textarea name="message" rows="4" required placeholder="¿En qué podemos ayudarte?"></textarea></div>
+          <button type="submit" class="form-submit" id="cds-btn">Enviar consulta →</button>
+          <p id="form-status" style="margin-top: 15px; text-align: center; font-weight: 700;"></p>
         </form>
       </div>
     </section>
@@ -334,26 +317,26 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. NAV SCROLL EFFECT
+        // NAV SCROLL
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) navbar.classList.add('scrolled');
             else navbar.classList.remove('scrolled');
         });
 
-        // 2. REVEAL ANIMATION
+        // REVEAL
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('section, .servicio-card, .proceso-step, .nexo-demo-card').forEach(el => {
+        document.querySelectorAll('section, .servicio-card, .proceso-step, .nexo-demo-card, .porque-item').forEach(el => {
             el.classList.add('reveal');
             observer.observe(el);
         });
 
-        // 3. MOUSE TRACKING (Brillo de tarjetas)
+        // MOUSE LIGHT
         window.addEventListener('mousemove', (e) => {
             document.querySelectorAll('.servicio-card, .nexo-demo-card').forEach(card => {
                 const rect = card.getBoundingClientRect();
@@ -362,7 +345,7 @@
             });
         });
 
-        // 4. FORMULARIO AJAX
+        // FORMSPREE
         const form = document.getElementById('cdsForm');
         const status = document.getElementById('form-status');
         const btn = document.getElementById('cds-btn');
@@ -370,9 +353,8 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const data = new FormData(form);
-            btn.innerText = "PROCESANDO SOLICITUD...";
+            btn.innerText = "ENVIANDO...";
             btn.disabled = true;
-
             try {
                 const response = await fetch(form.action, {
                     method: 'POST',
@@ -380,17 +362,17 @@
                     headers: { 'Accept': 'application/json' }
                 });
                 if (response.ok) {
-                    status.innerText = "SISTEMA: CONSULTA RECIBIDA CON ÉXITO.";
+                    status.innerText = "EXITO: Consulta recibida correctamente.";
                     status.style.color = "var(--accent)";
                     form.reset();
                 } else {
-                    status.innerText = "ERROR DE SISTEMA. REINTENTE.";
+                    status.innerText = "ERROR: Reintente o contacte por WhatsApp.";
                     status.style.color = "#ff4444";
                 }
             } catch (error) {
                 status.innerText = "ERROR DE CONEXIÓN.";
             } finally {
-                btn.innerText = "ENVIAR REQUERIMIENTO →";
+                btn.innerText = "ENVIAR CONSULTA →";
                 btn.disabled = false;
             }
         });
