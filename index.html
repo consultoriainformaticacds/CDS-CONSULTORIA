@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Mulish:wght@300;400;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* TODO EL DISEÑO AQUÍ PARA QUE NO FALLE EL LINK */
+    /* VARIABLES Y BASE */
     :root {
       --bg: #060d1f;
       --bg-card: rgba(15, 23, 42, 0.7);
@@ -24,169 +24,349 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background-color: var(--bg); color: var(--text); font-family: 'Mulish', sans-serif; overflow-x: hidden; line-height: 1.6; color-scheme: dark; }
-    h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; }
+    html { scroll-behavior: smooth; color-scheme: dark; }
+    body { background-color: var(--bg); color: var(--text); font-family: 'Mulish', sans-serif; overflow-x: hidden; line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
+    /* NAVEGACIÓN */
     nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(15px); background: rgba(6, 13, 31, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
     .nav-logo { font-size: 1.5rem; text-decoration: none; color: #fff; font-weight: 700; }
     .nav-logo span { color: var(--accent); }
+    .nav-logo small { font-size: 0.7rem; display: block; color: var(--text-dim); font-weight: 400; text-transform: none; margin-top: -5px; }
     .nav-links { display: flex; list-style: none; gap: 25px; }
     .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); font-weight: 600; font-size: 0.9rem; }
     .nav-links a:hover { color: var(--accent); }
-    .nav-cta { background: var(--accent); color: var(--bg); padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+    .nav-cta { background: var(--accent); color: var(--bg); padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: var(--transition); }
+    .nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--accent); }
 
-    #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 120px 5% 50px; text-align: center; }
+    /* HERO */
+    #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 150px 5% 50px; text-align: center; overflow: hidden; }
     .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(0,242,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,242,255,0.05) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle, black, transparent 80%); z-index: -1; }
+    .hero-scan { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); animation: scan 4s linear infinite; opacity: 0.5; z-index: 1; }
+    @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+
+    .hero-badge { display: inline-block; padding: 5px 15px; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--accent); border-radius: 50px; font-size: 0.8rem; color: var(--accent); margin-bottom: 20px; }
     .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
     .t2 { color: var(--accent); text-shadow: 0 0 20px rgba(0,242,255,0.4); }
     .t3 { display: block; font-size: 1.2rem; color: var(--text-dim); margin-top: 10px; }
+    .hero-desc { max-width: 700px; margin: 0 auto 40px; font-size: 1.1rem; color: var(--text-dim); }
+
+    .hero-actions { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; }
+    .btn-primary { padding: 15px 30px; background: var(--accent); color: var(--bg); text-decoration: none; border-radius: 8px; font-weight: 700; transition: var(--transition); }
+    .btn-outline { padding: 15px 30px; border: 2px solid var(--accent); color: var(--accent); text-decoration: none; border-radius: 8px; transition: var(--transition); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,242,255,0.3); }
+
+    .hero-stats { display: flex; justify-content: center; gap: 40px; }
+    .stat-num { display: block; font-size: 2.2rem; font-weight: 700; color: #fff; }
+    .stat-label { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* SECCIONES REUSABLES */
+    section { padding: 100px 5%; max-width: 1300px; margin: 0 auto; position: relative; }
+    .section-tag { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; text-align: center; margin-bottom: 10px; display: block; }
+    .section-title { font-size: 2.8rem; text-align: center; margin-bottom: 60px; }
+    .section-title span { color: var(--accent-2); }
+
+    /* SERVICIOS CON EFECTO DE LUZ */
+    .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+    .servicio-card { 
+      background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);
+      position: relative; transition: var(--transition); backdrop-filter: blur(10px); overflow: hidden;
+    }
+    /* El brillo que sigue al mouse */
+    .servicio-card::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(0, 242, 255, 0.1), transparent 40%);
+      z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s;
+    }
+    .servicio-card:hover::before { opacity: 1; }
+    .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); }
     
-    section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
-    .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 40px; }
+    .servicio-num { position: absolute; top: 20px; right: 20px; color: rgba(255,255,255,0.03); font-size: 4rem; font-weight: 800; line-height: 1; }
+    .servicio-icon { font-size: 2.8rem; margin-bottom: 25px; display: block; position: relative; }
+    .servicio-card h3 { font-size: 1.5rem; margin-bottom: 15px; position: relative; }
+    .servicio-card p { color: var(--text-dim); position: relative; }
+    .tag { display: inline-block; padding: 4px 12px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 50px; font-size: 0.75rem; color: var(--accent); margin: 15px 8px 0 0; }
+
+    /* POR QUÉ ELEGIRNOS */
+    .porque-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
+    .porque-item { display: flex; gap: 20px; align-items: flex-start; }
+    .porque-icon { font-size: 1.8rem; background: rgba(255,255,255,0.05); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; }
+    .porque-item h4 { font-size: 1.1rem; color: var(--accent); margin-bottom: 5px; }
+    .porque-item p { font-size: 0.9rem; color: var(--text-dim); }
+
+    /* NEXO PORTFOLIO */
+    .nexo-demos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .nexo-demo-card { 
+      background: rgba(255,255,255,0.02); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none; transition: var(--transition); position: relative; overflow: hidden;
+    }
+    .nexo-demo-card:hover { border-color: var(--accent-2); transform: translateY(-5px); background: rgba(112, 0, 255, 0.05); }
+    .nexo-demo-rubro { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+    .nexo-demo-name { display: block; font-size: 1.3rem; color: #fff; margin: 10px 0; font-weight: 700; }
+    .nexo-demo-nivel { font-size: 0.7rem; color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; display: inline-block; }
+
+    /* CONTACTO */
+    .contacto-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
+    .contacto-datos { list-style: none; margin-top: 40px; }
+    .contacto-datos li { margin-bottom: 25px; display: flex; flex-direction: column; }
+    .contacto-datos li strong { color: var(--accent); font-size: 0.8rem; text-transform: uppercase; }
+    .contacto-datos li span { font-size: 1.2rem; font-weight: 600; color: #fff; }
+
+    .contacto-form { background: var(--bg-card); padding: 40px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 20px; }
+    .form-field { display: flex; flex-direction: column; gap: 8px; }
+    .form-field label { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; }
+    .form-field input, .form-field select, .form-field textarea { 
+      background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; color: #fff; font-family: inherit; outline: none; transition: var(--transition);
+    }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--accent); background: rgba(0,242,255,0.03); }
+    .form-field select option { background: var(--bg); color: #fff; }
     
-    .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .servicio-card { background: var(--bg-card); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); position: relative; }
-    .servicio-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-    .servicio-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+    .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 18px; border-radius: 10px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); margin-top: 10px; }
+    .form-submit:hover { transform: scale(1.02); box-shadow: 0 0 25px var(--accent); }
 
-    .nexo-demos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-    .nexo-demo-card { background: rgba(255,255,255,0.02); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-decoration: none; transition: var(--transition); color: inherit; }
-    .nexo-demo-card:hover { border-color: var(--accent-2); background: rgba(112, 0, 255, 0.05); }
-    .nexo-demo-rubro { font-size: 0.7rem; color: var(--accent); display: block; text-transform: uppercase; }
-    .nexo-demo-name { font-size: 1.1rem; font-weight: 600; display: block; margin: 5px 0; }
+    /* WHATSAPP */
+    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: var(--transition); animation: pulse-wa 2s infinite; }
+    #wa-float:hover { transform: scale(1.1); }
+    @keyframes pulse-wa { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
 
-    .contacto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-    .contacto-form { display: flex; flex-direction: column; gap: 15px; background: var(--bg-card); padding: 30px; border-radius: 20px; }
-    .contacto-form input, .contacto-form select, .contacto-form textarea { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 8px; color: #fff; outline: none; width: 100%; }
-    .contacto-form select option { background: var(--bg); color: #fff; }
-    .form-submit { background: var(--accent); color: #000; border: none; padding: 15px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: var(--transition); }
-    .form-submit:hover { transform: scale(1.02); box-shadow: 0 0 15px var(--accent); }
+    /* ANIMACIONES REVEAL */
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-
-    @media (max-width: 768px) { .nav-links { display: none; } }
+    @media (max-width: 900px) {
+      .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
+      .nav-links { display: none; }
+      .hero-stats { gap: 20px; flex-wrap: wrap; }
+      .section-title { font-size: 2.2rem; }
+    }
   </style>
 </head>
 <body>
 
   <nav>
-    <a class="nav-logo" href="#">CDS<span>.</span><small>Consultoría</small></a>
+    <a class="nav-logo" href="#">CDS<span>.</span><small>Consultoría Informática</small></a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#nexo">Nexo Web</a></li>
+      <li><a href="#porque">Nosotros</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="#contacto" class="nav-cta">Consultar ahora</a>
   </nav>
 
   <main>
+    <!-- HERO -->
     <section id="hero">
       <div class="hero-grid"></div>
       <div class="hero-scan"></div>
       <div class="hero-content">
-        <h1 class="hero-title">Soluciones <span class="t2">Digitales</span><br/><span class="t3">Seguras · Escalables · Profesionales</span></h1>
-        <p style="color: var(--text-dim); margin-bottom: 30px;">Ciberseguridad, Soporte IT y Vigilancia Electrónica en CABA.</p>
-        <a href="#servicios" class="nav-cta" style="padding: 15px 30px; font-size: 1rem;">Ver servicios</a>
+        <div class="hero-badge">Tecnología · Seguridad · Desarrollo</div>
+        <h1 class="hero-title">
+          Soluciones <span class="t2">Digitales</span><br/>
+          <span class="t3">Seguras · Escalables · Profesionales</span>
+        </h1>
+        <p class="hero-desc">En <strong>CDS</strong> protegemos y potenciamos tu negocio con tecnología de punta. Desde ciberseguridad y soporte IT hasta diseño web y vigilancia electrónica.</p>
+        <div class="hero-actions">
+          <a href="#servicios" class="btn-primary">Ver servicios</a>
+          <a href="https://wa.me/5491124632544" target="_blank" class="btn-outline">WhatsApp Directo</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-num">+50</span><span class="stat-label">Clientes</span></div>
+          <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Soporte</span></div>
+          <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Efectivo</span></div>
+        </div>
       </div>
     </section>
 
+    <!-- SERVICIOS -->
     <section id="servicios">
-      <h2 class="section-title">Nuestros Servicios</h2>
+      <span class="section-tag">Lo que hacemos</span>
+      <h2 class="section-title">Nuestros servicios</h2>
       <div class="servicios-grid">
         <article class="servicio-card">
+          <span class="servicio-num">01</span>
           <span class="servicio-icon">🔐</span>
           <h3>Ciberseguridad</h3>
-          <p>Auditorías y blindaje de datos profesional.</p>
+          <p>Protegemos tu infraestructura digital. Auditorías, hardening y defensa activa.</p>
+          <div class="servicio-tags"><span class="tag">Auditoría</span><span class="tag">Defensa</span></div>
         </article>
         <article class="servicio-card">
+          <span class="servicio-num">02</span>
           <span class="servicio-icon">💻</span>
           <h3>Soporte IT</h3>
-          <p>Mantenimiento de redes y servidores.</p>
+          <p>Mantenimiento de redes y servidores. Respuesta rápida para que no te detengas.</p>
+          <div class="servicio-tags"><span class="tag">Redes</span><span class="tag">Servidores</span></div>
         </article>
         <article class="servicio-card">
+          <span class="servicio-num">03</span>
+          <span class="servicio-icon">📹</span>
+          <h3>Seguridad Electrónica</h3>
+          <p>Instalación de cámaras IP y alarmas. Vigilancia profesional para tu negocio.</p>
+          <div class="servicio-tags"><span class="tag">Cámaras</span><span class="tag">Control</span></div>
+        </article>
+        <article class="servicio-card">
+          <span class="servicio-num">04</span>
           <span class="servicio-icon">🌐</span>
           <h3>Diseño Web</h3>
-          <p>Sitios modernos de alto impacto por Nexo.</p>
+          <p>Sitios modernos de alto impacto realizados por Nexo. Entrega en 10 días.</p>
+          <div class="servicio-tags"><span class="tag">Nexo Web</span><span class="tag">Landing</span></div>
         </article>
       </div>
     </section>
 
+    <!-- POR QUÉ ELEGIRNOS -->
+    <section id="porque">
+      <span class="section-tag">Diferencial</span>
+      <h2 class="section-title">Tecnología con respaldo real</h2>
+      <div class="porque-grid">
+        <div class="porque-item">
+          <div class="porque-icon">⚡</div>
+          <div><h4>Respuesta rápida</h4><p>Atendemos urgencias en menos de 24 horas. Tu negocio no puede esperar.</p></div>
+        </div>
+        <div class="porque-item">
+          <div class="porque-icon">🛡</div>
+          <div><h4>Soluciones integrales</h4><p>No necesitás 4 proveedores distintos. Cubrimos todo tu entorno digital.</p></div>
+        </div>
+        <div class="porque-item">
+          <div class="porque-icon">💬</div>
+          <div><h4>Asesoramiento claro</h4><p>Te explicamos todo sin tecnicismos. Tomas decisiones informado.</p></div>
+        </div>
+        <div class="porque-item">
+          <div class="porque-icon">📍</div>
+          <div><h4>Presencia en CABA</h4><p>Podemos ir a tu negocio cuando sea necesario. Soporte presencial disponible.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEXO -->
     <section id="nexo">
+      <span class="section-tag">Área de Diseño</span>
       <h2 class="section-title">¿Necesitás una web? <span>Nexo.</span> lo hace.</h2>
       <div class="nexo-demos-grid">
         <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
-          <span class="nexo-demo-rubro">Estética</span><span class="nexo-demo-name">Lumière Studio</span>
-        </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
-          <span class="nexo-demo-rubro">Legales</span><span class="nexo-demo-name">Fernández & Asoc.</span>
+          <span class="nexo-demo-rubro">Estética</span><span class="nexo-demo-name">Lumière Studio</span><span class="nexo-demo-nivel">Premium</span>
         </a>
         <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
-          <span class="nexo-demo-rubro">Gastronomía</span><span class="nexo-demo-name">Raíces Resto</span>
+          <span class="nexo-demo-rubro">Gastronomía</span><span class="nexo-demo-name">Raíces Resto</span><span class="nexo-demo-nivel">Premium</span>
+        </a>
+        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
+          <span class="nexo-demo-rubro">Legales</span><span class="nexo-demo-name">Fernández & Asoc.</span><span class="nexo-demo-nivel">Standard</span>
+        </a>
+        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-tienda-premium" target="_blank">
+          <span class="nexo-demo-rubro">Tienda</span><span class="nexo-demo-name">RegaloUnico</span><span class="nexo-demo-nivel">Premium</span>
         </a>
       </div>
     </section>
 
+    <!-- CONTACTO -->
     <section id="contacto">
       <div class="contacto-grid">
         <div class="contacto-info">
-          <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Contacto</h2>
-          <p>Contanos tu situación y te respondemos en menos de 24 horas.</p>
-          <p style="margin-top: 20px;"><strong>WhatsApp:</strong> +54 9 11 2463-2544</p>
-          <p><strong>Ubicación:</strong> CABA, Argentina</p>
+          <h2 style="font-size: 2.5rem; line-height: 1;">Contacto</h2>
+          <p style="margin-top: 15px; color: var(--text-dim);">Contanos tu situación y te respondemos con un diagnóstico claro.</p>
+          <ul class="contacto-datos">
+            <li><strong>WhatsApp</strong><span>+54 9 11 2463-2544</span></li>
+            <li><strong>Ubicación</strong><span>CABA, Buenos Aires</span></li>
+            <li><strong>Horario</strong><span>Lun a Vie, 9:00 a 19:00</span></li>
+          </ul>
         </div>
+        
         <form class="contacto-form" id="cdsForm" action="https://formspree.io/f/maqpkdog" method="POST">
-          <input type="text" name="name" placeholder="Tu nombre" required />
-          <input type="email" name="email" placeholder="tu@email.com" required />
-          <select name="service" required>
-            <option value="" disabled selected>Seleccioná un servicio</option>
-            <option value="Ciberseguridad">Ciberseguridad</option>
-            <option value="Soporte IT">Soporte IT</option>
-            <option value="Diseno Web">Diseño Web (Nexo)</option>
-          </select>
-          <textarea name="message" rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
+          <div class="form-field">
+            <label>Tu nombre</label>
+            <input type="text" name="name" required placeholder="Ej: Roberto Pérez" />
+          </div>
+          <div class="form-field">
+            <label>Tu email</label>
+            <input type="email" name="email" required placeholder="ejemplo@correo.com" />
+          </div>
+          <div class="form-field">
+            <label>Servicio interesado</label>
+            <select name="service" required>
+              <option value="" disabled selected>Seleccioná una opción</option>
+              <option value="Ciberseguridad">Ciberseguridad</option>
+              <option value="Soporte IT">Soporte IT</option>
+              <option value="Web">Diseño Web (Nexo)</option>
+              <option value="Consulta">Consulta General</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Mensaje</label>
+            <textarea name="message" rows="4" required placeholder="¿Qué necesitás resolver?"></textarea>
+          </div>
           <button type="submit" class="form-submit" id="cds-btn">Enviar consulta →</button>
-          <p id="form-status" style="margin-top: 10px; text-align: center; font-weight: 600;"></p>
+          <p id="form-status" style="margin-top: 15px; text-align: center; font-weight: 600;"></p>
         </form>
       </div>
     </section>
   </main>
 
-  <a href="https://wa.me/5491124632544" id="wa-float">
+  <!-- FLOAT WHATSAPP -->
+  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" fill="white" width="35" height="35"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
   <script>
-    const form = document.getElementById('cdsForm');
-    const status = document.getElementById('form-status');
-    const btn = document.getElementById('cds-btn');
-
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const data = new FormData(form);
-        btn.innerText = "Enviando...";
-        btn.disabled = true;
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: data,
-                headers: { 'Accept': 'application/json' }
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. REVEAL ANIMATION (Efecto de aparición al bajar)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
-            if (response.ok) {
-                status.innerText = "¡Enviado con éxito! Te contactaremos pronto.";
-                status.style.color = "#00f2ff";
-                form.reset();
-            } else {
-                status.innerText = "Error al enviar. Intentá por WhatsApp.";
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section, .servicio-card, .porque-item, .nexo-demo-card').forEach(el => {
+            el.classList.add('reveal');
+            observer.observe(el);
+        });
+
+        // 2. MOUSE LIGHT EFFECT (Luz que sigue al mouse en tarjetas)
+        const handleMouseMove = (e) => {
+            const cards = document.querySelectorAll('.servicio-card, .nexo-demo-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+
+        // 3. FORMULARIO SIN RECARGA (Formspree Fetch)
+        const form = document.getElementById('cdsForm');
+        const status = document.getElementById('form-status');
+        const btn = document.getElementById('cds-btn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            btn.innerText = "Enviando...";
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (response.ok) {
+                    status.innerText = "¡Enviado con éxito! Nos contactaremos pronto.";
+                    status.style.color = "#00f2ff";
+                    form.reset();
+                } else {
+                    status.innerText = "Error al enviar. Intentá por WhatsApp.";
+                    status.style.color = "#ff4444";
+                }
+            } catch (error) {
+                status.innerText = "Error de conexión.";
                 status.style.color = "#ff4444";
+            } finally {
+                btn.innerText = "Enviar consulta →";
+                btn.disabled = false;
             }
-        } catch (error) {
-            status.innerText = "Error de conexión.";
-            status.style.color = "#ff4444";
-        } finally {
-            btn.innerText = "Enviar consulta →";
-            btn.disabled = false;
-        }
+        });
     });
   </script>
 </body>
