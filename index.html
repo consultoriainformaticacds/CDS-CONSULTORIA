@@ -4,23 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CDS — Consultoría Informática | Ciberseguridad y Soporte IT</title>
-  <meta name="description" content="CDS — Consultoría Informática. Ciberseguridad, soporte IT y desarrollo web profesional para empresas de CABA." />
+  <meta name="description" content="CDS — Consultoría Informática. Ciberseguridad, soporte IT y desarrollo web profesional en CABA." />
   <meta name="theme-color" content="#060D1F" />
   <link rel="icon" href="logo-cds.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Mulish:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* VARIABLES Y BASE */
     :root {
       --bg: #060d1f;
-      --bg-card: rgba(15, 23, 42, 0.7);
+      --bg-card: rgba(15, 23, 42, 0.6);
       --accent: #00f2ff;
       --accent-2: #7000ff;
       --text: #e2e8f0;
       --text-dim: #94a3b8;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --white: #ffffff;
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,231 +29,253 @@
     body { background-color: var(--bg); color: var(--text); font-family: 'Mulish', sans-serif; overflow-x: hidden; line-height: 1.6; }
     h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
 
-    /* NAVEGACIÓN */
-    nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(15px); background: rgba(6, 13, 31, 0.8); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-    .nav-logo { font-size: 1.5rem; text-decoration: none; color: #fff; font-weight: 700; }
+    /* NAVEGACIÓN MEJORADA */
+    nav { position: fixed; top: 0; width: 100%; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(20px); background: rgba(6, 13, 31, 0.8); border-bottom: 1px solid var(--glass-border); transition: var(--transition); }
+    nav.scrolled { padding: 10px 5%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .nav-logo { font-size: 1.6rem; text-decoration: none; color: #fff; font-weight: 700; display: flex; flex-direction: column; line-height: 1; }
     .nav-logo span { color: var(--accent); }
-    .nav-logo small { font-size: 0.7rem; display: block; color: var(--text-dim); font-weight: 400; text-transform: none; margin-top: -5px; }
-    .nav-links { display: flex; list-style: none; gap: 25px; }
-    .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); font-weight: 600; font-size: 0.9rem; }
-    .nav-links a:hover { color: var(--accent); }
-    .nav-cta { background: var(--accent); color: var(--bg); padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: var(--transition); }
-    .nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--accent); }
+    .nav-logo small { font-size: 0.65rem; color: var(--text-dim); font-weight: 400; letter-spacing: 1px; margin-top: 2px; }
+    .nav-links { display: flex; list-style: none; gap: 30px; }
+    .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; }
+    .nav-links a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent); }
+    .nav-cta { background: var(--accent); color: var(--bg); padding: 10px 22px; border-radius: 4px; text-decoration: none; font-weight: 800; font-size: 0.8rem; transition: var(--transition); border: 1px solid var(--accent); }
+    .nav-cta:hover { background: transparent; color: var(--accent); box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
 
-    /* HERO */
-    #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 150px 5% 50px; text-align: center; overflow: hidden; }
-    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(0,242,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,242,255,0.05) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle, black, transparent 80%); z-index: -1; }
-    .hero-scan { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent); animation: scan 4s linear infinite; opacity: 0.5; z-index: 1; }
-    @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+    /* HERO ULTRA PREMIUM */
+    #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 100px 5%; text-align: center; overflow: hidden; }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(0,242,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,242,255,0.03) 1px, transparent 1px); background-size: 50px 50px; z-index: -1; }
+    .hero-glow { position: absolute; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(0,242,255,0.15), transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; filter: blur(80px); }
+    .hero-scan { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, transparent, rgba(0, 242, 255, 0.05), transparent); animation: scan-v2 6s ease-in-out infinite; z-index: 0; pointer-events: none; }
+    @keyframes scan-v2 { 0% { top: -100px; } 100% { top: 100%; } }
 
-    .hero-badge { display: inline-block; padding: 5px 15px; background: rgba(0, 242, 255, 0.1); border: 1px solid var(--accent); border-radius: 50px; font-size: 0.8rem; color: var(--accent); margin-bottom: 20px; }
-    .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
-    .t2 { color: var(--accent); text-shadow: 0 0 20px rgba(0,242,255,0.4); }
-    .t3 { display: block; font-size: 1.2rem; color: var(--text-dim); margin-top: 10px; }
-    .hero-desc { max-width: 700px; margin: 0 auto 40px; font-size: 1.1rem; color: var(--text-dim); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 100px; font-size: 0.75rem; color: var(--accent); margin-bottom: 25px; font-weight: 700; text-transform: uppercase; }
+    .hero-title { font-size: clamp(2.8rem, 9vw, 5.5rem); line-height: 1; margin-bottom: 25px; font-weight: 700; }
+    .hero-title .t2 { background: linear-gradient(90deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-title .t3 { display: block; font-size: 1.1rem; color: var(--text-dim); margin-top: 15px; font-weight: 500; letter-spacing: 4px; }
+    .hero-desc { max-width: 650px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-dim); font-weight: 300; }
 
-    .hero-actions { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; }
-    .btn-primary { padding: 15px 30px; background: var(--accent); color: var(--bg); text-decoration: none; border-radius: 8px; font-weight: 700; transition: var(--transition); }
-    .btn-outline { padding: 15px 30px; border: 2px solid var(--accent); color: var(--accent); text-decoration: none; border-radius: 8px; transition: var(--transition); }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,242,255,0.3); }
+    /* STATS CON DISEÑO */
+    .hero-stats { display: flex; justify-content: center; gap: 60px; margin-top: 30px; }
+    .stat-item { display: flex; flex-direction: column; align-items: center; }
+    .stat-num { font-size: 2.5rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 5px; font-family: 'Rajdhani'; }
+    .stat-label { font-size: 0.65rem; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
 
-    .hero-stats { display: flex; justify-content: center; gap: 40px; }
-    .stat-num { display: block; font-size: 2.2rem; font-weight: 700; color: #fff; }
-    .stat-label { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+    /* SECCIONES */
+    section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 80px; }
+    .section-tag { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px; display: block; }
+    .section-title { font-size: 3rem; font-weight: 700; }
 
-    /* SECCIONES REUSABLES */
-    section { padding: 100px 5%; max-width: 1300px; margin: 0 auto; position: relative; }
-    .section-tag { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; text-align: center; margin-bottom: 10px; display: block; }
-    .section-title { font-size: 2.8rem; text-align: center; margin-bottom: 60px; }
-    .section-title span { color: var(--accent-2); }
-
-    /* SERVICIOS CON EFECTO DE LUZ */
-    .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+    /* SERVICIOS EVOLUTION */
+    .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
     .servicio-card { 
-      background: var(--bg-card); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);
+      background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border);
       position: relative; transition: var(--transition); backdrop-filter: blur(10px); overflow: hidden;
     }
-    /* El brillo que sigue al mouse */
     .servicio-card::before {
       content: ""; position: absolute; inset: 0;
-      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(0, 242, 255, 0.1), transparent 40%);
-      z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.3s;
+      background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(0, 242, 255, 0.08), transparent 40%);
+      opacity: 0; transition: opacity 0.3s;
     }
     .servicio-card:hover::before { opacity: 1; }
-    .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+    .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
     
-    .servicio-num { position: absolute; top: 20px; right: 20px; color: rgba(255,255,255,0.03); font-size: 4rem; font-weight: 800; line-height: 1; }
-    .servicio-icon { font-size: 2.8rem; margin-bottom: 25px; display: block; position: relative; }
-    .servicio-card h3 { font-size: 1.5rem; margin-bottom: 15px; position: relative; }
-    .servicio-card p { color: var(--text-dim); position: relative; }
-    .tag { display: inline-block; padding: 4px 12px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 50px; font-size: 0.75rem; color: var(--accent); margin: 15px 8px 0 0; }
+    .servicio-icon { font-size: 3rem; margin-bottom: 30px; display: block; color: var(--accent); }
+    .servicio-card h3 { font-size: 1.6rem; margin-bottom: 15px; color: #fff; }
+    .servicio-card p { color: var(--text-dim); font-size: 0.95rem; }
+    .servicio-tags { display: flex; gap: 10px; margin-top: 25px; }
+    .tag { font-size: 0.65rem; color: var(--accent); border: 1px solid rgba(0, 242, 255, 0.2); padding: 4px 12px; border-radius: 2px; font-weight: 700; text-transform: uppercase; }
 
-    /* POR QUÉ ELEGIRNOS */
-    .porque-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
-    .porque-item { display: flex; gap: 20px; align-items: flex-start; }
-    .porque-icon { font-size: 1.8rem; background: rgba(255,255,255,0.05); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; }
-    .porque-item h4 { font-size: 1.1rem; color: var(--accent); margin-bottom: 5px; }
-    .porque-item p { font-size: 0.9rem; color: var(--text-dim); }
+    /* PROCESO (Nueva sección clave) */
+    .proceso-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 50px; }
+    .proceso-step { text-align: center; padding: 20px; position: relative; }
+    .step-num { font-size: 4rem; font-weight: 800; color: rgba(255,255,255,0.03); position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: -1; }
+    .proceso-step h4 { color: var(--accent); margin-bottom: 10px; font-size: 1.2rem; }
+    .proceso-step p { font-size: 0.85rem; color: var(--text-dim); }
 
-    /* NEXO PORTFOLIO */
-    .nexo-demos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    /* NEXO SHOWCASE */
+    .nexo-demos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
     .nexo-demo-card { 
-      background: rgba(255,255,255,0.02); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05);
+      background: #0a1124; padding: 0; border-radius: 8px; border: 1px solid var(--glass-border);
       text-decoration: none; transition: var(--transition); position: relative; overflow: hidden;
+      display: flex; flex-direction: column; height: 200px; justify-content: flex-end; padding: 30px;
     }
-    .nexo-demo-card:hover { border-color: var(--accent-2); transform: translateY(-5px); background: rgba(112, 0, 255, 0.05); }
-    .nexo-demo-rubro { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
-    .nexo-demo-name { display: block; font-size: 1.3rem; color: #fff; margin: 10px 0; font-weight: 700; }
-    .nexo-demo-nivel { font-size: 0.7rem; color: var(--accent); border: 1px solid var(--accent); padding: 2px 8px; border-radius: 4px; display: inline-block; }
+    .nexo-demo-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, #060d1f, transparent); z-index: 1; }
+    .nexo-demo-card:hover { border-color: var(--accent-2); transform: scale(1.03); }
+    .nexo-demo-content { position: relative; z-index: 2; }
+    .nexo-demo-rubro { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
+    .nexo-demo-name { font-size: 1.4rem; color: #fff; font-weight: 700; margin: 5px 0; }
 
-    /* CONTACTO */
-    .contacto-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
-    .contacto-datos { list-style: none; margin-top: 40px; }
-    .contacto-datos li { margin-bottom: 25px; display: flex; flex-direction: column; }
-    .contacto-datos li strong { color: var(--accent); font-size: 0.8rem; text-transform: uppercase; }
-    .contacto-datos li span { font-size: 1.2rem; font-weight: 600; color: #fff; }
-
-    .contacto-form { background: var(--bg-card); padding: 40px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 20px; }
-    .form-field { display: flex; flex-direction: column; gap: 8px; }
-    .form-field label { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; }
-    .form-field input, .form-field select, .form-field textarea { 
-      background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; color: #fff; font-family: inherit; outline: none; transition: var(--transition);
+    /* CONTACTO CENTER */
+    .contacto-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+    .contacto-form { background: rgba(255,255,255,0.02); padding: 50px; border-radius: 8px; border: 1px solid var(--glass-border); display: grid; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group label { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .form-group input, .form-group select, .form-group textarea { 
+      background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 14px; border-radius: 4px; color: #fff; font-family: inherit; outline: none; transition: var(--transition);
     }
-    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--accent); background: rgba(0,242,255,0.03); }
-    .form-field select option { background: var(--bg); color: #fff; }
-    
-    .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 18px; border-radius: 10px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); margin-top: 10px; }
-    .form-submit:hover { transform: scale(1.02); box-shadow: 0 0 25px var(--accent); }
+    .form-group input:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(0,242,255,0.1); }
+    .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 18px; border-radius: 4px; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
+    .form-submit:hover { letter-spacing: 2px; box-shadow: 0 0 30px var(--accent); }
+
+    /* FOOTER */
+    footer { padding: 50px 5%; border-top: 1px solid var(--glass-border); text-align: center; color: var(--text-dim); font-size: 0.8rem; }
 
     /* WHATSAPP */
-    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: var(--transition); animation: pulse-wa 2s infinite; }
-    #wa-float:hover { transform: scale(1.1); }
-    @keyframes pulse-wa { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: var(--transition); }
+    #wa-float:hover { transform: scale(1.1) rotate(10deg); }
 
-    /* ANIMACIONES REVEAL */
-    .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 900px) {
-      .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
+    @media (max-width: 800px) {
+      .contacto-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .hero-stats { gap: 20px; flex-wrap: wrap; }
+      .hero-stats { gap: 30px; }
       .section-title { font-size: 2.2rem; }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a class="nav-logo" href="#">CDS<span>.</span><small>Consultoría Informática</small></a>
+  <nav id="navbar">
+    <a class="nav-logo" href="#">
+      <div>CDS<span>.</span></div>
+      <small>Consultoría Informática</small>
+    </a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#porque">Nosotros</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#nexo">Nexo Web</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="#contacto" class="nav-cta">Consultar ahora</a>
+    <a href="#contacto" class="nav-cta">Comenzar proyecto</a>
   </nav>
 
   <main>
     <!-- HERO -->
     <section id="hero">
       <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
       <div class="hero-scan"></div>
       <div class="hero-content">
-        <div class="hero-badge">Tecnología · Seguridad · Desarrollo</div>
+        <div class="hero-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z"/></svg>
+          Tecnología de Vanguardia
+        </div>
         <h1 class="hero-title">
-          Soluciones <span class="t2">Digitales</span><br/>
-          <span class="t3">Seguras · Escalables · Profesionales</span>
+          Seguridad que <br/><span class="t2">Impulsa tu Negocio</span>
+          <span class="t3">Ciberseguridad · Soporte · Desarrollo</span>
         </h1>
-        <p class="hero-desc">En <strong>CDS</strong> protegemos y potenciamos tu negocio con tecnología de punta. Desde ciberseguridad y soporte IT hasta diseño web y vigilancia electrónica.</p>
+        <p class="hero-desc">Expertos en proteger activos digitales y optimizar infraestructuras IT para empresas que no pueden permitirse detenerse.</p>
         <div class="hero-actions">
-          <a href="#servicios" class="btn-primary">Ver servicios</a>
-          <a href="https://wa.me/5491124632544" target="_blank" class="btn-outline">WhatsApp Directo</a>
+          <a href="#servicios" class="btn-primary">Nuestras Soluciones</a>
+          <a href="https://wa.me/5491124632544" target="_blank" class="btn-outline">Soporte Urgente</a>
         </div>
         <div class="hero-stats">
-          <div class="stat-item"><span class="stat-num">+50</span><span class="stat-label">Clientes</span></div>
-          <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Soporte</span></div>
-          <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Efectivo</span></div>
+          <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Monitoreo</span></div>
+          <div class="stat-item"><span class="stat-num">+50</span><span class="stat-label">Empresas</span></div>
+          <div class="stat-item"><span class="stat-num">&lt;24h</span><span class="stat-label">Respuesta</span></div>
         </div>
       </div>
     </section>
 
     <!-- SERVICIOS -->
     <section id="servicios">
-      <span class="section-tag">Lo que hacemos</span>
-      <h2 class="section-title">Nuestros servicios</h2>
+      <div class="section-header">
+        <span class="section-tag">Especialidades</span>
+        <h2 class="section-title">Infraestructura & Seguridad</h2>
+      </div>
       <div class="servicios-grid">
         <article class="servicio-card">
-          <span class="servicio-num">01</span>
-          <span class="servicio-icon">🔐</span>
+          <div class="servicio-num">01</div>
+          <div class="servicio-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
           <h3>Ciberseguridad</h3>
-          <p>Protegemos tu infraestructura digital. Auditorías, hardening y defensa activa.</p>
+          <p>Auditorías preventivas, Hardening de servidores y protocolos de defensa activa contra amenazas externas.</p>
           <div class="servicio-tags"><span class="tag">Auditoría</span><span class="tag">Defensa</span></div>
         </article>
+
         <article class="servicio-card">
-          <span class="servicio-num">02</span>
-          <span class="servicio-icon">💻</span>
+          <div class="servicio-num">02</div>
+          <div class="servicio-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
           <h3>Soporte IT</h3>
-          <p>Mantenimiento de redes y servidores. Respuesta rápida para que no te detengas.</p>
-          <div class="servicio-tags"><span class="tag">Redes</span><span class="tag">Servidores</span></div>
+          <p>Gestión integral de redes corporativas, administración de servidores Cloud y mantenimiento correctivo presencial.</p>
+          <div class="servicio-tags"><span class="tag">Servidores</span><span class="tag">Redes</span></div>
         </article>
+
         <article class="servicio-card">
-          <span class="servicio-num">03</span>
-          <span class="servicio-icon">📹</span>
-          <h3>Seguridad Electrónica</h3>
-          <p>Instalación de cámaras IP y alarmas. Vigilancia profesional para tu negocio.</p>
-          <div class="servicio-tags"><span class="tag">Cámaras</span><span class="tag">Control</span></div>
-        </article>
-        <article class="servicio-card">
-          <span class="servicio-num">04</span>
-          <span class="servicio-icon">🌐</span>
-          <h3>Diseño Web</h3>
-          <p>Sitios modernos de alto impacto realizados por Nexo. Entrega en 10 días.</p>
-          <div class="servicio-tags"><span class="tag">Nexo Web</span><span class="tag">Landing</span></div>
+          <div class="servicio-num">03</div>
+          <div class="servicio-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          </div>
+          <h3>Vigilancia IP</h3>
+          <p>Diseño e implementación de sistemas de seguridad electrónica, cámaras de alta definición y control de acceso.</p>
+          <div class="servicio-tags"><span class="tag">Seguridad</span><span class="tag">Cámaras</span></div>
         </article>
       </div>
     </section>
 
-    <!-- POR QUÉ ELEGIRNOS -->
-    <section id="porque">
-      <span class="section-tag">Diferencial</span>
-      <h2 class="section-title">Tecnología con respaldo real</h2>
-      <div class="porque-grid">
-        <div class="porque-item">
-          <div class="porque-icon">⚡</div>
-          <div><h4>Respuesta rápida</h4><p>Atendemos urgencias en menos de 24 horas. Tu negocio no puede esperar.</p></div>
+    <!-- PROCESO -->
+    <section id="proceso">
+      <div class="section-header">
+        <span class="section-tag">Metodología</span>
+        <h2 class="section-title">Cómo trabajamos</h2>
+      </div>
+      <div class="proceso-grid">
+        <div class="proceso-step">
+          <div class="step-num">1</div>
+          <h4>Auditoría</h4>
+          <p>Analizamos el estado actual de tu tecnología y detectamos vulnerabilidades.</p>
         </div>
-        <div class="porque-item">
-          <div class="porque-icon">🛡</div>
-          <div><h4>Soluciones integrales</h4><p>No necesitás 4 proveedores distintos. Cubrimos todo tu entorno digital.</p></div>
+        <div class="proceso-step">
+          <div class="step-num">2</div>
+          <h4>Estrategia</h4>
+          <p>Diseñamos un plan a medida basado en tus necesidades y presupuesto.</p>
         </div>
-        <div class="porque-item">
-          <div class="porque-icon">💬</div>
-          <div><h4>Asesoramiento claro</h4><p>Te explicamos todo sin tecnicismos. Tomas decisiones informado.</p></div>
+        <div class="proceso-step">
+          <div class="step-num">3</div>
+          <h4>Implementación</h4>
+          <p>Ejecutamos las mejoras con el mínimo impacto en tu operación diaria.</p>
         </div>
-        <div class="porque-item">
-          <div class="porque-icon">📍</div>
-          <div><h4>Presencia en CABA</h4><p>Podemos ir a tu negocio cuando sea necesario. Soporte presencial disponible.</p></div>
+        <div class="proceso-step">
+          <div class="step-num">4</div>
+          <h4>Mantenimiento</h4>
+          <p>Monitoreo constante 24/7 para prevenir problemas antes que ocurran.</p>
         </div>
       </div>
     </section>
 
     <!-- NEXO -->
     <section id="nexo">
-      <span class="section-tag">Área de Diseño</span>
-      <h2 class="section-title">¿Necesitás una web? <span>Nexo.</span> lo hace.</h2>
+      <div class="section-header">
+        <span class="section-tag">Presencia Digital</span>
+        <h2 class="section-title">Diseño Web por <span>Nexo.</span></h2>
+      </div>
       <div class="nexo-demos-grid">
         <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estetica-premium" target="_blank">
-          <span class="nexo-demo-rubro">Estética</span><span class="nexo-demo-name">Lumière Studio</span><span class="nexo-demo-nivel">Premium</span>
-        </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
-          <span class="nexo-demo-rubro">Gastronomía</span><span class="nexo-demo-name">Raíces Resto</span><span class="nexo-demo-nivel">Premium</span>
+          <div class="nexo-demo-content">
+            <span class="nexo-demo-rubro">Bienestar</span>
+            <span class="nexo-demo-name">Lumière Studio</span>
+            <span class="nexo-demo-nivel">Premium UI</span>
+          </div>
         </a>
         <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-estudio-juridico" target="_blank">
-          <span class="nexo-demo-rubro">Legales</span><span class="nexo-demo-name">Fernández & Asoc.</span><span class="nexo-demo-nivel">Standard</span>
+          <div class="nexo-demo-content">
+            <span class="nexo-demo-rubro">Legal</span>
+            <span class="nexo-demo-name">Fernández & Asoc.</span>
+            <span class="nexo-demo-nivel">Standard UI</span>
+          </div>
         </a>
-        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-tienda-premium" target="_blank">
-          <span class="nexo-demo-rubro">Tienda</span><span class="nexo-demo-name">RegaloUnico</span><span class="nexo-demo-nivel">Premium</span>
+        <a class="nexo-demo-card" href="https://nexo-landing.pages.dev/demo-restaurante" target="_blank">
+          <div class="nexo-demo-content">
+            <span class="nexo-demo-rubro">Gastronomía</span>
+            <span class="nexo-demo-name">Raíces Resto</span>
+            <span class="nexo-demo-nivel">Premium UI</span>
+          </div>
         </a>
       </div>
     </section>
@@ -261,80 +284,85 @@
     <section id="contacto">
       <div class="contacto-grid">
         <div class="contacto-info">
-          <h2 style="font-size: 2.5rem; line-height: 1;">Contacto</h2>
-          <p style="margin-top: 15px; color: var(--text-dim);">Contanos tu situación y te respondemos con un diagnóstico claro.</p>
+          <span class="section-tag" style="text-align: left;">Hablemos</span>
+          <h2 class="section-title" style="text-align: left;">¿Listo para asegurar tu negocio?</h2>
+          <p style="margin-top: 20px; color: var(--text-dim);">Un experto de CDS analizará tu consulta y te responderá en menos de 24 horas hábiles.</p>
           <ul class="contacto-datos">
-            <li><strong>WhatsApp</strong><span>+54 9 11 2463-2544</span></li>
-            <li><strong>Ubicación</strong><span>CABA, Buenos Aires</span></li>
-            <li><strong>Horario</strong><span>Lun a Vie, 9:00 a 19:00</span></li>
+            <li><strong>Canal Directo</strong><span>+54 9 11 2463-2544</span></li>
+            <li><strong>Cobertura</strong><span>CABA & Buenos Aires</span></li>
+            <li><strong>Atención</strong><span>Lunes a Viernes, 09:00 - 19:00</span></li>
           </ul>
         </div>
         
         <form class="contacto-form" id="cdsForm" action="https://formspree.io/f/maqpkdog" method="POST">
-          <div class="form-field">
-            <label>Tu nombre</label>
-            <input type="text" name="name" required placeholder="Ej: Roberto Pérez" />
+          <div class="form-group">
+            <label>Nombre Completo</label>
+            <input type="text" name="name" required placeholder="Tu nombre" />
           </div>
-          <div class="form-field">
-            <label>Tu email</label>
-            <input type="email" name="email" required placeholder="ejemplo@correo.com" />
+          <div class="form-group">
+            <label>Email Corporativo</label>
+            <input type="email" name="email" required placeholder="tu@empresa.com" />
           </div>
-          <div class="form-field">
-            <label>Servicio interesado</label>
+          <div class="form-group">
+            <label>Área de Interés</label>
             <select name="service" required>
-              <option value="" disabled selected>Seleccioná una opción</option>
-              <option value="Ciberseguridad">Ciberseguridad</option>
-              <option value="Soporte IT">Soporte IT</option>
-              <option value="Web">Diseño Web (Nexo)</option>
-              <option value="Consulta">Consulta General</option>
+              <option value="" disabled selected>Seleccioná una solución</option>
+              <option value="Ciberseguridad">Ciberseguridad & Auditoría</option>
+              <option value="Soporte IT">Soporte IT & Servidores</option>
+              <option value="Seguridad Electronica">Seguridad Electrónica / Cámaras</option>
+              <option value="Web">Diseño Web Profesional (Nexo)</option>
             </select>
           </div>
-          <div class="form-field">
-            <label>Mensaje</label>
-            <textarea name="message" rows="4" required placeholder="¿Qué necesitás resolver?"></textarea>
+          <div class="form-group">
+            <label>Descripción del requerimiento</label>
+            <textarea name="message" rows="4" required placeholder="¿En qué podemos ayudarte?"></textarea>
           </div>
-          <button type="submit" class="form-submit" id="cds-btn">Enviar consulta →</button>
-          <p id="form-status" style="margin-top: 15px; text-align: center; font-weight: 600;"></p>
+          <button type="submit" class="form-submit" id="cds-btn">Enviar Requerimiento →</button>
+          <p id="form-status" style="margin-top: 15px; text-align: center; font-weight: 700; font-size: 0.9rem;"></p>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- FLOAT WHATSAPP -->
-  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" fill="white" width="35" height="35"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <footer>
+    <p>© 2025 CDS Consultoría Informática. Todos los derechos reservados. CABA, Argentina.</p>
+  </footer>
+
+  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank">
+    <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. REVEAL ANIMATION (Efecto de aparición al bajar)
+        // 1. NAV SCROLL EFFECT
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // 2. REVEAL ANIMATION
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.15 });
 
-        document.querySelectorAll('section, .servicio-card, .porque-item, .nexo-demo-card').forEach(el => {
+        document.querySelectorAll('section, .servicio-card, .proceso-step, .nexo-demo-card').forEach(el => {
             el.classList.add('reveal');
             observer.observe(el);
         });
 
-        // 2. MOUSE LIGHT EFFECT (Luz que sigue al mouse en tarjetas)
-        const handleMouseMove = (e) => {
-            const cards = document.querySelectorAll('.servicio-card, .nexo-demo-card');
-            cards.forEach(card => {
+        // 3. MOUSE TRACKING (Brillo de tarjetas)
+        window.addEventListener('mousemove', (e) => {
+            document.querySelectorAll('.servicio-card, .nexo-demo-card').forEach(card => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
+                card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
             });
-        };
-        window.addEventListener('mousemove', handleMouseMove);
+        });
 
-        // 3. FORMULARIO SIN RECARGA (Formspree Fetch)
+        // 4. FORMULARIO AJAX
         const form = document.getElementById('cdsForm');
         const status = document.getElementById('form-status');
         const btn = document.getElementById('cds-btn');
@@ -342,7 +370,7 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const data = new FormData(form);
-            btn.innerText = "Enviando...";
+            btn.innerText = "PROCESANDO SOLICITUD...";
             btn.disabled = true;
 
             try {
@@ -352,18 +380,17 @@
                     headers: { 'Accept': 'application/json' }
                 });
                 if (response.ok) {
-                    status.innerText = "¡Enviado con éxito! Nos contactaremos pronto.";
-                    status.style.color = "#00f2ff";
+                    status.innerText = "SISTEMA: CONSULTA RECIBIDA CON ÉXITO.";
+                    status.style.color = "var(--accent)";
                     form.reset();
                 } else {
-                    status.innerText = "Error al enviar. Intentá por WhatsApp.";
+                    status.innerText = "ERROR DE SISTEMA. REINTENTE.";
                     status.style.color = "#ff4444";
                 }
             } catch (error) {
-                status.innerText = "Error de conexión.";
-                status.style.color = "#ff4444";
+                status.innerText = "ERROR DE CONEXIÓN.";
             } finally {
-                btn.innerText = "Enviar consulta →";
+                btn.innerText = "ENVIAR REQUERIMIENTO →";
                 btn.disabled = false;
             }
         });
