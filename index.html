@@ -4,58 +4,86 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CDS — Consultoría Informática | Ciberseguridad y Soporte IT</title>
-  <meta name="description" content="Ciberseguridad, soporte IT y desarrollo web profesional en CABA." />
+  <meta name="description" content="Expertos en ciberseguridad, soporte IT y vigilancia electrónica en CABA. Protegemos tu infraestructura digital." />
   <meta name="theme-color" content="#060D1F" />
   <link rel="icon" href="logo-cds.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    :root { --bg: #060d1f; --bg-card: rgba(15, 23, 42, 0.6); --accent: #00f2ff; --accent-2: #7000ff; --text: #e2e8f0; --text-dim: #94a3b8; --glass-border: rgba(255, 255, 255, 0.08); --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+    :root {
+      --bg: #060d1f;
+      --bg-card: rgba(15, 23, 42, 0.7);
+      --accent: #00f2ff;
+      --accent-2: #7000ff;
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; color-scheme: dark; }
     body { background-color: var(--bg); color: var(--text); font-family: 'Mulish', sans-serif; overflow-x: hidden; line-height: 1.6; }
     h1, h2, h3, h4 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+
     nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(20px); background: rgba(6, 13, 31, 0.8); border-bottom: 1px solid var(--glass-border); }
     .nav-logo { font-size: 1.6rem; text-decoration: none; color: #fff; font-weight: 700; line-height: 1; }
     .nav-logo span { color: var(--accent); }
-    .nav-logo small { font-size: 0.65rem; color: var(--text-dim); font-weight: 400; display: block; }
-    .nav-links { display: flex; list-style: none; gap: 25px; }
+    .nav-logo small { font-size: 0.65rem; color: var(--text-dim); font-weight: 400; display: block; text-transform: none; margin-top: -2px; }
+    .nav-links { display: flex; list-style: none; gap: 30px; }
     .nav-links a { text-decoration: none; color: var(--text-dim); transition: var(--transition); font-weight: 600; font-size: 0.85rem; }
     .nav-links a:hover { color: var(--accent); }
-    .nav-cta { background: var(--accent); color: var(--bg); padding: 10px 20px; border-radius: 4px; text-decoration: none; font-weight: 800; font-size: 0.8rem; }
+    .nav-cta { background: var(--accent); color: var(--bg); padding: 10px 22px; border-radius: 4px; text-decoration: none; font-weight: 800; font-size: 0.8rem; }
+
     #hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 150px 5% 80px; text-align: center; overflow: hidden; }
     .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(to right, rgba(0,242,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,242,255,0.03) 1px, transparent 1px); background-size: 50px 50px; z-index: -1; }
-    .hero-scan { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, transparent, rgba(0, 242, 255, 0.05), transparent); animation: scan 5s linear infinite; z-index: 0; }
-    @keyframes scan { 0% { top: -100px; } 100% { top: 100vh; } }
+    .hero-scan { position: absolute; top: 0; left: 0; width: 100%; height: 100px; background: linear-gradient(to bottom, transparent, rgba(0, 242, 255, 0.05), transparent); animation: scan 6s linear infinite; z-index: 0; pointer-events: none; }
+    @keyframes scan { 0% { top: -100px; } 100% { top: 100%; } }
+
     .hero-badge { display: inline-block; padding: 6px 18px; background: rgba(0,242,255,0.05); border: 1px solid var(--accent); border-radius: 100px; font-size: 0.75rem; color: var(--accent); margin-bottom: 25px; font-weight: 700; }
-    .hero-title { font-size: clamp(2.8rem, 9vw, 5rem); line-height: 1; margin-bottom: 25px; }
-    .hero-title .t2 { color: var(--accent); text-shadow: 0 0 30px rgba(0, 242, 255, 0.3); }
-    .hero-title .t3 { display: block; font-size: 1.1rem; color: var(--text-dim); margin-top: 15px; letter-spacing: 3px; font-weight: 400; }
-    section { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
-    .section-tag { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; font-weight: 700; text-align: center; margin-bottom: 15px; display: block; }
-    .section-title { font-size: 3rem; text-align: center; margin-bottom: 60px; font-weight: 700; }
-    .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-    .servicio-card { background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border); position: relative; transition: var(--transition); backdrop-filter: blur(10px); overflow: hidden; }
+    .hero-title { font-size: clamp(2.8rem, 9vw, 5.5rem); line-height: 1; margin-bottom: 25px; }
+    .hero-title .t2 { color: var(--accent); text-shadow: 0 0 30px rgba(0, 242, 255, 0.4); }
+    .hero-title .t3 { display: block; font-size: 1.1rem; color: var(--text-dim); margin-top: 15px; letter-spacing: 4px; font-weight: 400; }
+    .hero-desc { max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem; color: var(--text-dim); font-weight: 300; }
+
+    section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
+    .section-title { font-size: 3rem; text-align: center; margin-bottom: 80px; }
+    .servicios-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .servicio-card { background: var(--bg-card); padding: 50px; border-radius: 4px; border: 1px solid var(--glass-border); transition: var(--transition); position: relative; backdrop-filter: blur(10px); }
     .servicio-card:hover { border-color: var(--accent); transform: translateY(-10px); }
-    .servicio-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(0, 242, 255, 0.1), transparent 40%); opacity: 0; transition: opacity 0.3s; }
-    .servicio-card:hover::before { opacity: 1; }
-    .servicio-icon { font-size: 3rem; margin-bottom: 30px; display: block; }
-    .ecosistema-box { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 12px; padding: 40px; margin-top: 40px; text-align: center; }
-    .ecosistema-svg { max-width: 700px; width: 100%; height: auto; margin: 0 auto; }
+    .servicio-num { position: absolute; top: 20px; right: 20px; color: rgba(255,255,255,0.03); font-size: 4rem; font-weight: 800; line-height: 1; }
+    .servicio-icon { font-size: 3.5rem; margin-bottom: 30px; display: block; }
+    .tag { display: inline-block; padding: 4px 12px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 2px; font-size: 0.7rem; color: var(--accent); margin-right: 8px; margin-top: 20px; }
+
+    /* ECOSISTEMA BOX */
+    .ecosistema-box { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 12px; padding: 60px 40px; text-align: center; margin-top: 40px; }
+    .ecosistema-svg { width: 100%; max-width: 800px; margin: 0 auto; height: auto; }
+
+    /* FORMULARIO */
     .contacto-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start; }
-    .contacto-form { background: var(--bg-card); padding: 50px; border-radius: 12px; border: 1px solid var(--glass-border); display: grid; gap: 20px; }
+    .contacto-info-card { display: flex; flex-direction: column; gap: 30px; }
+    .info-item h4 { color: var(--accent); font-size: 0.8rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+    .info-item p { font-size: 1.4rem; font-weight: 600; color: #fff; }
+    
+    .contacto-form { background: var(--bg-card); padding: 50px; border-radius: 8px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 20px; }
     .form-group { display: flex; flex-direction: column; gap: 8px; }
     .form-group label { font-size: 0.75rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
-    .form-group input, .form-group select, .form-group textarea { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 6px; color: #fff; font-family: inherit; outline: none; }
-    .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 20px; border-radius: 6px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); }
-    footer { padding: 60px 5% 40px; border-top: 1px solid var(--glass-border); text-align: center; }
-    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: all 0.3s ease; animation: pulse-wa 2s infinite; text-decoration: none; }
-    #wa-float:hover { transform: scale(1.1) rotate(10deg); }
-    @keyframes pulse-wa { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+    .form-group input, .form-group select, .form-group textarea { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); padding: 15px; border-radius: 4px; color: #fff; font-family: inherit; outline: none; transition: 0.3s; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .form-submit { background: var(--accent); color: var(--bg); border: none; padding: 20px; border-radius: 4px; font-weight: 800; cursor: pointer; text-transform: uppercase; transition: var(--transition); letter-spacing: 1px; }
+    .form-submit:hover { box-shadow: 0 0 30px var(--accent); transform: scale(1.02); }
+
+    #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: var(--transition); animation: pulse-wa 2s infinite; }
+    @keyframes pulse-wa { 0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); } }
+
+    footer { padding: 80px 5% 40px; border-top: 1px solid var(--glass-border); text-align: center; }
+    .footer-link { color: var(--text-dim); text-decoration: none; transition: 0.3s; margin: 0 15px; font-size: 0.9rem; }
+    .footer-link:hover { color: var(--accent); }
+
     .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-    @media (max-width: 900px) { .contacto-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+    @media (max-width: 900px) { .nav-links { display: none; } .contacto-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -66,91 +94,128 @@
       <li><a href="#porque">Nosotros</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="#contacto" class="nav-cta">Consultar ahora</a>
+    <a href="#contacto" class="nav-cta">Solicitar Auditoría</a>
   </nav>
+
   <main>
     <section id="hero">
       <div class="hero-grid"></div>
       <div class="hero-scan"></div>
       <div class="hero-content">
-        <div class="hero-badge">Tecnología · Seguridad · Desarrollo</div>
-        <h1 class="hero-title">Soluciones <span class="t2">Digitales</span><br/><span class="t3">Seguras · Escalables · Profesionales</span></h1>
-        <p style="max-width: 750px; margin: 0 auto; font-size: 1.15rem; color: var(--text-dim);">Protegemos tu infraestructura con tecnología de punta. Especialistas en Ciberseguridad y Soporte IT corporativo.</p>
+        <span class="hero-badge">Expertos en Ciberdefensa Corporativa</span>
+        <h1 class="hero-title">Soluciones <br/><span class="t2">Digitales de Elite</span><br/><span class="t3">Seguras · Escalables · Profesionales</span></h1>
+        <p class="hero-desc">En <strong>CDS</strong> blindamos y optimizamos tu operación con tecnología de punta. Desde auditorías de ciberseguridad y soporte IT 24/7 hasta vigilancia electrónica inteligente en CABA.</p>
       </div>
     </section>
+
     <section id="servicios">
-      <span class="section-tag">Lo que hacemos</span>
-      <h2 class="section-title">Nuestros servicios</h2>
       <div class="servicios-grid">
-        <article class="servicio-card"><span class="servicio-icon">🔐</span><h3>Ciberseguridad</h3><p>Auditorías, hardening de servidores y defensa activa contra amenazas digitales.</p></article>
-        <article class="servicio-card"><span class="servicio-icon">💻</span><h3>Soporte IT</h3><p>Gestión de redes, administración Cloud y mantenimiento preventivo integral.</p></article>
         <article class="servicio-card">
+          <div class="servicio-num">01</div>
+          <span class="servicio-icon">🔐</span>
+          <h3>Ciberseguridad</h3>
+          <p>Pentesting, auditorías de vulnerabilidad y Hardening de servidores para proteger tu información crítica contra ataques externos.</p>
+          <span class="tag">Seguridad Activa</span><span class="tag">Auditoría</span>
+        </article>
+        <article class="servicio-card">
+          <div class="servicio-num">02</div>
+          <span class="servicio-icon">💻</span>
+          <h3>Soporte IT</h3>
+          <p>Mantenimiento preventivo, administración de infraestructura Cloud y redes para asegurar que tu negocio nunca se detenga.</p>
+          <span class="tag">Soporte 24/7</span><span class="tag">Empresas</span>
+        </article>
+        <article class="servicio-card">
+          <div class="servicio-num">03</div>
           <span class="servicio-icon">🌐</span>
           <h3>Diseño Web</h3>
-          <p>Sitios modernos de alto impacto realizados por nuestra agencia Nexo.</p>
-          <a href="https://nexoweb.pages.dev/" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 700; display: block; margin-top: 15px;">Visitar Agencia Nexo Web →</a>
+          <p>Sitios web de alta gama enfocados en conversiones, desarrollados por nuestra división creativa <strong>Nexo.</strong></p>
+          <a href="https://nexoweb.pages.dev/" target="_blank" style="color:var(--accent); text-decoration:none; font-weight:700; display:block; margin-top:20px;">Visitar Agencia Nexo →</a>
         </article>
       </div>
     </section>
+
     <section id="porque">
-      <span class="section-tag">Respaldo Integral</span>
-      <h2 class="section-title">Ecosistema CDS & Nexo</h2>
+      <h2 class="section-title">Ecosistema CDS & NEXO</h2>
       <div class="ecosistema-box">
         <svg class="ecosistema-svg" viewBox="0 0 600 300">
-          <rect x="200" y="20" width="200" height="60" rx="8" fill="rgba(0,242,255,0.1)" stroke="var(--accent)" />
-          <text x="300" y="55" text-anchor="middle" fill="#fff" font-weight="bold" font-size="14">CDS CONSULTORÍA</text>
-          <line x1="250" y1="80" x2="150" y2="150" stroke="var(--text-dim)" stroke-dasharray="4" />
-          <line x1="350" y1="80" x2="450" y2="150" stroke="var(--text-dim)" stroke-dasharray="4" />
-          <rect x="50" y="150" width="200" height="60" rx="8" fill="rgba(112,0,255,0.1)" stroke="var(--accent-2)" />
-          <text x="150" y="185" text-anchor="middle" fill="#fff" font-size="12">CDS SEGURIDAD IT</text>
-          <rect x="350" y="150" width="200" height="60" rx="8" fill="rgba(34,197,94,0.1)" stroke="#22c55e" />
-          <text x="450" y="185" text-anchor="middle" fill="#fff" font-size="12">NEXO DESARROLLO WEB</text>
+          <rect x="200" y="20" width="200" height="60" rx="4" fill="rgba(0,242,255,0.05)" stroke="var(--accent)" />
+          <text x="300" y="55" text-anchor="middle" fill="#fff" font-weight="700">CDS CONSULTORÍA MADRE</text>
+          <line x1="250" y1="80" x2="120" y2="160" stroke="#fff" opacity="0.2" />
+          <line x1="350" y1="80" x2="480" y2="160" stroke="#fff" opacity="0.2" />
+          <rect x="20" y="160" width="200" height="60" rx="4" fill="rgba(112,0,255,0.05)" stroke="var(--accent-2)" />
+          <text x="120" y="195" text-anchor="middle" fill="#fff">SEGURIDAD & IT</text>
+          <rect x="380" y="160" width="200" height="60" rx="4" fill="rgba(34,197,94,0.05)" stroke="#22c55e" />
+          <text x="480" y="195" text-anchor="middle" fill="#fff">NEXO WEB</text>
         </svg>
       </div>
     </section>
+
     <section id="contacto">
       <div class="contacto-grid">
-        <div class="contacto-info">
-          <h2 class="section-title" style="text-align: left;">Hablemos.</h2>
-          <p>Respondemos en menos de 24 horas.</p>
-          <p style="margin-top: 20px;"><strong>Email:</strong> consultoriainformaticacds@gmail.com</p>
+        <div class="contacto-info-card">
+          <h2 style="text-align: left; font-size: 2.5rem;">Seguridad real para tu empresa.</h2>
+          <div class="info-item"><h4>Canal Directo</h4><p>+54 9 11 2463-2544</p></div>
+          <div class="info-item"><h4>Email de Soporte</h4><p>consultoriainformaticacds@gmail.com</p></div>
+          <div class="info-item"><h4>Cobertura</h4><p>CABA & Buenos Aires, Arg.</p></div>
         </div>
         <form class="contacto-form" id="cdsForm" action="https://formspree.io/f/maqpkdog" method="POST">
-          <div class="form-group"><label>Nombre</label><input type="text" name="nombre" required /></div>
-          <div class="form-group"><label>Email</label><input type="email" name="email" required /></div>
-          <div class="form-group"><label>Mensaje</label><textarea name="mensaje" rows="4" required></textarea></div>
-          <button type="submit" class="form-submit" id="cds-btn">Enviar consulta →</button>
-          <p id="cds-status" style="margin-top: 15px; text-align: center; font-weight: 700;"></p>
+          <div class="form-group"><label>Tu nombre completo</label><input type="text" name="nombre" required placeholder="Roberto Perez" /></div>
+          <div class="form-group"><label>Email Corporativo</label><input type="email" name="email" required placeholder="roberto@empresa.com" /></div>
+          <div class="form-group">
+            <label>Especialidad</label>
+            <select name="especialidad" required>
+              <option value="Ciberseguridad">Ciberseguridad</option>
+              <option value="Soporte">Soporte IT</option>
+              <option value="Vigilancia">Vigilancia IP</option>
+              <option value="Diseno">Diseño Web</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Describí tu requerimiento</label><textarea name="mensaje" rows="4" required></textarea></div>
+          <button type="submit" class="form-submit" id="cds-btn">Sincronizar consulta →</button>
+          <p id="form-status" style="margin-top:10px; text-align:center; font-weight:700;"></p>
         </form>
       </div>
     </section>
   </main>
+
   <footer>
-    <div style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.03);">
-      <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-        <a href="https://nexoweb.pages.dev/" target="_blank" style="color: var(--text-dim); text-decoration: none; font-size: 0.85rem;"><strong>Nexo Web:</strong> Agencia de Diseño</a>
-        <a href="https://nexo-landing.pages.dev/" target="_blank" style="color: var(--text-dim); text-decoration: none; font-size: 0.85rem;"><strong>Catálogo:</strong> Demos en Vivo</a>
-      </div>
+    <div style="margin-bottom:30px">
+      <a href="https://nexoweb.pages.dev/" target="_blank" class="footer-link">Nexo Agencia</a>
+      <a href="https://nexo-landing.pages.dev/" target="_blank" class="footer-link">Catálogo de Demos</a>
     </div>
-    <p>© 2026 CDS Consultoría Informática. CABA, Argentina.</p>
-    <p style="margin-top: 10px; font-size: 0.75rem; opacity: 0.6;">Sitio diseñado por <a href="https://nexoweb.pages.dev/" style="color: var(--accent); text-decoration: none; font-weight: 700;">Nexo Web</a></p>
+    <p>© 2026 CDS Consultoría Informática. Todos los derechos reservados. CABA, Argentina.</p>
+    <p style="margin-top:15px; font-size:0.75rem; opacity:0.6;">Estructura diseñada por <strong>Nexo Web</strong></p>
   </footer>
-  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank"><svg viewBox="0 0 24 24" fill="white" width="35" height="35"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+  <a href="https://wa.me/5491124632544" id="wa-float" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
-      document.querySelectorAll('section, .servicio-card').forEach(el => { el.classList.add('reveal'); observer.observe(el); });
-      window.addEventListener('mousemove', (e) => { document.querySelectorAll('.servicio-card').forEach(card => { const rect = card.getBoundingClientRect(); card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`); card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`); }); });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('section, article').forEach(el => { el.classList.add('reveal'); observer.observe(el); });
+
+      window.addEventListener('mousemove', (e) => {
+        document.querySelectorAll('.servicio-card').forEach(card => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+      });
+
       const form = document.getElementById('cdsForm');
-      const status = document.getElementById('cds-status');
+      const status = document.getElementById('form-status');
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = document.getElementById('cds-btn');
-        btn.innerText = "ENVIANDO...";
-        const response = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-        if (response.ok) { status.innerText = "¡Consulta recibida!"; status.style.color = "var(--accent)"; form.reset(); }
-        else { status.innerText = "Error. Intenta por WhatsApp."; }
-        btn.innerText = "Enviar consulta →";
+        btn.innerText = "Sincronizando...";
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+          if (res.ok) { status.innerText = "CONSULTA RECIBIDA CON ÉXITO."; status.style.color = "var(--accent)"; form.reset(); }
+          else { status.innerText = "ERROR EN SERVIDOR."; }
+        } catch { status.innerText = "ERROR DE CONEXIÓN."; }
+        finally { btn.innerText = "Enviar consulta →"; }
       });
     });
   </script>
