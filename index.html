@@ -3,14 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CDS | Ciberseguridad & Infraestructura IT</title>
-  <meta name="description" content="Blindaje digital y soporte IT para empresas de alto rendimiento en CABA.">
-  
+  <title>CDS | Ciberseguridad & Infraestructura IT — CABA, Argentina</title>
+
+  <!-- SEO MEJORADO -->
+  <meta name="description" content="Especialistas en ciberseguridad, auditoría IT, pentesting y soporte técnico 24/7 en CABA, Argentina. Blindamos tu operación con respuesta a incidentes y hardening avanzado.">
+  <meta name="keywords" content="ciberseguridad CABA, soporte IT Buenos Aires, auditoría seguridad informática, pentesting argentina, consultoría IT, hardening servidores, respuesta incidentes, cámaras IP CABA">
+  <meta name="author" content="CDS Consultoría Informática">
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="AR-C">
+  <meta name="geo.placename" content="Buenos Aires, CABA">
+
+  <!-- OPEN GRAPH COMPLETO -->
   <meta property="og:title" content="CDS | Ciberseguridad & Infraestructura IT">
-  <meta property="og:description" content="Blindaje digital y soporte IT para empresas de alto rendimiento en CABA.">
+  <meta property="og:description" content="Blindamos tu operación. Auditoría de seguridad, soporte IT 24/7 y respuesta a incidentes en CABA, Argentina.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://consultoriainformaticacds.pages.dev/">
   <meta property="og:image" content="https://consultoriainformaticacds.pages.dev/logo-cds.png">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="CDS Consultoría Informática">
+
+  <!-- TWITTER CARDS -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CDS | Ciberseguridad & Infraestructura IT">
+  <meta name="twitter:description" content="Blindamos tu operación. Auditoría IT, pentesting y soporte 24/7 en CABA.">
+  <meta name="twitter:image" content="https://consultoriainformaticacds.pages.dev/logo-cds.png">
+
+  <!-- SCHEMA MARKUP — Google entiende que sos un negocio local -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "CDS Consultoría Informática",
+    "description": "Especialistas en ciberseguridad, auditoría IT, pentesting y soporte técnico 24/7 en CABA, Argentina.",
+    "url": "https://consultoriainformaticacds.pages.dev/",
+    "telephone": "+5491124632544",
+    "email": "contacto@cdsconsultoria.com.ar",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Buenos Aires",
+      "addressRegion": "CABA",
+      "addressCountry": "AR"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Buenos Aires"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios IT",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Auditoría de Ciberseguridad" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Soporte IT 24/7" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pentesting y Hardening" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vigilancia y Cámaras IP" } }
+      ]
+    },
+    "sameAs": [
+      "https://nexoweb.pages.dev/"
+    ]
+  }
+  </script>
+
+  <!-- GOOGLE ANALYTICS 4 — Reemplazá G-XXXXXXXXXX con tu ID real -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 
   <link rel="icon" href="logo-cds.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Mulish:wght@300;400;600&display=swap" rel="stylesheet">
@@ -18,7 +79,6 @@
   <style>
     :root { --bg: #020617; --accent: #00f2ff; --accent-2: #8b5cf6; --text: #f8fafc; --dim: #94a3b8; --border: rgba(255,255,255,0.06); }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    /* MEJORA: scroll-padding-top para que el menú fijo no tape el formulario */
     html { scroll-behavior: smooth; scroll-padding-top: 100px; }
     body { background: var(--bg); color: var(--text); font-family: 'Mulish', sans-serif; line-height: 1.6; overflow-x: hidden; }
     h1, h2, h3 { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
@@ -43,7 +103,6 @@
     section { padding: 120px 5%; max-width: 1200px; margin: 0 auto; }
     .sec-title { text-align: center; font-size: 2.8rem; margin-bottom: 80px; }
 
-    /* MEJORA: min(100%, 300px) para evitar overflow horizontal en móviles muy estrechos */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 30px; }
     .card { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 50px; border-radius: 12px; transition: 0.4s; backdrop-filter: blur(10px); }
     .card:hover { border-color: var(--accent); transform: translateY(-10px); background: rgba(255,255,255,0.04); }
@@ -58,7 +117,6 @@
     .form-box { background: #020617; border: 1px solid var(--border); padding: 60px; border-radius: 12px; max-width: 700px; margin: 0 auto; }
     .form-box h2 { font-size: 2.2rem; text-align: center; margin-bottom: 40px; }
     
-    /* MEJORA: Estilos accesibles para las etiquetas del formulario */
     .form-group { margin-bottom: 20px; text-align: left; }
     .form-group label { display: block; font-size: 0.8rem; color: var(--accent); font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; cursor: pointer; text-transform: uppercase; font-family: 'Rajdhani', sans-serif; }
     
@@ -126,12 +184,10 @@
           <label for="nombre">Nombre del Solicitante</label>
           <input type="text" id="nombre" name="nombre" placeholder="Ej: Roberto Pérez" required>
         </div>
-        
         <div class="form-group">
           <label for="email">Email Corporativo</label>
           <input type="email" id="email" name="email" placeholder="roberto@empresa.com" required>
         </div>
-        
         <div class="form-group">
           <label for="servicio">Área de Evaluación</label>
           <select id="servicio" name="servicio" required>
@@ -142,12 +198,10 @@
             <option value="Web">Desarrollo Web (NEXO)</option>
           </select>
         </div>
-        
         <div class="form-group">
           <label for="mensaje">Estado de la Infraestructura</label>
           <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describa el estado actual de su infraestructura o el incidente..." required></textarea>
         </div>
-        
         <button type="submit" class="btn-submit" id="cds-btn">Establecer Contacto</button>
         <p id="form-status" style="text-align:center; margin-top:15px; font-weight:700; font-size:0.85rem;"></p>
       </form>
