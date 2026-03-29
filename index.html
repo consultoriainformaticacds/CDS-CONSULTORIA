@@ -76,8 +76,13 @@
   <section id="contacto" class="eco-box" style="margin: 50px 5%; text-align: center;">
     <h2 style="margin-bottom: 20px;">Asegura tu Infraestructura Hoy</h2>
     <form id="cdsForm" action="https://formspree.io/f/maqpkdog" method="POST" style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
-      <input type="text" name="nombre" placeholder="Nombre de la Empresa" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit;">
-      <input type="email" name="email" placeholder="Correo Corporativo" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit;">
+      
+      <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+        <input type="text" name="nombre" placeholder="Tu Nombre" required style="flex: 1; min-width: 200px; padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit;">
+        <input type="text" name="empresa" placeholder="Empresa (Opcional)" style="flex: 1; min-width: 200px; padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit;">
+      </div>
+
+      <input type="email" name="email" placeholder="Correo Electrónico" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit;">
       
       <select name="servicio" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit; cursor: pointer;">
         <option value="" disabled selected>Selecciona un servicio de interés...</option>
@@ -89,7 +94,7 @@
         <option value="Otro">Otra consulta</option>
       </select>
 
-      <textarea name="mensaje" placeholder="Detalla tu consulta o requerimiento aquí..." required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit; min-height: 120px; resize: vertical;"></textarea>
+      <textarea name="mensaje" placeholder="¿Cómo podemos ayudarte?" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit; min-height: 120px; resize: vertical;"></textarea>
 
       <button type="submit" id="cds-btn" class="nav-cta" style="padding: 15px; font-size: 1rem; cursor: pointer; width: 100%;">Solicitar Presupuesto</button>
     </form>
