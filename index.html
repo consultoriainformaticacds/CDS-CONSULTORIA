@@ -62,22 +62,42 @@
 
     </div>
 
-    <div class="trust-block">
+    <div class="trust-block" style="display: flex; flex-direction: column; align-items: flex-start;">
       <h3>Ecosistema CDS & Nexo</h3>
-      <p style="color: var(--text-muted); margin-top: 10px;">
+      <p style="color: var(--text-muted); margin-top: 10px; margin-bottom: 20px;">
         Más que soporte, ofrecemos expansión digital. A través de nuestra división <strong>Nexo Web</strong>, creamos activos digitales de alta conversión integrados en infraestructuras 100% seguras.
       </p>
+      <a href="https://nexo-web.com" target="_blank" rel="noopener noreferrer" class="nav-cta" style="border-color: var(--accent-purple); color: var(--accent-purple);">
+        Explorar Nexo Web ↗
+      </a>
     </div>
   </section>
 
   <section id="contacto" class="eco-box" style="margin: 50px 5%; text-align: center;">
     <h2 style="margin-bottom: 20px;">Asegura tu Infraestructura Hoy</h2>
-    <form id="cdsForm" style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
-      <input type="text" name="nombre" placeholder="Nombre de la Empresa" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none;">
-      <input type="email" name="email" placeholder="Correo Corporativo" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none;">
+    <form id="cdsForm" action="https://formspree.io/f/maqpkdog" method="POST" style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+      <input type="text" name="nombre" placeholder="Nombre de la Empresa" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit;">
+      <input type="email" name="email" placeholder="Correo Corporativo" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit;">
       <button type="submit" id="cds-btn" class="nav-cta" style="padding: 15px; font-size: 1rem; cursor: pointer; width: 100%;">Solicitar Presupuesto</button>
     </form>
   </section>
+
+  <footer style="border-top: 1px solid var(--card-border); padding: 40px 5%; text-align: center; margin-top: 80px; background: var(--bg-secondary);">
+    <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
+      
+      <p style="color: var(--text-muted); font-size: 0.9rem;">
+        &copy; 2026 CDS Consultoría Informática. Todos los derechos reservados.
+      </p>
+      
+      <p style="color: var(--text-muted); font-size: 0.85rem; letter-spacing: 0.5px;">
+        Parte del <strong>Ecosistema CDS</strong> | Diseñado por 
+        <a href="https://nexo-web.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-purple); text-decoration: none; font-weight: 700; transition: var(--transition-smooth);">
+          Nexo Web ↗
+        </a>
+      </p>
+      
+    </div>
+  </footer>
 
 </body>
 </html>
