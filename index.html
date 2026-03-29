@@ -78,6 +78,17 @@
     <form id="cdsForm" action="https://formspree.io/f/maqpkdog" method="POST" style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
       <input type="text" name="nombre" placeholder="Nombre de la Empresa" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit;">
       <input type="email" name="email" placeholder="Correo Corporativo" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit;">
+      
+      <select name="servicio" required style="padding: 15px; border-radius: 8px; border: 1px solid var(--card-border); background: var(--bg-secondary); color: white; outline: none; font-family: inherit; cursor: pointer;">
+        <option value="" disabled selected>Selecciona un servicio de interés...</option>
+        <option value="Auditoria">Auditoría de Ciberseguridad</option>
+        <option value="Soporte IT">Soporte IT 24/7</option>
+        <option value="Pentesting">Pentesting y Hardening</option>
+        <option value="Vigilancia">Vigilancia y Cámaras IP</option>
+        <option value="Nexo Web">Desarrollo Web (Nexo Web)</option>
+        <option value="Otro">Otra consulta</option>
+      </select>
+
       <button type="submit" id="cds-btn" class="nav-cta" style="padding: 15px; font-size: 1rem; cursor: pointer; width: 100%;">Solicitar Presupuesto</button>
     </form>
   </section>
